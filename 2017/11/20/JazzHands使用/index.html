@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: html5 | HFK Blog</title>
+  <title>JazzHands使用 | HFK Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="iOS">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HFK Blog">
-<meta property="og:url" content="http://yoursite.com/tags/html5/index.html">
+  <meta name="description" content="一、 简介 JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;  下载地址及安装(可以通过CocoaPods安装)：  OC版 pod &amp;quot;JazzHands&amp;quot; Swift版 pod &amp;quot;RazzleDazzle&amp;quot;">
+<meta name="keywords" content="iOS,thirdpart,Obj-C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JazzHands使用">
+<meta property="og:url" content="http://yoursite.com/2017/11/20/JazzHands使用/index.html">
 <meta property="og:site_name" content="HFK Blog">
+<meta property="og:description" content="一、 简介 JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;  下载地址及安装(可以通过CocoaPods安装)：  OC版 pod &amp;quot;JazzHands&amp;quot; Swift版 pod &amp;quot;RazzleDazzle&amp;quot;">
+<meta property="og:image" content="http://yoursite.com/assets/blogImg/JazzHands_Time.png">
+<meta property="og:updated_time" content="2017-11-21T08:58:12.157Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HFK Blog">
+<meta name="twitter:title" content="JazzHands使用">
+<meta name="twitter:description" content="一、 简介 JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;  下载地址及安装(可以通过CocoaPods安装)：  OC版 pod &amp;quot;JazzHands&amp;quot; Swift版 pod &amp;quot;RazzleDazzle&amp;quot;">
+<meta name="twitter:image" content="http://yoursite.com/assets/blogImg/JazzHands_Time.png">
   
     <link rel="alternative" href="/atom.xml" title="HFK Blog" type="application/atom+xml">
   
@@ -136,64 +142,243 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JazzHands使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/02/12/about-pjax/" class="archive-article-date">
-  	<time datetime="2014-02-12T00:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-02-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/02/12/about-pjax/">pjax: 当ajax遇上pushState</a>
+    <h1 class="article-title" itemprop="name">
+      JazzHands使用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/11/20/JazzHands使用/" class="archive-article-date">
+  	<time datetime="2017-11-20T02:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、-简介"><a href="#一、-简介" class="headerlink" title="一、 简介"></a><strong>一、 简介</strong></h2><blockquote>
+<p>JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;</p>
+<ul>
+<li>下载地址及安装(可以通过CocoaPods安装)：</li>
+</ul>
+<p><a href="https://github.com/IFTTT/JazzHands" target="_blank" rel="external">OC版</a></p>
+<pre><code>pod &quot;JazzHands&quot;
+</code></pre><p><a href="https://github.com/IFTTT/RazzleDazzle" target="_blank" rel="external">Swift版</a></p>
+<pre><code>pod &quot;RazzleDazzle&quot;
+</code></pre></blockquote>
+<a id="more"></a>
+<h2 id="二、-基础类"><a href="#二、-基础类" class="headerlink" title="二、 基础类"></a><strong>二、 基础类</strong></h2><blockquote>
+<ul>
+<li><p><strong>IFTTTAnimatior</strong>：导演类。里面有一个管理所有动画的添加、删除、执行的数组(<code>IFTTTAnimation</code>)。</p>
+</li>
+<li><p><strong>IFTTTAnimatable</strong>：执行动画类，定义了核心协议(接口),<code>animate:(CGFloat)time</code>; 计算每一个时间点当前对象的值.每一种动画都要实现这个接口.如<code>IFTTTAlphaAnimation</code>类,计算一个时间点对应的对象的alpha值。</p>
+</li>
+<li><strong>IFTTTAnimation</strong>：动画基类,定义了一个对象的动画.仅仅只是对类中的<code>IFTTTFilemstrip</code>进行一个简单的封装。</li>
+<li><strong>IFTTTFilmstrip</strong>：胶片类,有一个关键帧(IFTTTKeyframe)数组，添加/修改/获取对应关键帧(IFTTTKeyframe)的值。</li>
+<li><strong>IFTTTKeyframe</strong>：关键帧类,描述每一个关键帧的时间对应的值。</li>
+</ul>
+</blockquote>
+<h2 id="三、-动画类型"><a href="#三、-动画类型" class="headerlink" title="三、 动画类型"></a><strong>三、 动画类型</strong></h2><blockquote>
+<ul>
+<li><strong>IFTTTAlphaAnimation</strong>：<code>alpha</code>属性(实现淡入淡出效果)</li>
+<li><strong>IFTTTRotationAnimation</strong>：旋转，通过改变view的<code>transform</code>从而实现旋转动画</li>
+<li><strong>IFTTTBackgroundColorAnimation</strong>：背景色，<code>backgroundColor</code>属性.</li>
+<li><strong>IFTTTCornerRadiusAnimation</strong>：圆角，改变视图的<code>layer.cornerRadius</code>属性</li>
+<li><strong>IFTTTHideAnimation</strong>：显示隐藏，改变view的显示及隐藏，<code>view.hidden</code></li>
+<li><strong>IFTTTScaleAnimation</strong>：缩放变换，修改<code>view.transform</code>属性</li>
+<li><strong>IFTTTTranslationAnimation</strong>：平移变换，改变<code>view.transform</code>属性</li>
+<li><strong>IFTTTTransform3DAnimation</strong>：<code>layer.transform</code>属性 (是3D变换)。</li>
+<li><strong>IFTTTTextColorAnimation</strong>：UILabel的<code>textColor</code>属性，修改Label的textColor</li>
+<li><strong>IFTTTFillColorAnimation</strong>：CAShapeLayer的<code>fillColor</code>属性</li>
+<li><strong>IFTTTStrokeStartAnimation</strong>：CAShapeLayer的<code>strokeStart</code>属性</li>
+<li><strong>IFTTTStrokeEndAnimation</strong>：CAShapeLayer的<code>strokeEnd</code>属性</li>
+<li><strong>IFTTTPathPositionAnimation</strong>：UIView的<code>layer.position</code>属性</li>
+<li><strong>IFTTTConstraintConstantAnimation</strong>：修改AutoLayout Constraint的<code>constant</code>属性</li>
+<li><strong>IFTTTConstraintMultiplierAnimation</strong>：修改 AutoLayout<code>Multiplier</code>属性</li>
+<li><strong>IFTTTScrollViewPageConstraintAnimation</strong>：用 AutoLayout 修改 ScrollView 和 View 的位置关系</li>
+<li><strong>IFTTTFrameAnimation</strong>：修改 View 的<code>frame</code>属性</li>
+</ul>
+</blockquote>
+<h2 id="四、-应用"><a href="#四、-应用" class="headerlink" title="四、 应用"></a><strong>四、 应用</strong></h2><blockquote>
+<p>JazzHands主要应用于一些动画引导页,主要用<code>scrollviews</code>,JazzHands封装了<code>IFTTTAnimatedPagingScrollViewController</code>更加方便使用了，JazzHands框架是基于关键帧的动画，其概念类似于<code>Core Animation</code>，但是JazzHands动画驱动主要是坐标驱动。JazzHands中以<code>scrollview.contentOffset</code>作为动画的time。</p>
+<p>   <img src="/assets/blogImg/JazzHands_Time.png" alt="time原理"></p>
+<p>然后在<code>[scrollview didScroll]</code>代理中来进行计算相关视图的位置。<br>在JazzHands中</p>
+<pre><code>- (void)keepView:(UIView *)view onPages:(NSArray *)pages atTimes:(NSArray *)times withAttribute:(IFTTTHorizontalPositionAttribute)attribute;
+</code></pre></blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>view表示需要加动画的视图</p>
+<p>pages、offsets和attribute控制动画的显示。</p>
+<p>其中pages和offsets的数量必须相同，否则会产生<code>crash</code></p>
+<p>pages、offsets控制动画：</p>
+<pre><code>view.frame.size.x = page * pageWidth
+scrollview.contentOffset = time * pageWidth
+</code></pre><p>例如：</p>
+<pre><code>[self keepView:self.iftttPresents onPages:@[@(0), @(-1)] atTimes:@[@(0), @(1)]];
+</code></pre><p>当time=0时，即scrollview在初始位置，这时scrollview.contentOffset=(pageWidth <em> 1)。当time=1时，即scrollview移动到下个scrollview.contentOffset，这时scrollview.contentOffset=(pageWidth </em> 1)；相当于scrollview滚动到第二页时，我们必须设置时间time所对应的view的位置，view对象进行时间0到1的动画。每一个动画(animation)都拥有一个胶卷(filmstrip),每一个胶卷都包含该了该动作的所有关键帧(keyframe)。随着屏幕拖拽，JazzHands会根据约束和时间(contentOffset)计算对象的位置.只要刷新的频率只够高。我们人眼就看不出是重新画上去，而是连续的动画了。</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢!~~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/user/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/user/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">thirdpart</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Obj-C</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/11/20/JazzHands使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2014/02/12/about-pjax/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pjax: 当ajax遇上pushState</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -216,9 +401,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
