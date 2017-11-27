@@ -15,12 +15,14 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/20/JazzHands使用/index.html">
 <meta property="og:site_name" content="HFK Blog">
 <meta property="og:description" content="一、 简介 JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;  下载地址及安装(可以通过CocoaPods安装)：  OC版 pod &amp;quot;JazzHands&amp;quot; Swift版 pod &amp;quot;RazzleDazzle&amp;quot;">
+<meta property="og:image" content="http://yoursite.com/assets/blogImg/JazzHands_Demo.gif">
+<meta property="og:image" content="http://yoursite.com/assets/blogImg/JazzHands_CAMediaTimingFunction.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogImg/JazzHands_Time.png">
-<meta property="og:updated_time" content="2017-11-27T01:32:07.846Z">
+<meta property="og:updated_time" content="2017-11-27T09:39:24.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JazzHands使用">
 <meta name="twitter:description" content="一、 简介 JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;  下载地址及安装(可以通过CocoaPods安装)：  OC版 pod &amp;quot;JazzHands&amp;quot; Swift版 pod &amp;quot;RazzleDazzle&amp;quot;">
-<meta name="twitter:image" content="http://yoursite.com/assets/blogImg/JazzHands_Time.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/blogImg/JazzHands_Demo.gif">
   
     <link rel="alternative" href="/atom.xml" title="HFK Blog" type="application/atom+xml">
   
@@ -205,7 +207,268 @@
 <li><strong>IFTTTFrameAnimation</strong>：修改 View 的<code>frame</code>属性</li>
 </ul>
 </blockquote>
-<h2 id="四、-应用"><a href="#四、-应用" class="headerlink" title="四、 应用"></a><strong>四、 应用</strong></h2><blockquote>
+<h2 id="四、-应用一"><a href="#四、-应用一" class="headerlink" title="四、 应用一"></a><strong>四、 应用一</strong></h2><p>&gt;</p>
+<blockquote>
+<p>通过其中一个类(<code>IFTTTAlphaAnimation</code>)了解JazzHands,</p>
+<p>   <img src="/assets/blogImg/JazzHands_Demo.gif" alt="JazzHands_Demo"></p>
+<pre><code>@interface AlphaViewController ()&lt;UIScrollViewDelegate&gt;
+@property (strong, nonatomic) UIScrollView *scrollView;
+@property (strong,nonatomic) UIView *alphaView;
+@property (strong,nonatomic) IFTTTAnimator *animator;
+
+@end
+
+@implementation AlphaViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.view.backgroundColor=[UIColor whiteColor];
+    self.animator=[[IFTTTAnimator alloc]init];
+
+    self.scrollView=[[UIScrollView alloc]initWithFrame:self.view.bounds];
+    self.scrollView.pagingEnabled=YES;
+    self.scrollView.backgroundColor=[UIColor whiteColor];
+    self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width*2,0);
+    self.scrollView.delegate=self;
+    [self.view addSubview:self.scrollView];
+
+    self.alphaView=[[UIView alloc]initWithFrame:CGRectMake(300,200, 40, 40)];
+    self.alphaView.backgroundColor=[UIColor blackColor];
+    [self.scrollView addSubview:self.alphaView];
+    [self setupAlphaAnimation];
+
+}
+-(void)setupAlphaAnimation{
+
+    IFTTTAlphaAnimation *alpha=[IFTTTAlphaAnimation animationWithView:self.alphaView];
+    [self.animator addAnimation:alpha];
+    [alpha addKeyframeForTime:0 alpha:1.0];
+    [alpha addKeyframeForTime:200 alpha:0.0];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.animator animate:scrollView.contentOffset.x];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+@end
+</code></pre><p>   <strong>1.实现效果:中间黑色方块随着scrollView滚动透明度逐渐变为0;</strong></p>
+<ol>
+<li>创建一个scrollView并且在上面添加一个黑色方块.</li>
+<li>创建<code>IFTTTAlphaAnimation</code>并且添加到<code>IFTTTAnimator</code>中,同时添加两个关键帧0 - 1.0 和 200 - 0.0. </li>
+<li>再在scrollView的代理方法中调用<code>IFTTTAnimator</code>的<code>animate:</code>方法,从而实现相应透明度变化的动画.</li>
+</ol>
+<p><strong>2.IFTTTAlphaAnimation</strong></p>
+<p><code>IFTTTAlphaAnimation : IFTTTViewAnimation &lt;IFTTTAnimatable&gt;</code></p>
+<p><code>IFTTTAlphaAnimation</code>继承于动画父类<code>IFTTTViewAnimation</code>,实现<code>IFTTTAnimatable</code>protocal,而 IFTTTAnimatable 只有一个方法:</p>
+<pre><code>@protocol IFTTTAnimatable &lt;NSObject&gt;
+- (void)animate:(CGFloat)time;
+@end
+</code></pre><p>所有其他类型的动画都继承自这个类 IFTTTAnimation</p>
+<pre><code>@interface IFTTTAnimation : NSObject
+
+- (void)addKeyframeForTime:(CGFloat)time value:(id&lt;IFTTTInterpolatable&gt;)value;
+- (void)addKeyframeForTime:(CGFloat)time value:(id&lt;IFTTTInterpolatable&gt;)value withEasingFunction:(IFTTTEasingFunction)easingFunction;
+- (id&lt;IFTTTInterpolatable&gt;)valueAtTime:(CGFloat)time;
+- (BOOL)hasKeyframes;
+
+@end
+</code></pre><p>类扩展中有如下属性:</p>
+<pre><code>@interface IFTTTAnimation ()
+
+@property (nonatomic, strong) IFTTTFilmstrip *filmstrip;
+
+@end
+</code></pre><ol>
+<li><p>动画通过调用[addKeyframeForTime: value: ]来添加动画相应的关键帧,通过父类[self.filmstrip setValue: atTime:]方法进行存储关键帧,每个动画的关键帧都是单独的一个<code>IFTTTKeyframe</code>对象,它包括设置的时间点以及相应时间点对应的值.</p>
+</li>
+<li><p>IFTTTFilmstrip 类中有一个数组,存储每一个添加的 IFTTTKeyframe 对象, 这个类负责计算在任意时间点时,我们的帧动画对应的值.</p>
+</li>
+</ol>
+<p><strong>3.IFTTTAnimator</strong></p>
+<pre><code>@interface IFTTTAnimator : NSObject
+- (void)addAnimation:(id&lt;IFTTTAnimatable&gt;)animation;
+- (void)removeAnimation:(id&lt;IFTTTAnimatable&gt;)animation;
+- (void)removeAllAnimations;
+- (void)animate:(CGFloat)time;
+@end
+</code></pre><p>类扩展中如下:</p>
+<pre><code>@interface IFTTTAnimator ()
+
+@property (nonatomic, strong) NSMutableArray *animations;
+
+@end
+</code></pre><p><code>IFTTTAnimator</code>通过animations保存我们添加的animation,然后在 scrollView 滚动时,触发 <code>- (void)animate:(CGFloat)time</code>;它内部的实现非常简单:</p>
+<pre><code>- (void)animate:(CGFloat)time
+{
+    for (id&lt;IFTTTAnimatable&gt; animation in self.animations) {
+        [animation animate:time];
+    }
+}
+</code></pre><p>动画效果的产生,每个动画是如何和应用到 View 上的</p>
+<p><code>IFTTTAlphaAnimation</code> 中的<code>- (void)animate:(CGFloat)time;</code>方法</p>
+<pre><code>- (void)animate:(CGFloat)time
+{
+    if (!self.hasKeyframes) return;////没有设置动画帧,就返回
+    self.view.alpha = (CGFloat)[(NSNumber *)[self valueAtTime:time] floatValue];// //如果设置了动画帧,计算当前时间点时的透明度,设置给 View 
+}
+</code></pre><p>然后调用</p>
+<pre><code>- (id&lt;IFTTTInterpolatable&gt;)valueAtTime:(CGFloat)time
+{
+    if (self.filmstrip.isEmpty) return nil;
+    return [self.filmstrip valueAtTime:time];
+}
+</code></pre><p>可见 fileStrip 是进行计算任务的.</p>
+<p>IFTTTFilmstrip 的计算过程如下:</p>
+<pre><code>- (id&lt;IFTTTInterpolatable&gt;)valueAtTime:(CGFloat)time
+{
+    NSAssert(!self.isEmpty, @&quot;At least one KeyFrame must be set before animation begins.&quot;);
+    id value;
+    NSUInteger indexAfter = [self indexOfKeyframeAfterTime:time];//当前时间点对应哪一帧动画
+    if (indexAfter == 0) {
+        //如果时间点没到达第一帧动画发生的时间,就让值为第一帧的值.
+        value = ((IFTTTKeyframe *)self.keyframes[0]).value;
+    } else if (indexAfter &lt; self.keyframes.count) {
+        //如果时间点在2帧之间,取出这2帧
+        IFTTTKeyframe *keyframeBefore = (IFTTTKeyframe *)self.keyframes[indexAfter - 1];
+        IFTTTKeyframe *keyframeAfter = (IFTTTKeyframe *)self.keyframes[indexAfter];
+        //根据时间计算现在的动画进行到 这2帧之间的百分比 
+        CGFloat progress = [self progressFromTime:keyframeBefore.time toTime:keyframeAfter.time atTime:time withEasingFunction:keyframeBefore.easingFunction];
+        //根据百分比算出当前时间点对应的值
+        value = [keyframeBefore.value interpolateTo:keyframeAfter.value withProgress:progress];
+    } else {
+         //如果时间超过最后一帧动画发生的时间,就让值为最后一帧的值.
+        value = ((IFTTTKeyframe *)self.keyframes.lastObject).value;
+    }
+    return value;
+}
+</code></pre><p>上面Demo中:</p>
+<ul>
+<li><p><strong>0-1.0</strong> : scrollView滚动 0 px 时,没到达发生动画的时间,view保持第一帧的值,即 Alpha = 1.0</p>
+</li>
+<li><p><strong>200 - 0.0</strong> : scrollView 滚动scrollview.contentOffset &gt; 200 px 时,时间超过最后一帧动画发生的时间, Alpha 保持 0.0</p>
+</li>
+<li><p><strong>在 0 - 200 之间(例如 40)</strong> : 首先取出离当前时间点之前和之后的2帧,然后<code>[progressFromTime: toTime: atTime:withEasingFunction:]</code>方法计算当前进行到这2帧之间的百分比.</p>
+</li>
+</ul>
+<pre><code>- (CGFloat)progressFromTime:(CGFloat)fromTime toTime:(CGFloat)toTime atTime:(CGFloat)atTime withEasingFunction:(IFTTTEasingFunction)easingFunction
+{
+    CGFloat duration = toTime - fromTime;// duration = 200 - 0 = 200; 
+    if (duration == 0.f) return 0.f;
+    CGFloat timeElapsed = atTime - fromTime; // timeElapsed = 40 - 0 =40
+    // 当前时间 / 这2帧的时间差 得出 &quot;进行到这2帧之间的百分比&quot;
+    return easingFunction(timeElapsed / duration);// return (40/200) = 0.2
+}
+</code></pre><p>最后根据 “进行到这2帧之间的百分比” 计算:</p>
+<pre><code> + (CGFloat)interpolateCGFloatFrom:(CGFloat)fromValue to:(CGFloat)toValue withProgress:(CGFloat)progress
+{
+     CGFloat totalChange = toValue - fromValue; //totalChange = 0- 1 = -1;
+     CGFloat currentChange = totalChange * progress; //currentChange= -1 * 0.2 = -0.2;
+     return fromValue + currentChange;// return 1.0 + (-0.2) = 0.8;
+}
+</code></pre><p> 当前时间点对应的值,当前时间点 40px 时,对应的View 的 Alpha 值为0.8,将其赋值给 View self.view.alpha = 0.8,这样就产生根据 scrollView 滚动距离,改变 View Alpha 的帧动画.</p>
+<p><strong>4. IFTTTEasingFunction</strong></p>
+<p><code>[UIView animateWithDuration: delay: options: animations: completion:]</code> 方法中,option 可以设置为:</p>
+<pre><code>typedef NS_ENUM(NSInteger, UIViewAnimationCurve) {
+        UIViewAnimationCurveEaseInOut,  //先慢慢加速,然后匀速,最后慢慢减速,符合现实运动规律
+        UIViewAnimationCurveEaseIn,     // 先慢后快,慢慢加速
+        UIViewAnimationCurveEaseOut,    // 先快后满,慢慢减速
+        UIViewAnimationCurveLinear        // 匀速
+    };
+</code></pre><p>同样 CAMediaTimingFunction(速度控制函数)也有(如果想研究这些数学公式或者实现具体实现):</p>
+<p>可以参照<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/10-%E7%BC%93%E5%86%B2/%E7%BC%93%E5%86%B2.md" target="_blank" rel="external">iOS-Core-Animation-Advanced-Techniques</a></p>
+<pre><code>NSString * const kCAMediaTimingFunctionLinear;//(线性):匀速,给你一个相对静态的感觉
+NSString * const kCAMediaTimingFunctionEaseIn;//(渐进):动画缓慢进入,然后加速离开
+NSString * const kCAMediaTimingFunctionEaseOut;//(渐出):动画全速进入,然后减速的到达目的地
+NSString * const kCAMediaTimingFunctionEaseInEaseOut;//(渐进渐出):动画缓慢的进入,中间加速,然后减速的到达目的地。这个是默认的动画行为
+NSString * const kCAMediaTimingFunctionDefault;//效果最接近 kCAMediaTimingFunctionEaseInEaseOut
+</code></pre><p>在 JazzHands 中有这些:</p>
+<pre><code>typedef CGFloat (^IFTTTEasingFunction) (CGFloat t);
+
+UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionLinear;
+UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseInQuad;
+UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseOutQuad;
+UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseInOutQuad;
+
+UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseInCubic;
+UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseOutCubic;
+UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseInOutCubic;
+
+UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseInBounce; //Bounce 小球自由落体到地面并反复弹起的效果
+UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseOutBounce;
+</code></pre><p><strong>CAMediaTimingFunction 产生的效果如下:</strong></p>
+<p>   <img src="/assets/blogImg/JazzHands_CAMediaTimingFunction.png" alt="CAMediaTimingFunction效果图"></p>
+<p><strong>5. IFTTTInterpolatable</strong></p>
+<p><code>IFTTTInterpolatable</code> 是一个 protocal :</p>
+<pre><code>@protocol IFTTTInterpolatable &lt;NSObject&gt;
+
+- (id)interpolateTo:(id)toValue withProgress:(CGFloat)progress;
+
+@end
+</code></pre><p>它是用来计算当前时间点对应的值的.<br>上面的例子中,我们的 scrollView 移动40px,progress 为 0.2, fromValue = 1.0, toValue = 0.0</p>
+<pre><code>+ (CGFloat)interpolateCGFloatFrom:(CGFloat)fromValue to:(CGFloat)toValue withProgress:(CGFloat)progress
+{
+    CGFloat totalChange = toValue - fromValue; // totalChange = 0 - 1 = -1;
+    CGFloat currentChange = totalChange * progress; // currentChange= -1 * 0.2 = -0.2;
+    return fromValue + currentChange;        // return 1.0 + (-0.2) = 0.8;
+}
+</code></pre><p>计算的出我们的 view.alpha = 0.8</p>
+<p>其他的动画 比如 Translation ,Scale ,ConstraintConstant ,CornerRadius 的值都是 CGFloat,只不过经过上面的计算之后赋值给不同的属性而已,</p>
+<p>在他们各自的 <code>- (void)animate:(CGFloat)time</code> 方法中</p>
+<pre><code>self.constraint.constant = [self valueAtTime:time]; //IFTTTConstraintConstantAnimation
+
+self.view.layer.cornerRadius = [self valueAtTime:time]; //IFTTTCornerRadiusAnimation
+</code></pre><p>Translation 和 Scale Rotation 动画都是修改 view.transform 属性</p>
+<pre><code>CGFloat scale = (CGFloat)[(NSNumber *)[self valueAtTime:time] floatValue];
+
+CGAffineTransform scaleTransform = CGAffineTransformMakeScale(scale, scale);
+self.view.iftttScaleTransform = [NSValue valueWithCGAffineTransform:scaleTransform];
+CGAffineTransform newTransform = scaleTransform;
+if (self.view.iftttRotationTransform) {
+    newTransform = CGAffineTransformConcat(newTransform, [self.view.iftttRotationTransform CGAffineTransformValue]);
+}
+if (self.view.iftttTranslationTransform) {
+    newTransform = CGAffineTransformConcat(newTransform, [self.view.iftttTranslationTransform CGAffineTransformValue]);
+}
+
+self.view.transform = newTransform;
+</code></pre><p>先计算对应时间点的值,然后将所有 transform 用 CGAffineTransformConcat 拼接起来 ,赋值给 View</p>
+<p><strong>6.其他 IFTTTInterpolatable</strong></p>
+<p>如果我们要做改变 View 背景色或者 Frame 的动画呢,计算方式就不同了.<br>计算任意时间点对应的 Color:</p>
+<pre><code>- (UIColor *)interpolateTo:(UIColor *)toValue withProgress:(CGFloat)progress
+{
+    CGFloat startRed, startBlue, startGreen, startAlpha;
+    CGFloat endRed, endBlue, endGreen, endAlpha;
+    UIColor *interpolatedColor = self;
+
+    if ([self.class iftttGetRed:&amp;startRed green:&amp;startGreen blue:&amp;startBlue alpha:&amp;startAlpha fromColor:self] &amp;&amp;
+        [self.class iftttGetRed:&amp;endRed green:&amp;endGreen blue:&amp;endBlue alpha:&amp;endAlpha fromColor:toValue]) {
+        CGFloat red = [NSNumber interpolateCGFloatFrom:startRed to:endRed withProgress:progress];
+        CGFloat green = [NSNumber interpolateCGFloatFrom:startGreen to:endGreen withProgress:progress];
+        CGFloat blue = [NSNumber interpolateCGFloatFrom:startBlue to:endBlue withProgress:progress];
+        CGFloat alpha = [NSNumber interpolateCGFloatFrom:startAlpha to:endAlpha withProgress:progress];
+        interpolatedColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+    }
+    return interpolatedColor;
+}
+</code></pre><p>我们先把 from 和 to Color 的 R,G,B,A 分别取出来,然后作为 CGFloat 值分别计算,最后拼接成 UIColor</p>
+<p>Frame 的计算:</p>
+<pre><code>+ (CGRect)interpolateCGRectFrom:(CGRect)fromValue to:(CGRect)toValue withProgress:(CGFloat)progress
+{
+    CGPoint originBetween = [self interpolateCGPointFrom:fromValue.origin to:toValue.origin withProgress:progress];
+    CGSize sizeBetween = [self interpolateCGSizeFrom:fromValue.size to:toValue.size withProgress:progress];
+    return CGRectMake(originBetween.x, originBetween.y, sizeBetween.width, sizeBetween.height);
+}
+</code></pre><p>也很好理解,拆出其 origin 和 size 分别计算</p>
+<p>origin 含有 x, y ,也就是2个 CGFloat 计算</p>
+<p>size 含有 height 和 width 也是 2个 CGFloat</p>
+<p>最后将所有计算完的 CGFloat 值拼成 CGRect 作为 当前时间的 Frame 值返回</p>
+</blockquote>
+<h2 id="五、-应用二"><a href="#五、-应用二" class="headerlink" title="五、 应用二"></a><strong>五、 应用二</strong></h2><blockquote>
 <p>JazzHands主要应用于一些动画引导页,主要用<code>scrollviews</code>,JazzHands封装了<code>IFTTTAnimatedPagingScrollViewController</code>更加方便使用了，JazzHands框架是基于关键帧的动画，其概念类似于<code>Core Animation</code>，但是JazzHands动画驱动主要是坐标驱动。JazzHands中以<code>scrollview.contentOffset</code>作为动画的time。</p>
 <p>   <img src="/assets/blogImg/JazzHands_Time.png" alt="time原理"></p>
 <p>然后在<code>[scrollview didScroll]</code>代理中来进行计算相关视图的位置。<br>在JazzHands中</p>
