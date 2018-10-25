@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>HEXO+Github搭建博客 | HFK Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/10/HEXO搭建个人博客/index.html">
 <meta property="og:site_name" content="HFK Blog">
 <meta property="og:description" content="前言通过一个方式来整理和管理自己的知识，之前了解到可以通过 GitHub 托管静态网页，使用 Hexo 和 GitHub Pages 方便快捷地搭建个人博客网站，所以通过学习从零开始搭建、配置一个属于自己的博客网站。">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/assets/blogImg/hexo_blog_githubNewR.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogImg/hexo_blog_githubSSH.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogImg/hexo_blog_githubCheckSSH.png">
@@ -46,7 +47,7 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -149,7 +150,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-HEXO搭建个人博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-HEXO搭建个人博客" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -172,7 +173,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>通过一个方式来整理和管理自己的知识，之前了解到可以通过 GitHub 托管静态网页，使用 Hexo 和 GitHub Pages 方便快捷地搭建个人博客网站，所以通过学习从零开始搭建、配置一个属于自己的博客网站。</p>
 <a id="more"></a>
 <h2 id="注册-GitHub"><a href="#注册-GitHub" class="headerlink" title="注册 GitHub"></a><strong>注册 GitHub</strong></h2><ol>
-<li><p><a href="https://github.com/" target="_blank" rel="external">GitHub</a> 是一个面向开源及私有软件项目的托管平台。首先需要注册一个账号并且创建仓库，作用是用来做博客的远程创库、域名、服务器之类的。</p>
+<li><p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 是一个面向开源及私有软件项目的托管平台。首先需要注册一个账号并且创建仓库，作用是用来做博客的远程创库、域名、服务器之类的。</p>
 <blockquote>
 <p>1.注意点：建立Repository，建立与你用户名对应的仓库，仓库名必须为[xxx.github.io]，固定写法。</p>
 </blockquote>
@@ -199,7 +200,7 @@
 <p> 验证 <code>fingerprint</code> ,然后 <code>type yes</code></p>
 <p> 然后，</p>
 <p>  <img src="/assets/blogImg/hexo_blog_github_1.png" alt="hexo_blog_github_3"></p>
-<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a><strong>Hexo安装</strong></h2><p>Hexo是一款基于Node.js的静态博客框架，安装Hexo相当简单，可以参考<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">官方文档</a>。</p>
+<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a><strong>Hexo安装</strong></h2><p>Hexo是一款基于Node.js的静态博客框架，安装Hexo相当简单，可以参考<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">官方文档</a>。</p>
 
       
 
@@ -448,14 +449,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -466,13 +459,21 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Objective-C</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

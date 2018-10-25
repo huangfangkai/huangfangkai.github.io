@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JazzHands使用 | HFK Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/01/20/JazzHands使用/index.html">
 <meta property="og:site_name" content="HFK Blog">
 <meta property="og:description" content="一、 简介 JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;  下载地址及安装(可以通过CocoaPods安装)：  OC版 pod &amp;quot;JazzHands&amp;quot; Swift版 pod &amp;quot;RazzleDazzle&amp;quot;">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/assets/blogImg/JazzHands_Demo.gif">
 <meta property="og:image" content="http://yoursite.com/assets/blogImg/JazzHands_CAMediaTimingFunction.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogImg/JazzHands_Time.png">
@@ -41,7 +42,7 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -144,7 +145,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JazzHands使用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JazzHands使用" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -169,9 +170,9 @@
 <ul>
 <li>下载地址及安装(可以通过CocoaPods安装)：</li>
 </ul>
-<p><a href="https://github.com/IFTTT/JazzHands" target="_blank" rel="external">OC版</a></p>
+<p><a href="https://github.com/IFTTT/JazzHands" target="_blank" rel="noopener">OC版</a></p>
 <pre><code>pod &quot;JazzHands&quot;
-</code></pre><p><a href="https://github.com/IFTTT/RazzleDazzle" target="_blank" rel="external">Swift版</a></p>
+</code></pre><p><a href="https://github.com/IFTTT/RazzleDazzle" target="_blank" rel="noopener">Swift版</a></p>
 <pre><code>pod &quot;RazzleDazzle&quot;
 </code></pre></blockquote>
 <a id="more"></a>
@@ -380,7 +381,7 @@
         UIViewAnimationCurveLinear        // 匀速
     };
 </code></pre><p>同样 CAMediaTimingFunction(速度控制函数)也有(如果想研究这些数学公式或者实现具体实现):</p>
-<p>可以参照<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/10-%E7%BC%93%E5%86%B2/%E7%BC%93%E5%86%B2.md" target="_blank" rel="external">iOS-Core-Animation-Advanced-Techniques</a></p>
+<p>可以参照<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/10-%E7%BC%93%E5%86%B2/%E7%BC%93%E5%86%B2.md" target="_blank" rel="noopener">iOS-Core-Animation-Advanced-Techniques</a></p>
 <pre><code>NSString * const kCAMediaTimingFunctionLinear;//(线性):匀速,给你一个相对静态的感觉
 NSString * const kCAMediaTimingFunctionEaseIn;//(渐进):动画缓慢进入,然后加速离开
 NSString * const kCAMediaTimingFunctionEaseOut;//(渐出):动画全速进入,然后减速的到达目的地
@@ -734,14 +735,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -752,13 +745,21 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Objective-C</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
