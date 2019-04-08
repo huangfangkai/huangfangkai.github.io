@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/hexo_blog_github_1.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/hexo_blog_github_1.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/hexo_blog_github_1.png">
-<meta property="og:updated_time" content="2019-03-19T06:19:53.373Z">
+<meta property="og:updated_time" content="2019-04-08T08:55:37.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HEXO+Github搭建博客">
 <meta name="twitter:description" content="前言通过一个方式来整理和管理自己的知识，之前了解到可以通过 GitHub 托管静态网页，使用 Hexo 和 GitHub Pages 方便快捷地搭建个人博客网站，所以通过学习从零开始搭建、配置一个属于自己的博客网站。">
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  429
+                  1k
                 </span>
               
 
@@ -420,8 +420,65 @@
 <p> 验证 <code>fingerprint</code> ,然后 <code>type yes</code></p>
 <p> 然后，</p>
 <p>  <img src="/assets/blogImg/hexo_blog_github_1.png" alt="hexo_blog_github_3"></p>
-<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a><strong>Hexo安装</strong></h2><p>Hexo是一款基于Node.js的静态博客框架，安装Hexo相当简单，可以参考<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">官方文档</a>。</p>
-
+<h2 id="正式安装Hexo"><a href="#正式安装Hexo" class="headerlink" title="正式安装Hexo"></a><strong>正式安装Hexo</strong></h2><p>Hexo是一款基于Node.js的静态博客框架，安装Hexo相当简单，可以参考<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<p><code>Node</code>和<code>Git</code>都安装好后，可执行如下命令安装<code>Hexo</code>：</p>
+<pre><code>$ npm install -g hexo-cli
+</code></pre><p>如果没有安装<code>Node</code>和<code>Git</code>，以下均为 Mac 环境下。</p>
+<pre><code># 使用 brew 安装 git
+brew install git
+# 可以使用 cURL 安装 nvm
+$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+# 也可以 使用 Wget 安装 nvm
+$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
+# 使用最佳安装方式：nvm 安装 Node.js
+$ nvm install stable
+</code></pre><p>####1.初始化<br>创建一个文件夹，如：<code>Blog</code>，<code>cd</code>到<code>Blog</code>里执行hexo init的。命令：</p>
+<pre><code>hexo init
+</code></pre><p>####2.生成静态页面<br>继续再Blog目录下执行如下命令，生成静态页面</p>
+<pre><code>hexo generate （hexo g  也可以）   
+</code></pre><p>####3.本地启动<br>启动本地服务，进行文章预览调试，命令：</p>
+<pre><code>hexo server （hexo s  也可以）  
+</code></pre><p>####4.访问<br>访问 <a href="http://localhost:4000/" target="_blank" rel="noopener">本地配置</a>,本地已经简单的设置好了，但是现在域名和服务器都是基于自己的电脑，接下来需要跟github进行关联。</p>
+<p>##配置Github<br>建立Repository</p>
+<p>建立与你用户名对应的仓库，仓库名必须为<code>your_user_name.github.io</code>，固定写法 然后建立关联，我的Blog在本地/Users/leopard/Blog，Blog是我之前建的东西也全在这里面，有：</p>
+<pre><code>Blog 
+　｜ 
+　｜－－ _config.yml 
+　｜－－ node_modules 
+　｜－－ public 
+　｜－－ source 
+　｜－－ db.json    
+　｜－－ package.json 
+　｜－－ scaffolds 
+　｜－－ themes 　
+</code></pre><p>现在我们需要_config.yml文件，来建立关联，命令：</p>
+<pre><code>vim _config.yml
+</code></pre><p>翻到最下面，改成我这样子的，注意： <code>: 后面要有空格</code></p>
+<p>配置更目录下的 _config.yml文件</p>
+<pre><code>deploy:
+ type: git
+ repo: https://github.com/huangfangkai/huangfangkai.github.io.git
+ branch: master
+</code></pre><p>部署到 GitHub，前提是已经注册 <code>GitHub</code>，创建 <code>username.github.io</code> 仓库<br>安装 <code>GitHub</code> 依赖插件</p>
+<pre><code>$ npm install hexo-deployer-git --save
+</code></pre><p>部署命令</p>
+<pre><code># 部署，hexo deploy
+$ hexo d
+$ hexo d -g
+</code></pre><p>访问个人主页<br>访问 <code>username.github.io</code>，根目录 <code>source</code> 下已经创建<code>CNAME</code>，绑定自定义域名，可以访问域名。例如<a href="http://www.hfkstackoverflow.top/">HFK</a></p>
+<p>##部署步骤<br>每次部署的步骤，可按以下三步来进行。</p>
+<pre><code>hexo clean
+hexo generate (hexo g)
+hexo deploy (hexo d)
+</code></pre><p>一些常用命令：</p>
+<pre><code>hexo new &quot;postName&quot; #新建文章
+hexo new page &quot;pageName&quot; #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
+hexo deploy #将.deploy目录部署到GitHub
+hexo help  #查看帮助
+hexo version  #查看Hexo的版本
+</code></pre>
       
     </div>
     
@@ -638,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-GitHub"><span class="nav-number">2.</span> <span class="nav-text">注册 GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo安装"><span class="nav-number">3.</span> <span class="nav-text">Hexo安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-GitHub"><span class="nav-number">2.</span> <span class="nav-text">注册 GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正式安装Hexo"><span class="nav-number">3.</span> <span class="nav-text">正式安装Hexo</span></a></li></ol></div>
             
 
           </div>
@@ -672,7 +729,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.7k</span>
+    <span title="Site words total count">8.2k</span>
   
 </div>
 
