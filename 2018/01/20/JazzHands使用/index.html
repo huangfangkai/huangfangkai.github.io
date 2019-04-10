@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="简介 JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;">
+<meta name="description" content="简介JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;">
 <meta name="keywords" content="Objective-C,thirdpart">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JazzHands使用">
 <meta property="og:url" content="http://www.hfkstackoverflow.top/2018/01/20/JazzHands使用/index.html">
 <meta property="og:site_name" content="HFK">
-<meta property="og:description" content="简介 JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;">
+<meta property="og:description" content="简介JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/JazzHands_Demo.gif">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/JazzHands_CAMediaTimingFunction.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/JazzHands_Time.png">
-<meta property="og:updated_time" content="2019-04-10T09:15:13.555Z">
+<meta property="og:updated_time" content="2019-04-10T09:44:34.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JazzHands使用">
-<meta name="twitter:description" content="简介 JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;">
+<meta name="twitter:description" content="简介JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;">
 <meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/JazzHands_Demo.gif">
 
 
@@ -377,54 +377,36 @@
       
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><blockquote>
-<p>JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;<br><a id="more"></a></p>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
-<ul>
-<li>下载地址及安装(可以通过CocoaPods安装)：</li>
-</ul>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>JazzHands是UIKit一个简单的关键帧基础动画框架。可以通过手势、scrollView、KVO或者RectiveCocoa控制动画从而实现一些交互式动画。常见用途：制作一些炫酷的引导页;</p>
+<a id="more"></a>
+<p><strong>下载地址及安装(可以通过CocoaPods安装)：</strong></p>
 <p><a href="https://github.com/IFTTT/JazzHands" target="_blank" rel="noopener">OC版</a></p>
 <pre><code>pod &quot;JazzHands&quot;
 </code></pre><p><a href="https://github.com/IFTTT/RazzleDazzle" target="_blank" rel="noopener">Swift版</a></p>
 <pre><code>pod &quot;RazzleDazzle&quot;
-</code></pre></blockquote>
-<h2 id="基础类"><a href="#基础类" class="headerlink" title="基础类"></a><strong>基础类</strong></h2><blockquote>
-<ul>
-<li><p><strong>IFTTTAnimatior</strong>：导演类。里面有一个管理所有动画的添加、删除、执行的数组(<code>IFTTTAnimation</code>)。</p>
-</li>
-<li><p><strong>IFTTTAnimatable</strong>：执行动画类，定义了核心协议(接口),<code>animate:(CGFloat)time</code>; 计算每一个时间点当前对象的值.每一种动画都要实现这个接口.如<code>IFTTTAlphaAnimation</code>类,计算一个时间点对应的对象的alpha值。</p>
-</li>
-<li><strong>IFTTTAnimation</strong>：动画基类,定义了一个对象的动画.仅仅只是对类中的<code>IFTTTFilemstrip</code>进行一个简单的封装。</li>
-<li><strong>IFTTTFilmstrip</strong>：胶片类,有一个关键帧(IFTTTKeyframe)数组，添加/修改/获取对应关键帧(IFTTTKeyframe)的值。</li>
-<li><strong>IFTTTKeyframe</strong>：关键帧类,描述每一个关键帧的时间对应的值。</li>
-</ul>
-</blockquote>
-<h2 id="动画类型"><a href="#动画类型" class="headerlink" title="动画类型"></a><strong>动画类型</strong></h2><blockquote>
-<ul>
-<li><strong>IFTTTAlphaAnimation</strong>：<code>alpha</code>属性(实现淡入淡出效果)</li>
-<li><strong>IFTTTRotationAnimation</strong>：旋转，通过改变view的<code>transform</code>从而实现旋转动画</li>
-<li><strong>IFTTTBackgroundColorAnimation</strong>：背景色，<code>backgroundColor</code>属性.</li>
-<li><strong>IFTTTCornerRadiusAnimation</strong>：圆角，改变视图的<code>layer.cornerRadius</code>属性</li>
-<li><strong>IFTTTHideAnimation</strong>：显示隐藏，改变view的显示及隐藏，<code>view.hidden</code></li>
-<li><strong>IFTTTScaleAnimation</strong>：缩放变换，修改<code>view.transform</code>属性</li>
-<li><strong>IFTTTTranslationAnimation</strong>：平移变换，改变<code>view.transform</code>属性</li>
-<li><strong>IFTTTTransform3DAnimation</strong>：<code>layer.transform</code>属性 (是3D变换)。</li>
-<li><strong>IFTTTTextColorAnimation</strong>：UILabel的<code>textColor</code>属性，修改Label的textColor</li>
-<li><strong>IFTTTFillColorAnimation</strong>：CAShapeLayer的<code>fillColor</code>属性</li>
-<li><strong>IFTTTStrokeStartAnimation</strong>：CAShapeLayer的<code>strokeStart</code>属性</li>
-<li><strong>IFTTTStrokeEndAnimation</strong>：CAShapeLayer的<code>strokeEnd</code>属性</li>
-<li><strong>IFTTTPathPositionAnimation</strong>：UIView的<code>layer.position</code>属性</li>
-<li><strong>IFTTTConstraintConstantAnimation</strong>：修改AutoLayout Constraint的<code>constant</code>属性</li>
-<li><strong>IFTTTConstraintMultiplierAnimation</strong>：修改 AutoLayout<code>Multiplier</code>属性</li>
-<li><strong>IFTTTScrollViewPageConstraintAnimation</strong>：用 AutoLayout 修改 ScrollView 和 View 的位置关系</li>
-<li><strong>IFTTTFrameAnimation</strong>：修改 View 的<code>frame</code>属性</li>
-</ul>
-</blockquote>
-<h2 id="应用一"><a href="#应用一" class="headerlink" title="应用一"></a><strong>应用一</strong></h2><p>&gt;</p>
-<blockquote>
-<p>通过其中一个类(<code>IFTTTAlphaAnimation</code>)了解JazzHands,</p>
+</code></pre><h2 id="基础类"><a href="#基础类" class="headerlink" title="基础类"></a><strong>基础类</strong></h2><p><strong>IFTTTAnimatior</strong>：导演类。里面有一个管理所有动画的添加、删除、执行的数组(<code>IFTTTAnimation</code>)。</p>
+<p><strong>IFTTTAnimatable</strong>：执行动画类，定义了核心协议(接口),<code>animate:(CGFloat)time</code>; 计算每一个时间点当前对象的值.每一种动画都要实现这个接口.如<code>IFTTTAlphaAnimation</code>类,计算一个时间点对应的对象的alpha值。</p>
+<p><strong>IFTTTAnimation</strong>：动画基类,定义了一个对象的动画.仅仅只是对类中的<code>IFTTTFilemstrip</code>进行一个简单的封装。</p>
+<p><strong>IFTTTFilmstrip</strong>：胶片类,有一个关键帧(IFTTTKeyframe)数组，添加/修改/获取对应关键帧(IFTTTKeyframe)的值。</p>
+<p><strong>IFTTTKeyframe</strong>：关键帧类,描述每一个关键帧的时间对应的值。</p>
+<h2 id="动画类型"><a href="#动画类型" class="headerlink" title="动画类型"></a><strong>动画类型</strong></h2><p><strong>IFTTTAlphaAnimation</strong>：<code>alpha</code>属性(实现淡入淡出效果)</p>
+<p><strong>IFTTTRotationAnimation</strong>：旋转，通过改变view的<code>transform</code>从而实现旋转动画</p>
+<p><strong>IFTTTBackgroundColorAnimation</strong>：背景色，<code>backgroundColor</code>属性.</p>
+<p><strong>IFTTTCornerRadiusAnimation</strong>：圆角，改变视图的<code>layer.cornerRadius</code>属性</p>
+<p><strong>IFTTTHideAnimation</strong>：显示隐藏，改变view的显示及隐藏，<code>view.hidden</code></p>
+<p><strong>IFTTTScaleAnimation</strong>：缩放变换，修改<code>view.transform</code>属性</p>
+<p><strong>IFTTTTranslationAnimation</strong>：平移变换，改变<code>view.transform</code>属性</p>
+<p><strong>IFTTTTransform3DAnimation</strong>：<code>layer.transform</code>属性 (是3D变换)。</p>
+<p><strong>IFTTTTextColorAnimation</strong>：UILabel的<code>textColor</code>属性，修改Label的textColor</p>
+<p><strong>IFTTTFillColorAnimation</strong>：CAShapeLayer的<code>fillColor</code>属性</p>
+<p><strong>IFTTTStrokeStartAnimation</strong>：CAShapeLayer的<code>strokeStart</code>属性</p>
+<p><strong>IFTTTStrokeEndAnimation</strong>：CAShapeLayer的<code>strokeEnd</code>属性</p>
+<p><strong>IFTTTPathPositionAnimation</strong>：UIView的<code>layer.position</code>属性</p>
+<p><strong>IFTTTConstraintConstantAnimation</strong>：修改AutoLayout Constraint的<code>constant</code>属性</p>
+<p><strong>IFTTTConstraintMultiplierAnimation</strong>：修改 AutoLayout<code>Multiplier</code>属性</p>
+<p><strong>IFTTTScrollViewPageConstraintAnimation</strong>：用 AutoLayout 修改 ScrollView 和 View 的位置关系</p>
+<p><strong>IFTTTFrameAnimation</strong>：修改 View 的<code>frame</code>属性</p>
+<h2 id="应用一"><a href="#应用一" class="headerlink" title="应用一"></a><strong>应用一</strong></h2><p>通过其中一个类(<code>IFTTTAlphaAnimation</code>)了解JazzHands,</p>
 <p>   <img src="/assets/blogImg/JazzHands_Demo.gif" alt="JazzHands_Demo"></p>
 <pre><code>@interface AlphaViewController ()&lt;UIScrollViewDelegate&gt;
 @property (strong, nonatomic) UIScrollView *scrollView;
@@ -471,15 +453,18 @@
     // Dispose of any resources that can be recreated.
 }
 @end
-</code></pre><p>   <strong>1.实现效果:中间黑色方块随着scrollView滚动透明度逐渐变为0;</strong></p>
+</code></pre><p><strong>1.实现效果:中间黑色方块随着scrollView滚动透明度逐渐变为0;</strong></p>
 <ol>
-<li>创建一个scrollView并且在上面添加一个黑色方块.</li>
-<li>创建<code>IFTTTAlphaAnimation</code>并且添加到<code>IFTTTAnimator</code>中,同时添加两个关键帧0 - 1.0 和 200 - 0.0. </li>
-<li>再在scrollView的代理方法中调用<code>IFTTTAnimator</code>的<code>animate:</code>方法,从而实现相应透明度变化的动画.</li>
+<li><p>创建一个scrollView并且在上面添加一个黑色方块.</p>
+</li>
+<li><p>创建<code>IFTTTAlphaAnimation</code>并且添加到<code>IFTTTAnimator</code>中,同时添加两个关键帧0 - 1.0 和 200 - 0.0. </p>
+</li>
+<li><p>再在scrollView的代理方法中调用<code>IFTTTAnimator</code>的<code>animate:</code>方法,从而实现相应透明度变化的动画.</p>
+</li>
 </ol>
 <p><strong>2.IFTTTAlphaAnimation</strong></p>
-<p><code>IFTTTAlphaAnimation : IFTTTViewAnimation &lt;IFTTTAnimatable&gt;</code></p>
-<p><code>IFTTTAlphaAnimation</code>继承于动画父类<code>IFTTTViewAnimation</code>,实现<code>IFTTTAnimatable</code>protocal,而 IFTTTAnimatable 只有一个方法:</p>
+<p> <code>IFTTTAlphaAnimation : IFTTTViewAnimation &lt;IFTTTAnimatable&gt;</code></p>
+<p> <code>IFTTTAlphaAnimation</code>继承于动画父类<code>IFTTTViewAnimation</code>,实现<code>IFTTTAnimatable</code>protocal,而 IFTTTAnimatable 只有一个方法:</p>
 <pre><code>@protocol IFTTTAnimatable &lt;NSObject&gt;
 - (void)animate:(CGFloat)time;
 @end
@@ -492,7 +477,7 @@
 - (BOOL)hasKeyframes;
 
 @end
-</code></pre><p>类扩展中有如下属性:</p>
+</code></pre><p> 类扩展中有如下属性:</p>
 <pre><code>@interface IFTTTAnimation ()
 
 @property (nonatomic, strong) IFTTTFilmstrip *filmstrip;
@@ -511,7 +496,7 @@
 - (void)removeAllAnimations;
 - (void)animate:(CGFloat)time;
 @end
-</code></pre><p>类扩展中如下:</p>
+</code></pre><p> 类扩展中如下:</p>
 <pre><code>@interface IFTTTAnimator ()
 
 @property (nonatomic, strong) NSMutableArray *animations;
@@ -561,15 +546,10 @@
     }
     return value;
 }
-</code></pre><p>上面Demo中:</p>
-<ul>
-<li><p><strong>0-1.0</strong> : scrollView滚动 0 px 时,没到达发生动画的时间,view保持第一帧的值,即 Alpha = 1.0</p>
-</li>
-<li><p><strong>200 - 0.0</strong> : scrollView 滚动scrollview.contentOffset &gt; 200 px 时,时间超过最后一帧动画发生的时间, Alpha 保持 0.0</p>
-</li>
-<li><p><strong>在 0 - 200 之间(例如 40)</strong> : 首先取出离当前时间点之前和之后的2帧,然后<code>[progressFromTime: toTime: atTime:withEasingFunction:]</code>方法计算当前进行到这2帧之间的百分比.</p>
-</li>
-</ul>
+</code></pre><p> 上面Demo中:</p>
+<p> <strong>0-1.0</strong> : scrollView滚动 0 px 时,没到达发生动画的时间,view保持第一帧的值,即 Alpha = 1.0</p>
+<p> <strong>200 - 0.0</strong> : scrollView 滚动scrollview.contentOffset &gt; 200 px 时,时间超过最后一帧动画发生的时间, Alpha 保持 0.0</p>
+<p> <strong>在 0 - 200 之间(例如 40)</strong> : 首先取出离当前时间点之前和之后的2帧,然后<code>[progressFromTime: toTime: atTime:withEasingFunction:]</code>方法计算当前进行到这2帧之间的百分比.</p>
 <pre><code>- (CGFloat)progressFromTime:(CGFloat)fromTime toTime:(CGFloat)toTime atTime:(CGFloat)atTime withEasingFunction:(IFTTTEasingFunction)easingFunction
 {
     CGFloat duration = toTime - fromTime;// duration = 200 - 0 = 200; 
@@ -578,24 +558,24 @@
     // 当前时间 / 这2帧的时间差 得出 &quot;进行到这2帧之间的百分比&quot;
     return easingFunction(timeElapsed / duration);// return (40/200) = 0.2
 }
-</code></pre><p>最后根据 “进行到这2帧之间的百分比” 计算:</p>
+</code></pre><p> 最后根据 “进行到这2帧之间的百分比” 计算:</p>
 <pre><code> + (CGFloat)interpolateCGFloatFrom:(CGFloat)fromValue to:(CGFloat)toValue withProgress:(CGFloat)progress
 {
      CGFloat totalChange = toValue - fromValue; //totalChange = 0- 1 = -1;
      CGFloat currentChange = totalChange * progress; //currentChange= -1 * 0.2 = -0.2;
      return fromValue + currentChange;// return 1.0 + (-0.2) = 0.8;
 }
-</code></pre><p> 当前时间点对应的值,当前时间点 40px 时,对应的View 的 Alpha 值为0.8,将其赋值给 View self.view.alpha = 0.8,这样就产生根据 scrollView 滚动距离,改变 View Alpha 的帧动画.</p>
-<p><strong>4. IFTTTEasingFunction</strong></p>
-<p><code>[UIView animateWithDuration: delay: options: animations: completion:]</code> 方法中,option 可以设置为:</p>
+</code></pre><p>  当前时间点对应的值,当前时间点 40px 时,对应的View 的 Alpha 值为0.8,将其赋值给 View self.view.alpha = 0.8,这样就产生根据 scrollView 滚动距离,改变 View Alpha 的帧动画.</p>
+<p> <strong>4. IFTTTEasingFunction</strong></p>
+<p> <code>[UIView animateWithDuration: delay: options: animations: completion:]</code> 方法中,option 可以设置为:</p>
 <pre><code>typedef NS_ENUM(NSInteger, UIViewAnimationCurve) {
         UIViewAnimationCurveEaseInOut,  //先慢慢加速,然后匀速,最后慢慢减速,符合现实运动规律
         UIViewAnimationCurveEaseIn,     // 先慢后快,慢慢加速
         UIViewAnimationCurveEaseOut,    // 先快后满,慢慢减速
         UIViewAnimationCurveLinear        // 匀速
     };
-</code></pre><p>同样 CAMediaTimingFunction(速度控制函数)也有(如果想研究这些数学公式或者实现具体实现):</p>
-<p>可以参照<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/10-%E7%BC%93%E5%86%B2/%E7%BC%93%E5%86%B2.md" target="_blank" rel="noopener">iOS-Core-Animation-Advanced-Techniques</a></p>
+</code></pre><p> 同样 CAMediaTimingFunction(速度控制函数)也有(如果想研究这些数学公式或者实现具体实现):</p>
+<p> 可以参照<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques/blob/master/10-%E7%BC%93%E5%86%B2/%E7%BC%93%E5%86%B2.md" target="_blank" rel="noopener">iOS-Core-Animation-Advanced-Techniques</a></p>
 <pre><code>NSString * const kCAMediaTimingFunctionLinear;//(线性):匀速,给你一个相对静态的感觉
 NSString * const kCAMediaTimingFunctionEaseIn;//(渐进):动画缓慢进入,然后加速离开
 NSString * const kCAMediaTimingFunctionEaseOut;//(渐出):动画全速进入,然后减速的到达目的地
@@ -617,8 +597,8 @@ UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseInBounce; //Bounce
 UIKIT_EXTERN IFTTTEasingFunction const IFTTTEasingFunctionEaseOutBounce;
 </code></pre><p><strong>CAMediaTimingFunction 产生的效果如下:</strong></p>
 <p>   <img src="/assets/blogImg/JazzHands_CAMediaTimingFunction.png" alt="CAMediaTimingFunction效果图"></p>
-<p><strong>5. IFTTTInterpolatable</strong></p>
-<p><code>IFTTTInterpolatable</code> 是一个 protocal :</p>
+<p> <strong>5. IFTTTInterpolatable</strong></p>
+<p> <code>IFTTTInterpolatable</code> 是一个 protocal :</p>
 <pre><code>@protocol IFTTTInterpolatable &lt;NSObject&gt;
 
 - (id)interpolateTo:(id)toValue withProgress:(CGFloat)progress;
@@ -652,8 +632,8 @@ if (self.view.iftttTranslationTransform) {
 
 self.view.transform = newTransform;
 </code></pre><p>先计算对应时间点的值,然后将所有 transform 用 CGAffineTransformConcat 拼接起来 ,赋值给 View</p>
-<p><strong>6.其他 IFTTTInterpolatable</strong></p>
-<p>如果我们要做改变 View 背景色或者 Frame 的动画呢,计算方式就不同了.<br>计算任意时间点对应的 Color:</p>
+<p> <strong>6.其他 IFTTTInterpolatable</strong></p>
+<p> 如果我们要做改变 View 背景色或者 Frame 的动画呢,计算方式就不同了.<br> 计算任意时间点对应的 Color:</p>
 <pre><code>- (UIColor *)interpolateTo:(UIColor *)toValue withProgress:(CGFloat)progress
 {
     CGFloat startRed, startBlue, startGreen, startAlpha;
@@ -682,16 +662,11 @@ self.view.transform = newTransform;
 <p>origin 含有 x, y ,也就是2个 CGFloat 计算</p>
 <p>size 含有 height 和 width 也是 2个 CGFloat</p>
 <p>最后将所有计算完的 CGFloat 值拼成 CGRect 作为 当前时间的 Frame 值返回</p>
-</blockquote>
-<h2 id="应用二"><a href="#应用二" class="headerlink" title="应用二"></a><strong>应用二</strong></h2><blockquote>
-<p>JazzHands主要应用于一些动画引导页,主要用<code>scrollviews</code>,JazzHands封装了<code>IFTTTAnimatedPagingScrollViewController</code>更加方便使用了，JazzHands框架是基于关键帧的动画，其概念类似于<code>Core Animation</code>，但是JazzHands动画驱动主要是坐标驱动。JazzHands中以<code>scrollview.contentOffset</code>作为动画的time。</p>
+<h2 id="应用二"><a href="#应用二" class="headerlink" title="应用二"></a><strong>应用二</strong></h2><p> JazzHands主要应用于一些动画引导页,主要用<code>scrollviews</code>,JazzHands封装了<code>IFTTTAnimatedPagingScrollViewController</code>更加方便使用了，JazzHands框架是基于关键帧的动画，其概念类似于<code>Core Animation</code>，但是JazzHands动画驱动主要是坐标驱动。JazzHands中以<code>scrollview.contentOffset</code>作为动画的time。</p>
 <p>   <img src="/assets/blogImg/JazzHands_Time.png" alt="time原理"></p>
-<p>然后在<code>[scrollview didScroll]</code>代理中来进行计算相关视图的位置。<br>在JazzHands中</p>
+<p> 然后在<code>[scrollview didScroll]</code>代理中来进行计算相关视图的位置。<br> 在JazzHands中</p>
 <pre><code>- (void)keepView:(UIView *)view onPages:(NSArray *)pages atTimes:(NSArray *)times withAttribute:(IFTTTHorizontalPositionAttribute)attribute;
-</code></pre></blockquote>
-<p>&gt;</p>
-<blockquote>
-<p>view表示需要加动画的视图</p>
+</code></pre><p>view表示需要加动画的视图</p>
 <p>pages、offsets和attribute控制动画的显示。</p>
 <p>其中pages和offsets的数量必须相同，否则会产生<code>crash</code></p>
 <p>pages、offsets控制动画：</p>
@@ -700,7 +675,6 @@ scrollview.contentOffset = time * pageWidth
 </code></pre><p>例如：</p>
 <pre><code>[self keepView:self.iftttPresents onPages:@[@(0), @(-1)] atTimes:@[@(0), @(1)]];
 </code></pre><p>当time=0时，即scrollview在初始位置，这时scrollview.contentOffset=(pageWidth <em> 1)。当time=1时，即scrollview移动到下个scrollview.contentOffset，这时scrollview.contentOffset=(pageWidth </em> 1)；相当于scrollview滚动到第二页时，我们必须设置时间time所对应的view的位置，view对象进行时间0到1的动画。每一个动画(animation)都拥有一个胶卷(filmstrip),每一个胶卷都包含该了该动作的所有关键帧(keyframe)。随着屏幕拖拽，JazzHands会根据约束和时间(contentOffset)计算对象的位置.只要刷新的频率只够高。我们人眼就看不出是重新画上去，而是连续的动画了。</p>
-</blockquote>
 
       
     </div>
