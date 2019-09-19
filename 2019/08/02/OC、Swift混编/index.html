@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_10.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_11.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_12.png">
-<meta property="og:updated_time" content="2019-09-19T07:46:22.197Z">
+<meta property="og:updated_time" content="2019-09-19T07:55:03.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC、Swift混编">
 <meta name="twitter:description" content="在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。 混编说明   引入方式 说明     Swift访问OC Swift中引入OC的类、Frameworks、CocoaPods引入三方库等，都不需要每次需要使用时import，只需要统一在桥接文件ProductName-Bridging-Header.h中导入需">
@@ -406,6 +406,7 @@
 </tbody>
 </table>
 <p><strong>注</strong>：<code>ProductName</code>是当前工程名</p>
+<a id="more"></a>
 <h2 id="Swift引入OC"><a href="#Swift引入OC" class="headerlink" title="Swift引入OC"></a><strong>Swift引入OC</strong></h2><ol>
 <li><p>新建一个<code>Swift</code>工程<code>SwiftAddOC</code>，新建一个<code>OC</code>的类，<code>Xcode</code>会提醒你是否创建一个<code>桥接文件</code>，选择<code>Create Bridging Header</code>，<code>Xcode</code>会自动帮我们给<code>Target</code>建立对应的<code>桥接文件</code>，选择<code>Don&#39;t Create</code>，则需要我们自己创建<code>桥接文件</code>，然后在<code>Xcode</code>的配置中配置<code>桥接文件</code>路径。</p>
 <p> <strong>注</strong>：<code>桥接文件</code>是用于在<code>Swift</code>中访问<code>OC</code>的类，名称格式为<code>ProductName-Bridging-Header.h</code></p>

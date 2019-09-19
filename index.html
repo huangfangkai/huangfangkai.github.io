@@ -364,20 +364,26 @@
 
       
         
-          
-          在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。
-混编说明
-
-
-引入方式
-说明
-
-
-
-
-Swift访问OC
-Swift中引入OC的类、Frameworks、CocoaPods引入三方库等，都不需要每次需要使用时
-          ...
+          <p>在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。</p>
+<h2 id="混编说明"><a href="#混编说明" class="headerlink" title="混编说明"></a><strong>混编说明</strong></h2><table>
+<thead>
+<tr>
+<th style="text-align:left">引入方式</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>Swift</code>访问<code>OC</code></td>
+<td style="text-align:left"><code>Swift</code>中引入<code>OC</code>的类、<code>Frameworks</code>、<code>CocoaPods</code>引入三方库等，都不需要每次需要使用时<code>import</code>，只需要统一在桥接文件<code>ProductName-Bridging-Header.h</code>中导入需要暴露给<code>Swift</code>使用的，即可在<code>Swift</code>中使用<code>OC</code>了</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>OC</code>访问<code>Swift</code></td>
+<td style="text-align:left"><code>OC</code>中引入<code>Swift</code>,需要做一些配置，然后在在<code>OC</code>中需要的地方导入<code>ProductName-Swift.h</code>文件，即可在<code>OC</code>中访问<code>Swift</code>中暴露给<code>OC</code>的属性和方法。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注</strong>：<code>ProductName</code>是当前工程名</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/08/02/OC、Swift混编/#more" rel="contents">
