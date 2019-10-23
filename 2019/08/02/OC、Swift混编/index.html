@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Objective-C,Tool,Reveal,">
+  <meta name="keywords" content="Objective-C,Swift,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。">
-<meta name="keywords" content="Objective-C,Tool,Reveal">
+<meta name="keywords" content="Objective-C,Swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OC、Swift混编">
 <meta property="og:url" content="http://www.hfkstackoverflow.top/2019/08/02/OC、Swift混编/index.html">
@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_10.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_11.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_12.png">
-<meta property="og:updated_time" content="2019-09-19T07:56:24.757Z">
+<meta property="og:updated_time" content="2019-10-17T08:25:48.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC、Swift混编">
 <meta name="twitter:description" content="在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。">
@@ -176,7 +176,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">欢迎到来~</p>
+        <h1 class="site-subtitle" itemprop="description">欢迎到来~</h1>
       
   </div>
 
@@ -285,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OC、Swift混编</h1>
+          <h2 class="post-title" itemprop="name headline">OC、Swift混编</h2>
         
 
         <div class="post-meta">
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  747
+                  812
                 </span>
               
 
@@ -434,6 +434,9 @@
 <p>  <img src="/assets/blogImg/OC、Swift混编_9.png" alt="OC调用Swift方法" title="OC调用Swift方法"></p>
 </li>
 </ol>
+<p><strong>注意：</strong>中途我们可能需要改项目的名称，那样可能会导致报错，如下</p>
+<pre><code>&apos;ProductName-Swift.h&apos; file not found
+</code></pre><p>这时候我们需要在<code>info.plist</code>加入<code>Bundle display name</code>，然后写入相应需要更改名称即可。</p>
 <h2 id="OC引入Swift的framework"><a href="#OC引入Swift的framework" class="headerlink" title="OC引入Swift的framework"></a><strong>OC引入Swift的framework</strong></h2><ol>
 <li><p>同上设置一遍，然后将相应的framework导入到工程中</p>
 <p>  <img src="/assets/blogImg/OC、Swift混编_10.png" alt="导入framework" title="导入framework"></p>
@@ -449,7 +452,7 @@
 <ol>
 <li><strong><code>Swift</code>引入<code>OC</code>：</strong>必须建立<code>桥接文件</code>，<code>桥接文件</code>是用于在<code>Swift</code>中访问<code>OC</code>的类，名称格式为<code>ProductName-Bridging-Header.h</code></li>
 <li><strong><code>OC</code>引入<code>Swift</code>：</strong>必须在文件中导入<code>ProductName-Swift.h</code>，另外<code>Swift</code>暴露给<code>OC</code>的方法和属性前面必须添加<code>@objc</code></li>
-<li><strong><code>OC</code>引入<code>Swift</code>的<code>framework</code>：</strong><code>Embedded Binaries</code>下添加进去相应的<code>framework</code>，导入<code>#import &lt;AWSDK/AWSDK-Swift.h&gt;</code></li>
+<li><strong><code>OC</code>引入<code>Swift</code>的<code>framework</code>：</strong><code>Embedded Binaries</code>下添加进去相应的<code>framework</code>，例如导入<code>#import &lt;AWSDK/AWSDK-Swift.h&gt;</code></li>
 </ol>
 
       
@@ -467,13 +470,13 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2019/08/02/OC、Swift混编/">OC、Swift混编</a></p>
+  <!-- <p><span>本文标题:</span><a href="/2019/08/02/OC、Swift混编/">OC、Swift混编</a></p> -->
   <p><span>文章作者:</span><a href="/" title="访问 HFK 的个人博客">HFK</a></p>
-  <p><span>发布时间:</span>2019年08月02日</p>
-  <p><span>原始链接:</span><a href="/2019/08/02/OC、Swift混编/" title="OC、Swift混编">http://www.hfkstackoverflow.top/2019/08/02/OC、Swift混编/</a>
+  <!-- <p><span>发布时间:</span>2019年08月02日</p> -->
+  <p><span>本文链接:</span><a href="/2019/08/02/OC、Swift混编/" title="OC、Swift混编">http://www.hfkstackoverflow.top/2019/08/02/OC、Swift混编/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.hfkstackoverflow.top/2019/08/02/OC、Swift混编/" aria-label="复制成功！"></i></span>
   </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+ <!-- <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p> --> 
 </div>
 <script> 
     var clipboard = new Clipboard('.fa-clipboard');
@@ -513,9 +516,7 @@
           
             <a href="/tags/Objective-C/" rel="tag"><i class="fa fa-tag"></i> Objective-C</a>
           
-            <a href="/tags/Tool/" rel="tag"><i class="fa fa-tag"></i> Tool</a>
-          
-            <a href="/tags/Reveal/" rel="tag"><i class="fa fa-tag"></i> Reveal</a>
+            <a href="/tags/Swift/" rel="tag"><i class="fa fa-tag"></i> Swift</a>
           
         </div>
       
@@ -537,6 +538,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/19/Mac安装软件报已损坏/" rel="prev" title="Mac安装软件(“***”已损坏，打不开，您应该将它移到废纸篓)">
+                Mac安装软件(“***”已损坏，打不开，您应该将它移到废纸篓) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -622,7 +627,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -633,7 +638,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -644,7 +649,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -694,6 +699,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="http://lib.csdn.net/article/ios/44217" title="iOS一些干货" target="_blank">iOS一些干货</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tinypng.com" title="图片压缩" target="_blank">图片压缩</a>
                   </li>
                 
               </ul>
@@ -749,7 +758,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">13.4k</span>
+    <span title="总字数">17.7k</span>
   
 </div>
 
