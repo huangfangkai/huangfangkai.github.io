@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.hfkstackoverflow.top/"/>
-  <updated>2019-10-28T07:57:00.951Z</updated>
+  <updated>2019-10-28T07:40:14.059Z</updated>
   <id>http://www.hfkstackoverflow.top/</id>
   
   <author>
@@ -15,34 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>iOS安全加固</title>
-    <link href="http://www.hfkstackoverflow.top/2019/10/28/iOS%E5%AE%89%E5%85%A8%E5%8A%A0%E5%9B%BA/"/>
-    <id>http://www.hfkstackoverflow.top/2019/10/28/iOS安全加固/</id>
-    <published>2019-10-28T07:49:06.000Z</published>
-    <updated>2019-10-28T07:57:00.951Z</updated>
-    
-    <content type="html"><![CDATA[<p>在越狱设备上的<code>App</code>就可以非常容易破解分析，我们可以通过一些方法从而加大破解难度的方法。</p><h2 id="ptrace-反调试"><a href="#ptrace-反调试" class="headerlink" title="ptrace 反调试"></a>ptrace 反调试</h2><p>具体如下(也可以)：</p><p><strong><code>OC</code>在<code>main.m</code></strong></p><pre><code>#import &lt;UIKit/UIKit.h&gt;#import &quot;AppDelegate.h&quot;#import &lt;dlfcn.h&gt;#import &lt;sys/types.h&gt;typedef int (*ptrace_ptr_t)(int _request, pid_t _pid, caddr_t _addr, int _data);#if !defined(PT_DENY_ATTACH)#define PT_DENY_ATTACH 31#endifvoid disable_gdb() {    void* handle = dlopen(0, RTLD_GLOBAL | RTLD_NOW);    ptrace_ptr_t ptrace_ptr = dlsym(handle, &quot;ptrace&quot;);    ptrace_ptr(PT_DENY_ATTACH, 0, 0, 0);    dlclose(handle);}int main(int argc, char * argv[]) {#ifndef DEBUG    disable_gdb();#endif    @autoreleasepool {        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));    }}</code></pre><p><strong><code>Swift</code>中因为没有<code>main</code>，创建一个<code>MyPtrace</code>的<code>C</code>文件,再创建一个<code>main.swift</code>文件里面调用相应方法</strong></p><pre><code>//  MyPtrace.h//  SPDBank////  Created by hfk on 2019/8/30.//  Copyright © 2019 SPDBank.com.cn. All rights reserved.//#ifndef MyPtrace_h#define MyPtrace_h#include &lt;stdio.h&gt;void disable_gdb(void);#endif /* MyPtrace_h */</code></pre><hr><pre><code>////  MyPtrace.c//  SPDBank////  Created by hfk on 2019/8/30.//  Copyright © 2019 SPDBank.com.cn. All rights reserved.//#include &quot;MyPtrace.h&quot;#import &lt;string.h&gt;#import &lt;dlfcn.h&gt;#import &lt;sys/types.h&gt;#define A(c)            (c) - 0x19#define UNHIDE_STR(str) do { char *p = str;  while (*p) *p++ += 0x19; } while (0)#define HIDE_STR(str)   do { char *p = str;  while (*p) *p++ -= 0x19; } while (0)typedef int (*ptrace_ptr_t)(int _request, pid_t _pid, caddr_t _addr, int _data);#if !defined(PT_DENY_ATTACH)#define PT_DENY_ATTACH 31#endif    void disable_gdb() {#ifndef DEBUG    void* handle = dlopen(0, RTLD_GLOBAL | RTLD_NOW);    char str[  ] = {        A(&apos;p&apos;), A(&apos;t&apos;), A(&apos;r&apos;), A(&apos;a&apos;), A(&apos;c&apos;),        A(&apos;e&apos;), 0    };    UNHIDE_STR(str);    char string[6];    int i;    for(i=0;i&lt;6;i++){        string[i]=str[i];    }    string[i]=&apos;\0&apos;;    ptrace_ptr_t ptrace_ptr = dlsym(handle, string);    ptrace_ptr(PT_DENY_ATTACH, 0, 0, 0);    dlclose(handle);#endif}}</code></pre><hr><pre><code>import Foundationimport UIKitdisable_gdb()autoreleasepool {    UIApplicationMain(        CommandLine.argc,        UnsafeMutableRawPointer(CommandLine.unsafeArgv)            .bindMemory(                to: UnsafeMutablePointer&lt;Int8&gt;.self,                capacity: Int(CommandLine.argc)),        nil,        NSStringFromClass(AppDelegate.self)    )}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在越狱设备上的&lt;code&gt;App&lt;/code&gt;就可以非常容易破解分析，我们可以通过一些方法从而加大破解难度的方法。&lt;/p&gt;
-&lt;h2 id=&quot;ptrace-反调试&quot;&gt;&lt;a href=&quot;#ptrace-反调试&quot; class=&quot;headerlink&quot; title=&quot;ptrace 
-      
-    
-    </summary>
-    
-      <category term="cate" scheme="http://www.hfkstackoverflow.top/categories/cate/"/>
-    
-    
-      <category term="iOS" scheme="http://www.hfkstackoverflow.top/tags/iOS/"/>
-    
-      <category term="加固" scheme="http://www.hfkstackoverflow.top/tags/%E5%8A%A0%E5%9B%BA/"/>
-    
-  </entry>
   
   <entry>
     <title>ptrace反调试</title>
