@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="CocoaPods,">
+  <meta name="keywords" content="ptrace,">
 
 
 
@@ -79,20 +79,21 @@
 
 
 
-<meta name="keywords" content="CocoaPods">
+<meta name="description" content="ptrace是一个系统调用。它是一个系统提供的很强大的底层服务。用户层的框架是构建在system call之上的。 macOS Sierra大约提供了500个系统调用。通过以下命令来了解你系统上的系统调用的个数： sudo dtrace -ln &amp;apos;syscall:::entry&amp;apos; | wc -l">
+<meta name="keywords" content="ptrace">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CocoaPods 导库时提示- Use the `$(inherited)` flag, or - Remove the build settings from the target”">
-<meta property="og:url" content="http://www.hfkstackoverflow.top/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/index.html">
+<meta property="og:title" content="ptrace反调试">
+<meta property="og:url" content="http://www.hfkstackoverflow.top/2019/10/28/ptrace反调试/index.html">
 <meta property="og:site_name" content="HFK">
+<meta property="og:description" content="ptrace是一个系统调用。它是一个系统提供的很强大的底层服务。用户层的框架是构建在system call之上的。 macOS Sierra大约提供了500个系统调用。通过以下命令来了解你系统上的系统调用的个数： sudo dtrace -ln &amp;apos;syscall:::entry&amp;apos; | wc -l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_1.png">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_2.png">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_3.png">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_4.png">
-<meta property="og:updated_time" content="2019-10-08T03:16:41.301Z">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/ptrace反调试_1.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/ptrace反调试_2.png">
+<meta property="og:updated_time" content="2019-10-28T07:40:14.059Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CocoaPods 导库时提示- Use the `$(inherited)` flag, or - Remove the build settings from the target”">
-<meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_1.png">
+<meta name="twitter:title" content="ptrace反调试">
+<meta name="twitter:description" content="ptrace是一个系统调用。它是一个系统提供的很强大的底层服务。用户层的框架是构建在system call之上的。 macOS Sierra大约提供了500个系统调用。通过以下命令来了解你系统上的系统调用的个数： sudo dtrace -ln &amp;apos;syscall:::entry&amp;apos; | wc -l">
+<meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/ptrace反调试_1.png">
 
 
 
@@ -122,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://www.hfkstackoverflow.top/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/">
+  <link rel="canonical" href="http://www.hfkstackoverflow.top/2019/10/28/ptrace反调试/">
 
 
 
 
 
-  <title>CocoaPods 导库时提示- Use the `$(inherited)` flag, or - Remove the build settings from the target” | HFK</title>
+  <title>ptrace反调试 | HFK</title>
   
 
 
@@ -257,7 +258,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/">
+    <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2019/10/28/ptrace反调试/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HFK">
@@ -274,7 +275,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">CocoaPods 导库时提示- Use the `$(inherited)` flag, or - Remove the build settings from the target”</h2>
+          <h2 class="post-title" itemprop="name headline">ptrace反调试</h2>
         
 
         <div class="post-meta">
@@ -286,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T10:35:20+08:00">
-                2019-09-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-28T14:17:50+08:00">
+                2019-10-28
               </time>
             
 
@@ -327,8 +328,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/" itemprop="commentsCount"></span>
+                <a href="/2019/10/28/ptrace反调试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/10/28/ptrace反调试/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -350,7 +351,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  266
+                  1.5k
                 </span>
               
 
@@ -375,35 +376,219 @@
       
 
       
-        <p> <img src="/assets/blogImg/CocoaPods导库错误_1.png" alt="CocoaPods导库提示" title="CocoaPods导库提示"></p>
-<a id="more"></a>
-<p>这种警告是不能忽视的，如果不解决，它带来的直接后果就是无法通过编译,会出现由于部分库文件找不到而导致的种种问题：</p>
-<ol>
-<li><p>编译失败，抛出<code>Undefined symbols for architecture i386</code>错误</p>
+        <p><code>ptrace</code>是一个系统调用。它是一个系统提供的很强大的底层服务。用户层的框架是构建在<code>system call</code>之上的。</p>
+<p><code>macOS Sierra</code>大约提供了500个系统调用。通过以下命令来了解你系统上的系统调用的个数：</p>
+<pre><code>sudo dtrace -ln &apos;syscall:::entry&apos; | wc -l
+</code></pre><a id="more"></a>
+<h3 id="lldb调试原理：debugserver"><a href="#lldb调试原理：debugserver" class="headerlink" title="lldb调试原理：debugserver"></a>lldb调试原理：debugserver</h3><ol>
+<li><p><code>Xcode</code>的<code>lldb</code>之所以能调试<code>App</code>，是因为手机运行<code>App</code>，<code>lldb</code>会把调试指令发给手机的<code>debugServer</code>; <code>debugServer</code>是由<code>Xcode</code>第一次运行程序给安装到手机上。</p>
+<p><strong>Xcode上查看debugserver：</strong></p>
+<p>找到<code>Xcode.app</code>，显示包内容，<code>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/11.3</code>，找到<code>DeveloperDiskImage.dmg</code>里的<code>usr -&gt; bin -&gt; debugserver</code>机的根目录下的<code>Developer -&gt; usr -&gt; bin</code>里能找到<code>debugserver</code>，越狱手机可以查看</p>
 </li>
-<li><p>调用库中的方法，抛出<code>unrecognized selector sent to instance</code>错误</p>
+<li><p>越狱环境下，<code>lldb</code>连接手机的<code>debugserver</code>,然后就可以通过<code>debugserver</code>调试某个<code>App</code></p>
 </li>
-</ol>
-<p>而产生此警告的原因是项目<code>Target</code>中的一些设置，<code>CocoaPods</code>也做了默认的设置，如果两个设置结果不一致，就会造成问题。</p>
-<p>解决方法：</p>
-<p><strong>方法1(粗暴)</strong></p>
-<ol>
-<li>打开工程所在文件夹，找到<code>.xcodeproj</code>文件，右键选择<code>显示包内容</code>，找到<code>project.pbxproj</code>文件</li>
-<li>打开<code>project.pbxproj</code>文件，查找<code>PODS_ROOT</code>，<code>LIBRARY_SEARCH_PATHS</code>，<code>HEADER_SEARCH_PATHS</code>，<code>LIBRARY_SEARCH_PATHS</code>，<code>OTHER_LDFLAGS</code>把和这些相关的内容都删除</li>
-</ol>
-<p><strong>方法2</strong></p>
-<ol>
-<li>打开项目<code>Target</code> –&gt; <code>building settings</code>中搜索下面的</li>
-<li><p><code>Header Search Paths</code>和<code>Other Linker Flags</code>，在对应的工程中把<code>$(inherited)</code>加进去即可</p>
-<p> <img src="/assets/blogImg/CocoaPods导库错误_2.png" alt="building settings设置" title="building settings设置"></p>
-</li>
-<li><p><strong>Swift项目中</strong> <code>Always Embed Swift Standard Libraries</code>，值类型是<code>bool</code>，点击<code>other</code>，把值换成<code>$(inherited)</code></p>
-<p> <img src="/assets/blogImg/CocoaPods导库错误_3.png" alt="Always Embed Swift Standard Libraries" title="Always Embed Swift Standard Libraries设置"></p>
+<li><p><code>debugserver</code>如何调试<code>app</code>?</p>
+<p> <code>debugserver</code>通过<code>ptrace</code>函数调试<code>App</code><br> <code>ptrace</code>是系统函数，此函数提供一个进程去监听和控制另一个进程，并且可以检测被控制进程的内存和寄存器里面的数据。<code>ptrace</code>可以用来实现断点调试和系统调用跟踪。</p>
 </li>
 </ol>
-<p>无论<strong>方法1</strong>或者<strong>方法2</strong>完成后都必须执行<code>pod update</code></p>
-<p><img src="/assets/blogImg/CocoaPods导库错误_4.png" alt="完成" title="完成"></p>
+<h3 id="利用ptrace防护debugserver"><a href="#利用ptrace防护debugserver" class="headerlink" title="利用ptrace防护debugserver"></a>利用ptrace防护debugserver</h3><p>把<code>ptrace.h</code>导入工程</p>
+<p><code>ptrace</code>头文件不能直接导入<code>App</code>工程，可以新建命令行工程，然后<code>#import &lt;sys/ptrace.h&gt;</code>进入到<code>ptrace.h</code>，把内容全部复制到自己工程中新建的<code>header</code>文件<code>MyPtrace.h</code>中，那么自己的工程想调用<code>ptrace</code>就可以导入<code>MyPtrace.h</code>直接进行调用</p>
+<p>ptrace防护</p>
+<pre><code>ptrace(&lt;#int _request#&gt;, &lt;#pid_t _pid#&gt;, &lt;#caddr_t _addr#&gt;, &lt;#int _data#&gt;)
+</code></pre><p>有四个参数</p>
+<p><strong>参数1:</strong>要做的事情</p>
+<p><strong>参数2:</strong>要控制的进程ID</p>
+<p><strong>参数3:</strong>地址</p>
+<p><strong>参数4:</strong>数据</p>
+<p><strong>参数3</strong>和<strong>参数4</strong>都由<strong>参数1</strong>决定,<strong>参数1</strong>要传递的地址和数据</p>
+<p><strong>参数1</strong>的列表：</p>
+<pre><code>#define    PT_TRACE_ME    0    /* child declares it&apos;s being traced */
+#define    PT_READ_I    1    /* read word in child&apos;s I space */
+#define    PT_READ_D    2    /* read word in child&apos;s D space */
+#define    PT_READ_U    3    /* read word in child&apos;s user structure */
+#define    PT_WRITE_I    4    /* write word in child&apos;s I space */
+#define    PT_WRITE_D    5    /* write word in child&apos;s D space */
+#define    PT_WRITE_U    6    /* write word in child&apos;s user structure */
+#define    PT_CONTINUE    7    /* continue the child */
+#define    PT_KILL        8    /* kill the child process */
+#define    PT_STEP        9    /* single step the child */
+#define    PT_ATTACH    ePtAttachDeprecated    /* trace some running process */
+#define    PT_DETACH    11    /* stop tracing a process */
+#define    PT_SIGEXC    12    /* signals as exceptions for current_proc */
+#define PT_THUPDATE    13    /* signal for thread# */
+#define PT_ATTACHEXC    14    /* attach to running process with signal exception */
 
+#define    PT_FORCEQUOTA    30    /* Enforce quota for root */
+#define    PT_DENY_ATTACH    31
+
+#define    PT_FIRSTMACH    32    /* for machine-specific requests */
+</code></pre><p>要做到反调试，只需参数<code>1</code>为<code>PT_DENY_ATTACH</code>， 参数<code>2</code>为自己</p>
+<p>这样你的<code>App</code>就不可以用<code>Xcode</code>调试了</p>
+<p>具体代码：</p>
+<p><strong><code>OC</code>在<code>main.m</code></strong></p>
+<pre><code>#import &lt;UIKit/UIKit.h&gt;
+#import &quot;AppDelegate.h&quot;
+
+#import &lt;dlfcn.h&gt;
+#import &lt;sys/types.h&gt;
+
+typedef int (*ptrace_ptr_t)(int _request, pid_t _pid, caddr_t _addr, int _data);
+#if !defined(PT_DENY_ATTACH)
+#define PT_DENY_ATTACH 31
+#endif
+
+void disable_gdb() {
+    void* handle = dlopen(0, RTLD_GLOBAL | RTLD_NOW);
+    ptrace_ptr_t ptrace_ptr = dlsym(handle, &quot;ptrace&quot;);
+    ptrace_ptr(PT_DENY_ATTACH, 0, 0, 0);
+    dlclose(handle);
+}
+
+int main(int argc, char * argv[]) {
+
+#ifndef DEBUG
+    disable_gdb();
+#endif
+
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+</code></pre><p><strong><code>Swift</code>中因为没有<code>main</code>，创建一个<code>MyPtrace</code>的<code>C</code>文件,再创建一个<code>main.swift</code>文件里面调用相应方法</strong></p>
+<pre><code>//  MyPtrace.h
+//  SPDBank
+//
+//  Created by hfk on 2019/8/30.
+//  Copyright © 2019 SPDBank.com.cn. All rights reserved.
+//
+
+#ifndef MyPtrace_h
+#define MyPtrace_h
+
+#include &lt;stdio.h&gt;
+
+void disable_gdb(void);
+
+#endif /* MyPtrace_h */
+</code></pre><hr>
+<pre><code>//
+//  MyPtrace.c
+//  SPDBank
+//
+//  Created by hfk on 2019/8/30.
+//  Copyright © 2019 SPDBank.com.cn. All rights reserved.
+//
+
+#include &quot;MyPtrace.h&quot;
+#import &lt;string.h&gt;
+#import &lt;dlfcn.h&gt;
+#import &lt;sys/types.h&gt;
+#define A(c)            (c) - 0x19
+#define UNHIDE_STR(str) do { char *p = str;  while (*p) *p++ += 0x19; } while (0)
+#define HIDE_STR(str)   do { char *p = str;  while (*p) *p++ -= 0x19; } while (0)
+typedef int (*ptrace_ptr_t)(int _request, pid_t _pid, caddr_t _addr, int _data);
+#if !defined(PT_DENY_ATTACH)
+#define PT_DENY_ATTACH 31
+#endif
+
+    void disable_gdb() {
+#ifndef DEBUG
+    void* handle = dlopen(0, RTLD_GLOBAL | RTLD_NOW);
+    char str[  ] = {
+        A(&apos;p&apos;), A(&apos;t&apos;), A(&apos;r&apos;), A(&apos;a&apos;), A(&apos;c&apos;),
+        A(&apos;e&apos;), 0
+    };
+    UNHIDE_STR(str);
+    char string[6];
+    int i;
+    for(i=0;i&lt;6;i++){
+        string[i]=str[i];
+    }
+    string[i]=&apos;\0&apos;;
+    ptrace_ptr_t ptrace_ptr = dlsym(handle, string);
+    ptrace_ptr(PT_DENY_ATTACH, 0, 0, 0);
+    dlclose(handle);
+#endif
+}
+}
+</code></pre><hr>
+<pre><code>import Foundation
+import UIKit
+
+disable_gdb()
+
+autoreleasepool {
+    UIApplicationMain(
+        CommandLine.argc,
+        UnsafeMutableRawPointer(CommandLine.unsafeArgv)
+            .bindMemory(
+                to: UnsafeMutablePointer&lt;Int8&gt;.self,
+                capacity: Int(CommandLine.argc)),
+        nil,
+        NSStringFromClass(AppDelegate.self)
+    )
+}
+</code></pre><h3 id="反ptrace，让别人的ptrace失效"><a href="#反ptrace，让别人的ptrace失效" class="headerlink" title="反ptrace，让别人的ptrace失效"></a>反ptrace，让别人的ptrace失效</h3><p><code>ptrace</code>是系统函数，那么我们可以用<code>fishhook</code>来<code>hook</code>住<code>ptrace</code>函数，然后让他的<code>app</code>调用我们自己的<code>ptrace</code>函数</p>
+<ol>
+<li>注入动态库<code>meryinDylib</code></li>
+<li><p>在<code>meryinDylib</code>中<code>hook</code>住<code>ptrace</code>函数</p>
+<pre><code>#import &quot;fishhook.h&quot;
+#import &quot;MyPtrace.h&quot;
+
+@implementation meryinDylib
+int (*ptrace_p)(int _request, pid_t _pid, caddr_t _addr, int _data);
+int myPtrace(int _request, pid_t _pid, caddr_t _addr, int _data){
+ if (_request != PT_DENY_ATTACH) {
+  return ptrace_p(_request,_pid,_addr,_data);
+ }
+ return 0;
+}
++ (void)load
+{
+ struct rebinding ptraceBind;
+ //函数的名称
+ ptraceBind.name = &quot;ptrace&quot;;
+ //新的函数地址
+ ptraceBind.replacement = myPtrace;
+ //保存原始函数地址的变量的指针
+ ptraceBind.replaced = (void *)&amp;ptrace_p;
+ //定义数组
+ struct rebinding rebs[] = {ptraceBind};
+ /*
+  arg1 : 存放rebinding结构体的数组
+  arg2 : 数组的长度
+  */
+ rebind_symbols(rebs, 1);
+}
+</code></pre></li>
+</ol>
+<h3 id="要想别人hook自己的app的ptrace失效"><a href="#要想别人hook自己的app的ptrace失效" class="headerlink" title="要想别人hook自己的app的ptrace失效"></a>要想别人hook自己的app的ptrace失效</h3><p><strong>办法：</strong>别人<code>hook</code> <code>ptrace</code>的时候，自己的<code>ptrace</code>已经调用</p>
+<p>想要自己函数调用在最之前：自己写一个<code>framework</code>库，在库中写入<code>ptrace(PT_DENY_ATTACH, 0, 0, 0)</code>;</p>
+<p><strong>库加载顺序：</strong>自己写的库&gt;别人注入的库</p>
+<p><strong>自己的库加载顺序</strong>：按照 Link Binary Libraries的顺序加载</p>
+<h3 id="进行反反调试"><a href="#进行反反调试" class="headerlink" title="进行反反调试"></a>进行反反调试</h3><p>就算他的<code>ptrace</code>自己<code>fishhook</code>不到，可以通过修改<code>macho</code>的二进制让他的<code>ptrace</code>失效，然后进行调试.</p>
+<ol>
+<li>用<code>MonkeyDev</code>打开，下符号断点<code>trace</code>，然后<code>lldb</code>调试<code>bt</code>，找到<code>ptrace</code>的库<code>antiDebug</code>以及其地址0x0000000102165d98，再<code>image list</code>找到<code>antiDebug</code>的地址<code>0x0000000102160000</code>，那么真实地址为<code>0x5d98</code>;</li>
+<li><p>然后显示包内容，在<code>Frameworks</code>中，找到<code>antiDebug</code>库的<code>macho</code>，用<code>hopper</code>打开，找到<code>0x5d98</code></p>
+<p><img src="/assets/blogImg/ptrace反调试_1.png" alt="反反调试"></p>
+</li>
+<li><p>更改二进制<br>可以直接在<code>bl __NSlog</code>之后直接函数结束，去除<code>bl __ptrace</code>，不调用<code>ptrace</code>函数<br>复制<code>ptrace</code>下一条指令<code>0000000000005d94</code> <code>bl imp___stubs__ptrace</code>，点击<code>bl __NSlog</code>的下一行然后<code>Alt+a</code>,写入代码<code>bl 0x 0000000000005d94</code></p>
+<p><img src="/assets/blogImg/ptrace反调试_2.png" alt="反反调试"></p>
+</li>
+<li><p>导出新的macho,然后再运行就可以了</p>
+<pre><code>File --&gt; Produce New Executable
+</code></pre></li>
+</ol>
+<h3 id="不暴露ptrace等系统方法，不想被符号断点断住，可以采用汇编进行调用ptrace"><a href="#不暴露ptrace等系统方法，不想被符号断点断住，可以采用汇编进行调用ptrace" class="headerlink" title="不暴露ptrace等系统方法，不想被符号断点断住，可以采用汇编进行调用ptrace"></a>不暴露ptrace等系统方法，不想被符号断点断住，可以采用汇编进行调用ptrace</h3><pre><code>//安全防护-反调试
+ asm(
+  &quot;mov x0,#31\n&quot;
+  &quot;mov x1,#0\n&quot;
+  &quot;mov x2,#0\n&quot;
+  &quot;mov x3,#0\n&quot;
+  &quot;mov w16,#26\n&quot; //26是ptrace
+  &quot;svc #0x80&quot; //0x80触发中断去找w16执行
+ );
+</code></pre>
       
     </div>
     
@@ -419,11 +604,11 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <!-- <p><span>本文标题:</span><a href="/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/">CocoaPods 导库时提示- Use the `$(inherited)` flag, or - Remove the build settings from the target”</a></p> -->
+  <!-- <p><span>本文标题:</span><a href="/2019/10/28/ptrace反调试/">ptrace反调试</a></p> -->
   <p><span>文章作者:</span><a href="/" title="访问 HFK 的个人博客">HFK</a></p>
-  <!-- <p><span>发布时间:</span>2019年09月26日</p> -->
-  <p><span>本文链接:</span><a href="/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/" title="CocoaPods 导库时提示- Use the `$(inherited)` flag, or - Remove the build settings from the target”">http://www.hfkstackoverflow.top/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.hfkstackoverflow.top/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/" aria-label="复制成功！"></i></span>
+  <!-- <p><span>发布时间:</span>2019年10月28日</p> -->
+  <p><span>本文链接:</span><a href="/2019/10/28/ptrace反调试/" title="ptrace反调试">http://www.hfkstackoverflow.top/2019/10/28/ptrace反调试/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.hfkstackoverflow.top/2019/10/28/ptrace反调试/" aria-label="复制成功！"></i></span>
   </p>
  <!-- <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p> --> 
 </div>
@@ -463,7 +648,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CocoaPods/" rel="tag"><i class="fa fa-tag"></i> CocoaPods</a>
+            <a href="/tags/ptrace/" rel="tag"><i class="fa fa-tag"></i> ptrace</a>
           
         </div>
       
@@ -476,8 +661,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/Mac安装软件报已损坏/" rel="next" title="Mac安装软件(“***”已损坏，打不开，您应该将它移到废纸篓)">
-                <i class="fa fa-chevron-left"></i> Mac安装软件(“***”已损坏，打不开，您应该将它移到废纸篓)
+              <a href="/2019/10/14/iOS13适配/" rel="next" title="iOS13适配">
+                <i class="fa fa-chevron-left"></i> iOS13适配
               </a>
             
           </div>
@@ -486,8 +671,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/29/数据解析精度丢失/" rel="prev" title="iOS数据解析精度丢失">
-                iOS数据解析精度丢失 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/28/iOS安全加固/" rel="prev" title="iOS安全加固">
+                iOS安全加固 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -547,8 +732,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -652,6 +846,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#lldb调试原理：debugserver"><span class="nav-number">1.</span> <span class="nav-text">lldb调试原理：debugserver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用ptrace防护debugserver"><span class="nav-number">2.</span> <span class="nav-text">利用ptrace防护debugserver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反ptrace，让别人的ptrace失效"><span class="nav-number">3.</span> <span class="nav-text">反ptrace，让别人的ptrace失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要想别人hook自己的app的ptrace失效"><span class="nav-number">4.</span> <span class="nav-text">要想别人hook自己的app的ptrace失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进行反反调试"><span class="nav-number">5.</span> <span class="nav-text">进行反反调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不暴露ptrace等系统方法，不想被符号断点断住，可以采用汇编进行调用ptrace"><span class="nav-number">6.</span> <span class="nav-text">不暴露ptrace等系统方法，不想被符号断点断住，可以采用汇编进行调用ptrace</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
