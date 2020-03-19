@@ -79,26 +79,28 @@
 
 
 
-<meta name="description" content="对于iOS13适配汇总以及遇到的问题  Dark ModeliOS 13推出了暗黑模式Dark Model,UIKit提供新的系统颜色和Api来适配不同模式。Dark Model主要从两个方面来适配，一是颜色，二是资源文件，xcassets里面对于图片也要做相应调整。">
+<meta name="description" content="对于iOS13适配汇总以及遇到的问题  注意：以下适配内容，必须适配的会以”必须”标出 Dark Model(必须)iOS 13推出了暗黑模式Dark Model,UIKit提供新的系统颜色和Api来适配不同模式。Dark Model主要从两个方面来适配，一是颜色，二是资源文件，xcassets里面对于图片也要做相应调整。">
 <meta name="keywords" content="iOS 13,适配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS13适配">
 <meta property="og:url" content="http://www.hfkstackoverflow.top/2019/10/14/iOS13适配/index.html">
 <meta property="og:site_name" content="HFK">
-<meta property="og:description" content="对于iOS13适配汇总以及遇到的问题  Dark ModeliOS 13推出了暗黑模式Dark Model,UIKit提供新的系统颜色和Api来适配不同模式。Dark Model主要从两个方面来适配，一是颜色，二是资源文件，xcassets里面对于图片也要做相应调整。">
+<meta property="og:description" content="对于iOS13适配汇总以及遇到的问题  注意：以下适配内容，必须适配的会以”必须”标出 Dark Model(必须)iOS 13推出了暗黑模式Dark Model,UIKit提供新的系统颜色和Api来适配不同模式。Dark Model主要从两个方面来适配，一是颜色，二是资源文件，xcassets里面对于图片也要做相应调整。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_1.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_2.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_3.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_7.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_9.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_8.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_4.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_5.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_6.png">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_7.png">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_8.png">
-<meta property="og:updated_time" content="2019-10-23T16:25:19.301Z">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_10.png">
+<meta property="og:updated_time" content="2020-03-18T02:35:58.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS13适配">
-<meta name="twitter:description" content="对于iOS13适配汇总以及遇到的问题  Dark ModeliOS 13推出了暗黑模式Dark Model,UIKit提供新的系统颜色和Api来适配不同模式。Dark Model主要从两个方面来适配，一是颜色，二是资源文件，xcassets里面对于图片也要做相应调整。">
+<meta name="twitter:description" content="对于iOS13适配汇总以及遇到的问题  注意：以下适配内容，必须适配的会以”必须”标出 Dark Model(必须)iOS 13推出了暗黑模式Dark Model,UIKit提供新的系统颜色和Api来适配不同模式。Dark Model主要从两个方面来适配，一是颜色，二是资源文件，xcassets里面对于图片也要做相应调整。">
 <meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS13适配_1.png">
 
 
@@ -357,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.2k
+                  5.4k
                 </span>
               
 
@@ -385,8 +387,8 @@
         <blockquote>
 <p>对于iOS13适配汇总以及遇到的问题</p>
 </blockquote>
-<h2 id="Dark-Model"><a href="#Dark-Model" class="headerlink" title="Dark Model"></a>Dark Model</h2><p><code>iOS 13</code>推出了暗黑模式<code>Dark Model</code>,<code>UIKit</code>提供新的系统颜色和<code>Api</code>来适配不同模式。<code>Dark Model</code>主要从两个方面来适配，一是<code>颜色</code>，二是<code>资源文件</code>，<code>xcassets</code>里面对于图片也要做相应调整。</p>
-<a id="more"></a>
+<p><strong>注意：以下适配内容，必须适配的会以”必须”标出</strong></p>
+<h2 id="Dark-Model-必须"><a href="#Dark-Model-必须" class="headerlink" title="Dark Model(必须)"></a>Dark Model(必须)</h2><p><code>iOS 13</code>推出了暗黑模式<code>Dark Model</code>,<code>UIKit</code>提供新的系统颜色和<code>Api</code>来适配不同模式。<code>Dark Model</code>主要从两个方面来适配，一是<code>颜色</code>，二是<code>资源文件</code>，<code>xcassets</code>里面对于图片也要做相应调整。<br><a id="more"></a></p>
 <h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><pre><code>/* Create a dynamic color with a provider.
   * When methods are called on this color that need color component values,
   * the provider is called with UITraitCollection.currentTraitCollection.
@@ -413,7 +415,7 @@
 </ol>
 <p><strong>注意⚠️：</strong>同一工程内多个<code>Assets</code>文件在打包后，就会生成一个<code>Assets.car</code>文件，所以要保证<code>Assets</code>内资源文件的名字不能相同。</p>
 <p><img src="/assets/blogImg/iOS13适配_2.png" alt="模拟器开关暗黑模式" title="模拟器开关暗黑模式"></p>
-<p><strong>如果不适配暗黑模式有以下两种方法：</strong></p>
+<h3 id="注意：如果不适配暗黑模式-必须"><a href="#注意：如果不适配暗黑模式-必须" class="headerlink" title="注意：如果不适配暗黑模式(必须)"></a>注意：如果不适配暗黑模式(必须)</h3><p><strong>如果不适配暗黑模式有以下两种方法：</strong></p>
 <p><strong>方法1：</strong>在<code>Info.plist</code>中添加一栏：<code>User Interface Style</code> : <code>Light</code>，即可在应用内禁用暗黑模式，这种方法简单暴力。</p>
 <pre><code>方法1: 修改info.plist，即
 &lt;key&gt;UIUserInterfaceStyle&lt;/key&gt;
@@ -443,44 +445,7 @@ if (@available(iOS 13.0, *)) {
 </ul>
 <p>由此可见，<code>overrideUserInterfaceStyle</code>不仅会影响自己，还会影响自己的子视图，换做<code>window</code>就会影响整个<code>window</code>中的所有视图及视图控制器，包括模态跳转出来的视图控制器。</p>
 </blockquote>
-<h2 id="SceneDelegate"><a href="#SceneDelegate" class="headerlink" title="SceneDelegate"></a>SceneDelegate</h2><blockquote>
-<p>In iOS 13 and later, use UISceneDelegate objects to respond to life-cycle events in a scene-based app.</p>
-<p>In iOS 12 and earlier, use the UIApplicationDelegate object to respond to life-cycle events.</p>
-</blockquote>
-<p><img src="/assets/blogImg/iOS13适配_4.png" alt="SceneDelegate" title="SceneDelegate"></p>
-<!--
-1. 基于`Xcode11`新建的工程，如何展示？
-
-        - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
-            // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-            // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-            // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        //    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-            ViewController *view = [[ViewController alloc]init];
-            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
-            self.window.rootViewController = nav;
-        //    [self.window makeKeyAndVisible];
-        }
--->
-<ol>
-<li><p>基于<code>Xcode11</code>新建的工程，在<code>iOS 13</code>以前的版本不展示<code>window</code>，如何解决？</p>
-<p> 在<code>AppDelegate.h</code>中添加<code>UIWindow</code></p>
-<pre><code>#import &lt;UIKit/UIKit.h&gt;
-
-@interface AppDelegate : UIResponder &lt;UIApplicationDelegate&gt;
-
-@property (strong, nonatomic) UIWindow * window;
-
-@end
-</code></pre></li>
-<li><p>如果不使用场景功能，在<code>info.plist</code>文件中删除<code>Application Scene Manifast</code></p>
-<p> <img src="/assets/blogImg/iOS13适配_5.png" alt="删除Application Scene Manifast" title="删除Application Scene Manifast"></p>
-</li>
-<li><p>注释<code>AppDelegate</code>中<code>UISceneSession lifecycle</code></p>
-<p> <img src="/assets/blogImg/iOS13适配_6.png" alt="注释UISceneSession lifecycle" title="注释UISceneSession lifecycle"></p>
-</li>
-</ol>
-<h2 id="推送Token"><a href="#推送Token" class="headerlink" title="推送Token"></a>推送Token</h2><p><strong>之前：</strong>只需要将<code>deviceToken(NSData类型)</code>转换成<code>NSString</code>,然后替换掉多余的符号，代码如下：</p>
+<h2 id="推送DeviceToken-必须"><a href="#推送DeviceToken-必须" class="headerlink" title="推送DeviceToken(必须)"></a>推送DeviceToken(必须)</h2><p><strong>之前：</strong>只需要将<code>deviceToken(NSData类型)</code>转换成<code>NSString</code>,然后替换掉多余的符号，代码如下：</p>
 <pre><code>- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *token = [deviceToken description];
     for (NSString *str in @[@&quot; &quot;, @&quot;&lt;&quot;, @&quot;&gt;&quot;, @&quot;-&quot;]) {
@@ -492,31 +457,14 @@ if (@available(iOS 13.0, *)) {
 </code></pre><p>参考友盟<a href="https://developer.umeng.com/docs/66632/detail/66734" target="_blank" rel="noopener">获取设备的 DeviceToken</a>的做法如下：</p>
 <pre><code>-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     if (![deviceToken isKindOfClass:[NSData class]]) return;
-    const unsigned *tokenBytes = [deviceToken bytes];
+   const unsigned *tokenBytes = (const unsigned *)[deviceToken bytes];
     NSString *hexToken = [NSString stringWithFormat:@&quot;%08x%08x%08x%08x%08x%08x%08x%08x&quot;,
                           ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
                           ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                           ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
     NSLog(@&quot;deviceToken:%@&quot;,hexToken);        
 }
-</code></pre><h2 id="Sign-in-with-Apple"><a href="#Sign-in-with-Apple" class="headerlink" title="Sign in with Apple"></a>Sign in with Apple</h2><p>如果你的应用有第三方登录，那你需要加上<code>sign in with apple</code>。这是<code>iOS 13</code>新增的功能，是苹果推出一种在<code>App</code>和网站上快速、便捷登录的方式。关于应用是否要求接入此登录方式，如下</p>
-<blockquote>
-<p>Sign In with Apple will be available for beta testing this summer. It will be required as an option for users in apps that support third-party sign-in when it is commercially available later this year.</p>
-<p>Apps that exclusively use a third-party or social login service (such as Facebook Login, Google Sign-In, Sign in with Twitter, Sign In with LinkedIn, Login with Amazon, or WeChat Login) to set up or authenticate the user’s primary account with the app must also offer Sign in with Apple as an equivalent option.</p>
-</blockquote>
-<p>如果应用使用了第三方或社交账号登录服务(如<code>Facebook</code>、<code>Google</code>、<code>Twitter</code>、<code>LinkedIn</code>、<code>Amazon</code>、<code>WeChat</code>等)来设置或验证用户的主账号，就必须把<code>Sign In With Apple</code>作为同等的选项添加到应用上。如果是下面这些类型的应用则不需要添加：</p>
-<ol>
-<li>仅仅使用公司内部账号来注册和登录的应用；</li>
-<li>要求用户使用现有的教育或企业账号进行登录的教育、企业或商务类型的应用；</li>
-<li>使用政府或业界支持的公民身份识别系统或电子标识对用户进行身份验证的应用；</li>
-<li>特定第三方服务的应用，用户需要直接登录其邮箱、社交媒体或其他第三方帐户才能访问其内容。</li>
-</ol>
-<p><strong>注意⚠️:</strong></p>
-<blockquote>
-<p>Starting today, new apps submitted to the App Store must follow these guidelines. Existing apps and app updates must follow them by April 2020.</p>
-</blockquote>
-<p><code>2019年9月12日</code>起，提交到<code>App Store</code>的新应用必须按照应用审核指南中的标准进行接入；现有应用和应用更新必须也在<code>2020年4月</code>前完成接入。</p>
-<h2 id="私有方法KVC可能导致崩溃"><a href="#私有方法KVC可能导致崩溃" class="headerlink" title="私有方法KVC可能导致崩溃"></a>私有方法KVC可能导致崩溃</h2><p><strong>注意⚠️：</strong><code>iOS 13</code>通过<code>KVC</code>方式修改私有属性，有<code>Crush</code>风险，谨慎使用！</p>
+</code></pre><h2 id="私有方法KVC可能导致崩溃-必须"><a href="#私有方法KVC可能导致崩溃-必须" class="headerlink" title="私有方法KVC可能导致崩溃(必须)"></a>私有方法KVC可能导致崩溃(必须)</h2><p><strong>注意⚠️：</strong><code>iOS 13</code>通过<code>KVC</code>方式修改私有属性，有<code>Crush</code>风险，谨慎使用！</p>
 <p>在<code>iOS 13</code>中部分方法属性不允许使用<code>valueForKey</code>、<code>setValue:forKey:</code>来获取或者设置私有属性，如果使用的话运行时会直接崩溃并提示以下崩溃信息：</p>
 <ol>
 <li><p>获取UITextField的<code>_placeholderLabel</code>不会崩溃，但是获取 <code>_placeholderLabel</code>里的属性就会崩溃</p>
@@ -525,21 +473,22 @@ if (@available(iOS 13.0, *)) {
 </code></pre><p> <strong>错误提示:</strong></p>
 <pre><code>&apos;Access to UITextField&apos;s _placeholderLabel ivar is prohibited. This is an application bug&apos; 
 </code></pre><p> <strong>解决:</strong></p>
+<p> <strong>注意⚠️：</strong>建议第二种，第一种不确定会不会影响审核</p>
 <p> 1.去掉下划线，访问<code>placeholderLabel</code></p>
 <pre><code>[textField setValue:[UIColor blueColor] forKeyPath:@&quot;placeholderLabel.textColor&quot;];
 [textField setValue:[UIFont systemFontOfSize:20] forKeyPath:@&quot;placeholderLabel.font&quot;];
 </code></pre><p> 2.使用<code>attributedPlaceholder</code>，定义富文本来达到我们需要的结果</p>
 <pre><code>textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@&quot;输入&quot; attributes:@{
-    NSForegroundColorAttributeName: [UIColor blueColor],
-    NSFontAttributeName: [UIFont systemFontOfSize:20]
+ NSForegroundColorAttributeName: [UIColor blueColor],
+NSFontAttributeName: [UIFont systemFontOfSize:20]
 }];
 </code></pre></li>
 <li><p><code>UISearchBar</code>一些属性修改</p>
 <p> <strong>崩溃1：</strong></p>
 <pre><code>UITextField *textField = [searchBar valueForKey:@&quot;_searchField&quot;];
-</code></pre><p> 1.使用<code>iOS 13</code>的新属性<code>searchTextField</code></p>
+</code></pre><p> 方法1.使用<code>iOS 13</code>的新属性<code>searchTextField</code></p>
 <pre><code>searchBar.searchTextField.placeholder = @&quot;search&quot;;
-</code></pre><p> 2.遍历获取指定类型的属性</p>
+</code></pre><p> 方法2.遍历获取指定类型的属性</p>
 <pre><code>- (UIView *)findViewWithClassName:(NSString *)className inView:(UIView *)view{
     Class specificView = NSClassFromString(className);
     if ([view isKindOfClass:specificView]) {
@@ -558,10 +507,10 @@ if (@available(iOS 13.0, *)) {
 }
 // 调用方法
  UITextField *textField = [self findViewWithClassName:@&quot;UITextField&quot; inView:_searchBar];
-</code></pre><p> 3.去掉下划线</p>
+</code></pre><p> 方法3.去掉下划线</p>
 <pre><code>UITextField *textField = [searchBar valueForKey:@&quot;_searchField&quot;];
 </code></pre><p> <strong>崩溃2：</strong></p>
-<pre><code>[searchBar setValue:@&quot;取消&quot; forKey:@&quot;cancelButtonText&quot;];
+<pre><code>[searchBar setValue:@&quot;取消&quot; forKey:@&quot;_cancelButtonText&quot;];
 </code></pre><p> 1.同上</p>
 <pre><code>UIButton *cancelButton = [self findViewWithClassName:NSStringFromClass([UIButton class]) inView:searchBar];
 [cancelButton setTitle:@&quot;取消&quot; forState:UIControlStateNormal];
@@ -572,7 +521,7 @@ if (@available(iOS 13.0, *)) {
 <pre><code>UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@&quot;statusBarWindow&quot;] valueForKey:@&quot;statusBar&quot;];
 </code></pre></li>
 </ol>
-<h2 id="UISearchBar-黑线处理导致崩溃"><a href="#UISearchBar-黑线处理导致崩溃" class="headerlink" title="UISearchBar 黑线处理导致崩溃"></a>UISearchBar 黑线处理导致崩溃</h2><p>以前我们为了处理搜索框的黑线问题，一般通过遍历<code>searchBar</code>的<code>subViews</code>，找到并删除<code>UISearchBarBackground</code>。</p>
+<h2 id="UISearchBar黑线处理导致崩溃-必须"><a href="#UISearchBar黑线处理导致崩溃-必须" class="headerlink" title="UISearchBar黑线处理导致崩溃(必须)"></a>UISearchBar黑线处理导致崩溃(必须)</h2><p>以前我们为了处理搜索框的黑线问题，一般通过遍历<code>searchBar</code>的<code>subViews</code>，找到并删除<code>UISearchBarBackground</code>。</p>
 <pre><code>for (UIView *view in _searchBar.subviews.lastObject.subviews) {
     if ([view isKindOfClass:NSClassFromString(@&quot;UISearchBarBackground&quot;)]) {
         [view removeFromSuperview];
@@ -584,14 +533,21 @@ if (@available(iOS 13.0, *)) {
 </code></pre><p>在<code>iOS13</code>中会导致<code>UI</code>渲染失败，然后直接崩溃，崩溃信息如下：</p>
 <p><strong>错误提示:</strong></p>
 <pre><code>Terminating app due to uncaught exception &apos;NSInternalInconsistencyException&apos;, reason: &apos;Missing or detached view for search bar layout&apos;
-</code></pre><p><strong>解决:</strong>设置<code>UISearchBarBackground</code>的<code>layer.contents</code>为<code>nil</code>。</p>
+</code></pre><p><strong>解决:</strong></p>
+<ol>
+<li><p>设置<code>UISearchBarBackground</code>的<code>layer.contents</code>为<code>nil</code>。</p>
 <pre><code>for (UIView *view in _searchBar.subviews.lastObject.subviews) {
     if ([view isKindOfClass:NSClassFromString(@&quot;UISearchBarBackground&quot;)]) {
         view.layer.contents = nil;
         break;
     }
 } 
-</code></pre><h2 id="控制器的-modalPresentationStyle-默认值变了"><a href="#控制器的-modalPresentationStyle-默认值变了" class="headerlink" title="控制器的 modalPresentationStyle 默认值变了"></a>控制器的 modalPresentationStyle 默认值变了</h2><p>查阅了下<code>UIModalPresentationStyle</code>枚举定义，发现<code>iOS 13</code>新加了一个枚举值<code>UIModalPresentationAutomatic</code>：</p>
+</code></pre></li>
+<li><p>设置<code>UISearchBar</code>的背景图片为空:</p>
+<p> [_searchBar setBackgroundImage:[UIImage new]];</p>
+</li>
+</ol>
+<h2 id="控制器的modalPresentationStyle默认值变了，即presentationController方法弹出默认交互改变-必须"><a href="#控制器的modalPresentationStyle默认值变了，即presentationController方法弹出默认交互改变-必须" class="headerlink" title="控制器的modalPresentationStyle默认值变了，即presentationController方法弹出默认交互改变(必须)"></a>控制器的modalPresentationStyle默认值变了，即presentationController方法弹出默认交互改变(必须)</h2><p>查阅了下<code>UIModalPresentationStyle</code>枚举定义，发现<code>iOS 13</code>新加了一个枚举值<code>UIModalPresentationAutomatic</code>：</p>
 <pre><code>typedef NS_ENUM(NSInteger, UIModalPresentationStyle) {
     UIModalPresentationFullScreen = 0,
     UIModalPresentationPageSheet API_AVAILABLE(ios(3.2)) API_UNAVAILABLE(tvos),
@@ -643,32 +599,9 @@ if (@available(iOS 13.0, *)) {
 }
 </code></pre></li>
 </ol>
+<p><a href="https://github.com/huangfangkai/presentVC" target="_blank" rel="noopener"><strong>代码(放入项目即可)</strong></a></p>
 <p><strong>注意⚠️：</strong>当<code>modalPresentationStyle</code>是<code>UIModalPresentationAutomatic</code>时，<code>presentationController</code>是不会消失的。所以关闭模态窗口的时候,<code>presentationController</code> 的生命周期方法<code>viewWillAppear:</code>和<code>viewDidAppear:</code>都不会触发,如果里面写了相应方法就不会执行了。</p>
-<h2 id="新增蓝牙的权限申请"><a href="#新增蓝牙的权限申请" class="headerlink" title="新增蓝牙的权限申请"></a>新增蓝牙的权限申请</h2><p><code>iOS 13</code>以前，使用需要使用蓝牙时直接调用即可，不需要请求权限；在<code>iOS 13</code>中，苹果将原来申请权限用的<a href="https://developer.apple.com/documentation/bundleresources/information_property_list/nsbluetoothperipheralusagedescription?language=objc" target="_blank" rel="noopener">NSBluetoothPeripheralUsageDescription</a>替换为<a href="https://developer.apple.com/documentation/bundleresources/information_property_list/nsbluetoothalwaysusagedescription?language=objc" target="_blank" rel="noopener">NSBluetoothAlwaysUsageDescription</a>。</p>
-<pre><code>For apps with a deployment target of iOS 13 and later, use NSBluetoothAlwaysUsageDescription instead.
-</code></pre><p>如果继续在<code>iOS 13</code>中使用旧的权限字段获取蓝牙权限就会导致崩溃，信息如下：</p>
-<pre><code>This app has crashed because it attempted to access privacy-sensitive data without a usage description.  The app&apos;s Info.plist must contain an NSBluetoothAlwaysUsageDescription key with a string value explaining to the user how the app uses this data.
-</code></pre><p>如果将没有新字段的包提交审核，将会收到包含<code>ITMS-90683</code>的邮件，并提示审核不通过。</p>
-<p><strong>解决:</strong>在<code>info.plist</code>里增加相应蓝牙申请的权限字段。</p>
-<pre><code>&lt;key&gt;NSBluetoothAlwaysUsageDescription&lt;/key&gt; 
-&lt;string&gt;我们需要一直使用您的蓝牙&lt;/string&gt;`
-</code></pre><h2 id="首页frame莫名下移20像素问题"><a href="#首页frame莫名下移20像素问题" class="headerlink" title="首页frame莫名下移20像素问题"></a>首页<code>frame</code>莫名下移20像素问题</h2><p><code>ContainerViewController</code>的<code>xib size</code>为<code>Inferred view</code>的<code>y</code>会莫名变成<code>20</code> 把 size 改成<code>FreeForm</code>即可</p>
-<h2 id="LaunchImage将被废弃"><a href="#LaunchImage将被废弃" class="headerlink" title="LaunchImage将被废弃"></a>LaunchImage将被废弃</h2><pre><code>UILaunchImages has been deprecated; use Xcode launch storyboards instead. For more information on how to construct and format your launch storyboard, seeLaunch Screen
-</code></pre><p><code>iOS 8</code>之前我们使用<code>LaunchImage</code>来设置启动图，但是每当苹果推出新的屏幕尺寸的设备，我们需要在<code>assets</code>里面加入相应尺寸的启动图，这就显得比较呆板。因此引入了<code>LaunchScreen</code>，<code>LaunchScreen</code>是支持<code>AutoLayout+SizeClass</code>的，可以直接在<code>Storyboard</code>上设置启动界面样式，这样可以适配各种屏幕。</p>
-<p><strong>注意⚠️：</strong> </p>
-<ol>
-<li>从<code>2020年4月</code>开始，所有使⽤<code>iOS 13 SDK</code>的<code>App</code>将必须提供<code>LaunchScreen</code>，<code>LaunchImage</code>将被废弃，所有支持<code>iOS 13</code>的<code>App</code>必须提供<code>LaunchScreen.storyboard</code>，否则将无法提交到<code>App Store</code>进行审批。</li>
-<li>在使用<code>LaunchScreen</code>的时候，里面用到的图片资源，最好别放在<code>xcassets</code>里面，不然在你修改图片后，你会发现真机上并不会生效。</li>
-</ol>
-<h2 id="UIWebView将被废弃"><a href="#UIWebView将被废弃" class="headerlink" title="UIWebView将被废弃"></a>UIWebView将被废弃</h2><pre><code>UIKIT_EXTERN API_DEPRECATED(&quot;No longer supported; please adopt WKWebView.&quot;, ios(2.0, 12.0)) API_UNAVAILABLE(tvos, macos) @interface UIWebView : UIView &lt;NSCoding, UIScrollViewDelegate&gt;
-</code></pre><p>目前，如果开发者将包含<code>UIWebView api</code>的应用更新上传到<code>App Store</code>审核后，其将会收到包含<code>ITMS-90809</code>信息的回复邮件，提示你在下一次提交时将应用中<code>UIWebView</code>的<code>api</code>移除。</p>
-<p><img src="/assets/blogImg/iOS13适配_8.png" alt="ITMS-90809" title="ITMS-90809"></p>
-<p><strong>解决:</strong>用<code>WKWebView</code>替代<code>UIWebView</code>，确保所有<code>UIWebView</code>的<code>api</code>都要移除，如果需要适配 <code>iOS 7</code>的可以通过<code>openURL</code>的方式在<code>Safari</code>打开。</p>
-<h2 id="MPMoviePlayerController-被废弃"><a href="#MPMoviePlayerController-被废弃" class="headerlink" title="MPMoviePlayerController 被废弃"></a>MPMoviePlayerController 被废弃</h2><pre><code>&apos;MPMoviePlayerController is no longer available. Use AVPlayerViewController in AVKit.&apos; 
-</code></pre><p><code>iOS 9</code>之前可以使用<code>MediaPlayer.framework</code>中的<code>MPMoviePlayerController</code>来播放视频，但是在<code>iOS 9</code>开始被弃用，在<code>iOS 13</code>中继续使用的话会直接抛出异常：</p>
-<pre><code>Terminating app due to uncaught exception &apos;NSInvalidArgumentException&apos;, reason: &apos;MPMoviePlayerController is no longer available. Use AVPlayerViewController in AVKit.&apos;
-</code></pre><p><strong>解决:</strong>使用<code>AVFoundation</code>里的<code>AVPlayer</code>作为视频播放控件。</p>
-<h2 id="UIStatusBarStyle"><a href="#UIStatusBarStyle" class="headerlink" title="UIStatusBarStyle"></a>UIStatusBarStyle</h2><p><code>iOS 13</code>中，状态栏新增了一个样式：</p>
+<h2 id="UIStatusBarStyle-必须"><a href="#UIStatusBarStyle-必须" class="headerlink" title="UIStatusBarStyle(必须)"></a>UIStatusBarStyle(必须)</h2><p><code>iOS 13</code>中，状态栏新增了一个样式：</p>
 <pre><code>typedef NS_ENUM(NSInteger, UIStatusBarStyle) {
     UIStatusBarStyleDefault                                  = 0, // Automatically chooses light or dark content based on the user interface style
     UIStatusBarStyleLightContent     API_AVAILABLE(ios(7.0)) = 1, // Light content, for use on dark backgrounds
@@ -708,7 +641,7 @@ if (@available(iOS 13.0, *)) {
         }
     }
 }
-</code></pre><h2 id="UIActivityIndicatorView-loading菊花修改"><a href="#UIActivityIndicatorView-loading菊花修改" class="headerlink" title="UIActivityIndicatorView loading菊花修改"></a>UIActivityIndicatorView loading菊花修改</h2><p><code>iOS 13</code>之前的三种样式:</p>
+</code></pre><h2 id="UIActivityIndicatorView-loading菊花修改-必须"><a href="#UIActivityIndicatorView-loading菊花修改-必须" class="headerlink" title="UIActivityIndicatorView loading菊花修改(必须)"></a>UIActivityIndicatorView loading菊花修改(必须)</h2><p><code>iOS 13</code>之前的三种样式:</p>
 <p><code>UIActivityIndicatorViewStyleGray</code> 灰色</p>
 <p><code>UIActivityIndicatorViewStyleWhite</code> 白色、</p>
 <p><code>UIActivityIndicatorViewStyleWhiteLarge</code> 白色(大型)</p>
@@ -716,20 +649,14 @@ if (@available(iOS 13.0, *)) {
 <p><code>UIActivityIndicatorViewStyleLarge</code> (大型)</p>
 <p><code>UIActivityIndicatorViewStyleMedium</code> （中型）</p>
 <p><code>iOS 13</code>通过<code>color</code>属性设置颜色</p>
-<h2 id="UIApplication-sharedApplication-keyWindow废弃"><a href="#UIApplication-sharedApplication-keyWindow废弃" class="headerlink" title="[UIApplication sharedApplication].keyWindow废弃"></a>[UIApplication sharedApplication].keyWindow废弃</h2><pre><code>@property(nullable, nonatomic,readonly) UIWindow *keyWindow API_DEPRECATED(&quot;Should not be used for applications that support multiple scenes as it returns a key window across all connected scenes&quot;, ios(2.0, 13.0));
+<h2 id="UIApplication-sharedApplication-keyWindow废弃-必须"><a href="#UIApplication-sharedApplication-keyWindow废弃-必须" class="headerlink" title="[UIApplication sharedApplication].keyWindow废弃(必须)"></a>[UIApplication sharedApplication].keyWindow废弃(必须)</h2><pre><code>@property(nullable, nonatomic,readonly) UIWindow *keyWindow API_DEPRECATED(&quot;Should not be used for applications that support multiple scenes as it returns a key window across all connected scenes&quot;, ios(2.0, 13.0));
 </code></pre><p><strong>解决:</strong></p>
 <pre><code>[[[UIApplication sharedApplication] windows] objectAtIndex:0]
-</code></pre><h2 id="UISearchDisplayController彻底弃用，导致崩溃"><a href="#UISearchDisplayController彻底弃用，导致崩溃" class="headerlink" title="UISearchDisplayController彻底弃用，导致崩溃"></a>UISearchDisplayController彻底弃用，导致崩溃</h2><p>在<code>iOS 8</code>之前，我们在<code>UITableView</code>上添加搜索框需要使用<code>UISearchBar + UISearchDisplayController</code>的组合方式。</p>
+</code></pre><h2 id="UISearchDisplayController彻底弃用，导致崩溃-必须"><a href="#UISearchDisplayController彻底弃用，导致崩溃-必须" class="headerlink" title="UISearchDisplayController彻底弃用，导致崩溃(必须)"></a>UISearchDisplayController彻底弃用，导致崩溃(必须)</h2><p>在<code>iOS 8</code>之前，我们在<code>UITableView</code>上添加搜索框需要使用<code>UISearchBar + UISearchDisplayController</code>的组合方式。</p>
 <p>在<code>iOS 8</code>之后，苹果就已经推出了<code>UISearchController</code>来代替这个组合方式。在<code>iOS 13</code>中，如果还继续使用<code>UISearchDisplayController</code>会直接导致崩溃，崩溃信息如下：</p>
 <pre><code>Terminating app due to uncaught exception &apos;NSGenericException&apos;, reason: &apos;UISearchDisplayController is no longer supported when linking against this version of iOS. Please migrate your application to UISearchController.&apos;
-</code></pre><p><strong>解决:</strong>使用<code>UISearchController</code>代替</p>
-<h2 id="UIScrollView-滚动条异常偏移"><a href="#UIScrollView-滚动条异常偏移" class="headerlink" title="UIScrollView 滚动条异常偏移"></a>UIScrollView 滚动条异常偏移</h2><p><strong>解决:</strong></p>
-<pre><code>#ifdef __IPHONE_13_0
-   if (@available(iOS 13.0, *)) {
-       self.automaticallyAdjustsScrollIndicatorInsets = NO;
-   }
-#endif
-</code></pre><h2 id="UISegmentedControl-默认样式改变"><a href="#UISegmentedControl-默认样式改变" class="headerlink" title="UISegmentedControl 默认样式改变"></a>UISegmentedControl 默认样式改变</h2><p>默认样式变为白底黑字，如果设置修改过颜色的话，页面需要修改。</p>
+</code></pre><p><strong>解决:</strong>使用<code>UISearchController</code>替换<code>UISearchBar + UISearchDisplayController</code></p>
+<h2 id="UISegmentedControl-默认样式改变-必须"><a href="#UISegmentedControl-默认样式改变-必须" class="headerlink" title="UISegmentedControl 默认样式改变(必须)"></a>UISegmentedControl 默认样式改变(必须)</h2><p>默认样式变为白底黑字，如果设置修改过颜色的话，页面需要修改。</p>
 <p>原本设置选中颜色的<code>tintColor</code>已经失效，新增了<code>selectedSegmentTintColor</code>属性用以修改选中的颜色。如果想保持原来的修改如下代码：</p>
 <pre><code>UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@&quot;asdasd&quot;, @&quot;奥术大师多&quot;, @&quot;123456&quot;]];
 segmentControl.frame = CGRectMake(30, 200, 300, 50);
@@ -756,7 +683,7 @@ if (@available(iOS 13.0, *)) {
 } else {
     [segmentControl setTintColor:color];
 }
-</code></pre><h2 id="UINavigationBar-设置按钮边距导致崩溃"><a href="#UINavigationBar-设置按钮边距导致崩溃" class="headerlink" title="UINavigationBar 设置按钮边距导致崩溃"></a>UINavigationBar 设置按钮边距导致崩溃</h2><p>从<code>iOS 11</code>开始，<code>UINavigationBar</code>使用了自动布局，左右两边的按钮到屏幕之间会有<code>16</code>或<code>20</code>的边距。</p>
+</code></pre><h2 id="UINavigationBar-设置按钮边距导致崩溃-必须"><a href="#UINavigationBar-设置按钮边距导致崩溃-必须" class="headerlink" title="UINavigationBar 设置按钮边距导致崩溃(必须)"></a>UINavigationBar 设置按钮边距导致崩溃(必须)</h2><p>从<code>iOS 11</code>开始，<code>UINavigationBar</code>使用了自动布局，左右两边的按钮到屏幕之间会有<code>16</code>或<code>20</code>的边距。</p>
 <p>为了避免点击到间距的空白处没有响应，通常做法是：定义一个<code>UINavigationBar</code>子类，重写<code>layoutSubviews</code>方法，在此方法里遍历<code>subviews</code>获取 <code>_UINavigationBarContentView</code>，并将其<code>layoutMargins</code> 设置为<code>UIEdgeInsetsZero</code>。</p>
 <pre><code>- (void)layoutSubviews {
     [super layoutSubviews];
@@ -786,7 +713,182 @@ if (@available(iOS 13.0, *)) {
         }
     }
 }
-</code></pre><p>参考：</p>
+</code></pre><h2 id="textfield-leftview-必须"><a href="#textfield-leftview-必须" class="headerlink" title="textfield.leftview(必须)"></a>textfield.leftview(必须)</h2><p>如下方式，直接给<code>textfield.leftView</code>赋值一个<code>UILabel</code>对象，他的宽高会被<code>sizeToFit</code>，而不是创建时的值。</p>
+<pre><code>// left view label
+UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 63, 50)];
+phoneLabel.text = @&quot;手机号&quot;;
+phoneLabel.font = [UIFont systemFontOfSize:16];
+// set textfield left view
+self.textfieldName.leftView = phoneLabel;
+</code></pre><p>如所看到，实际<code>leftview</code>的width为<code>59</code>，height为<code>19</code>：</p>
+<p><img src="/assets/blogImg/iOS13适配_9.png" alt="leftView" title="leftView"></p>
+<p>通过监听<code>leftView</code>的<code>frame</code>变化，发现是<code>layoutSubview</code>之后变化的。</p>
+<p><strong>解决方法：</strong>嵌套一个UIView</p>
+<pre><code>// label
+UILabel *phoneLabel = [[UILabel alloc] init];
+phoneLabel.text = @&quot;手机号&quot;;
+phoneLabel.font = [UIFont systemFontOfSize:16];
+[phoneLabel sizeToFit];
+phoneLabel.centerY = 50/2.f;
+// left view
+UIView *leftView = [[UIView alloc] initWithFrame:(CGRect){0, 0, 63, 50}];
+[leftView addSubview:phoneLabel];
+// set textfield left view
+self.textfieldName.leftView = leftView;
+</code></pre><h2 id="调用navigationBar-shouldPopItem-崩溃-必须"><a href="#调用navigationBar-shouldPopItem-崩溃-必须" class="headerlink" title="调用navigationBar:shouldPopItem:崩溃(必须)"></a>调用<code>navigationBar:shouldPopItem:</code>崩溃(必须)</h2><p>点击导航栏返回的时候<code>Crash</code>了，控制台输出提示：</p>
+<pre><code>Теrmіnаtіng арр due to uncaught exception&apos; NSInternalInconsistencyException&apos; , 
+reason : &apos; Override of -navigationBar : shouldPopItem: returned YES after 
+manually popping a view controller ( navigat ionController=&lt;MHCRNavgationController : 0x106039400&gt;) &apos;
+</code></pre><p>因为我们工程里，基本上所有的<code>Controller</code>是继承基类<code>BaseViewController</code>并实现<code>- (BOOL)naviBack:</code>方法，用于实现在用户点击返回和侧滑返回时，一些不能返回的特殊处理。</p>
+<p><strong>原理：</strong>通过实现<code>UINavgationBar</code>的代理方法<code>- (BOOL)navigationBar:shouldPopItem:</code>来做的控制：</p>
+<pre><code>- (BOOL)navigationBar:(UINavigationBar *)navigationBar
+        shouldPopItem:(UINavigationItem *)item {
+
+    // 默认可以返回
+    BOOL canGoBack = YES;
+
+    // BaseViewController定义协议方法判断能否能点击返回上一层
+    UIViewController *vc = self.viewControllers.lastObject;
+    if ([vc isKindOfClass:BaseViewController.class]) {
+        canGoBack = [(BaseViewController *)vc naviBack:nil];
+    }
+
+    if (canGoBack) {
+        [self popViewControllerAnimated:YES];
+    }
+    return canGoBack;
+}
+</code></pre><p>但是我实现的时候有 <code>Return YES</code> 啊！想了想，试着注释了<code>[self popViewControllerAnimated:YES]</code>，发现没有崩溃了。但是在<code>iOS 12</code>上，会发现控制器没有回到上一层。</p>
+<p><strong>修改方法：</strong></p>
+<pre><code>- (BOOL)navigationBar:(UINavigationBar *)navigationBar
+        shouldPopItem:(UINavigationItem *)item {
+
+    // 判断 iOS 版本低于13
+    BOOL bellow13 = !@available(iOS 13.0, *);
+
+    // 默认可以返回
+    BOOL canGoBack = YES;
+
+    // BaseViewController定义协议方法判断能否能点击返回上一层
+    UIViewController *vc = self.viewControllers.lastObject;
+    if ([vc isKindOfClass:BaseViewController.class]) {
+        canGoBack = [(BaseViewController *)vc naviBack:nil];
+    }
+
+    if (canGoBack &amp;&amp; bellow13) {
+        // 如果低于13且可以返回，就执行popViewController
+        [self popViewControllerAnimated:YES];
+    }
+    return canGoBack;
+}
+</code></pre><h2 id="新增蓝牙的权限申请-包含，必须"><a href="#新增蓝牙的权限申请-包含，必须" class="headerlink" title="新增蓝牙的权限申请(包含，必须)"></a>新增蓝牙的权限申请(包含，必须)</h2><p><code>iOS 13</code>以前，使用需要使用蓝牙时直接调用即可，不需要请求权限；在<code>iOS 13</code>中，苹果将原来申请权限用的<a href="https://developer.apple.com/documentation/bundleresources/information_property_list/nsbluetoothperipheralusagedescription?language=objc" target="_blank" rel="noopener">NSBluetoothPeripheralUsageDescription</a>替换为<a href="https://developer.apple.com/documentation/bundleresources/information_property_list/nsbluetoothalwaysusagedescription?language=objc" target="_blank" rel="noopener">NSBluetoothAlwaysUsageDescription</a>。</p>
+<pre><code>For apps with a deployment target of iOS 13 and later, use NSBluetoothAlwaysUsageDescription instead.
+</code></pre><p>如果继续在<code>iOS 13</code>中使用旧的权限字段获取蓝牙权限就会导致崩溃，信息如下：</p>
+<pre><code>This app has crashed because it attempted to access privacy-sensitive data without a usage description.  The app&apos;s Info.plist must contain an NSBluetoothAlwaysUsageDescription key with a string value explaining to the user how the app uses this data.
+</code></pre><p>如果将没有新字段的包提交审核，将会收到包含<code>ITMS-90683</code>的邮件，并提示审核不通过。</p>
+<p><strong>解决:</strong>在<code>info.plist</code>里增加相应蓝牙申请的权限字段。</p>
+<pre><code>&lt;key&gt;NSBluetoothAlwaysUsageDescription&lt;/key&gt; 
+&lt;string&gt;我们需要一直使用您的蓝牙&lt;/string&gt;`
+</code></pre><h2 id="LaunchImage将被废弃-目前不需要，提示必须"><a href="#LaunchImage将被废弃-目前不需要，提示必须" class="headerlink" title="LaunchImage将被废弃(目前不需要，提示必须)"></a>LaunchImage将被废弃(目前不需要，提示必须)</h2><pre><code>UILaunchImages has been deprecated; use Xcode launch storyboards instead. For more information on how to construct and format your launch storyboard, seeLaunch Screen
+</code></pre><p><code>iOS 8</code>之前我们使用<code>LaunchImage</code>来设置启动图，但是每当苹果推出新的屏幕尺寸的设备，我们需要在<code>assets</code>里面加入相应尺寸的启动图，这就显得比较呆板。因此引入了<code>LaunchScreen</code>，<code>LaunchScreen</code>是支持<code>AutoLayout+SizeClass</code>的，可以直接在<code>Storyboard</code>上设置启动界面样式，这样可以适配各种屏幕。</p>
+<p><strong>注意⚠️：</strong> </p>
+<ol>
+<li>从<code>2020年4月</code>开始，所有使⽤<code>iOS 13 SDK</code>的<code>App</code>将必须提供<code>LaunchScreen</code>，<code>LaunchImage</code>将被废弃，所有支持<code>iOS 13</code>的<code>App</code>必须提供<code>LaunchScreen.storyboard</code>，否则将无法提交到<code>App Store</code>进行审批。</li>
+<li>在使用<code>LaunchScreen</code>的时候，里面用到的图片资源，最好别放在<code>xcassets</code>里面，不然在你修改图片后，你会发现真机上并不会生效。</li>
+</ol>
+<h2 id="UIWebView将被废弃-目前不需要，提示必须"><a href="#UIWebView将被废弃-目前不需要，提示必须" class="headerlink" title="UIWebView将被废弃(目前不需要，提示必须)"></a>UIWebView将被废弃(目前不需要，提示必须)</h2><pre><code>UIKIT_EXTERN API_DEPRECATED(&quot;No longer supported; please adopt WKWebView.&quot;, ios(2.0, 12.0)) API_UNAVAILABLE(tvos, macos) @interface UIWebView : UIView &lt;NSCoding, UIScrollViewDelegate&gt;
+</code></pre><p>目前，如果开发者将包含<code>UIWebView api</code>的应用更新上传到<code>App Store</code>审核后，其将会收到包含<code>ITMS-90809</code>信息的回复邮件，提示你在下一次提交时将应用中<code>UIWebView</code>的<code>api</code>移除。</p>
+<p><img src="/assets/blogImg/iOS13适配_8.png" alt="ITMS-90809" title="ITMS-90809"></p>
+<p><strong>解决:</strong>用<code>WKWebView</code>替代<code>UIWebView</code>，确保所有<code>UIWebView</code>的<code>api</code>都要移除，如果需要适配 <code>iOS 7</code>的可以通过<code>openURL</code>的方式在<code>Safari</code>打开。</p>
+<h2 id="SceneDelegate-Xcode-11-创建的工程在低版本设备上运行黑屏"><a href="#SceneDelegate-Xcode-11-创建的工程在低版本设备上运行黑屏" class="headerlink" title="SceneDelegate(Xcode 11 创建的工程在低版本设备上运行黑屏)"></a>SceneDelegate(Xcode 11 创建的工程在低版本设备上运行黑屏)</h2><blockquote>
+<p>In iOS 13 and later, use UISceneDelegate objects to respond to life-cycle events in a scene-based app.</p>
+<p>In iOS 12 and earlier, use the UIApplicationDelegate object to respond to life-cycle events.</p>
+</blockquote>
+<p><img src="/assets/blogImg/iOS13适配_4.png" alt="SceneDelegate" title="SceneDelegate"></p>
+<!--
+1. 基于`Xcode11`新建的工程，如何展示？
+
+        - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
+            // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+            // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+            // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        //    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            ViewController *view = [[ViewController alloc]init];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
+            self.window.rootViewController = nav;
+        //    [self.window makeKeyAndVisible];
+        }
+-->
+<ol>
+<li><p>基于<code>Xcode11</code>新建的工程，在<code>iOS 13</code>以前的版本不展示<code>window</code>，如何解决？</p>
+<p> 在<code>AppDelegate.h</code>中添加<code>UIWindow</code></p>
+<pre><code>#import &lt;UIKit/UIKit.h&gt;
+
+@interface AppDelegate : UIResponder &lt;UIApplicationDelegate&gt;
+
+@property (strong, nonatomic) UIWindow * window;
+
+@end
+</code></pre></li>
+<li><p>如果不使用场景功能，在<code>info.plist</code>文件中删除<code>Application Scene Manifast</code></p>
+<p> <img src="/assets/blogImg/iOS13适配_5.png" alt="删除Application Scene Manifast" title="删除Application Scene Manifast"></p>
+</li>
+<li><p>注释<code>AppDelegate</code>中<code>UISceneSession lifecycle</code></p>
+<p> <img src="/assets/blogImg/iOS13适配_6.png" alt="注释UISceneSession lifecycle" title="注释UISceneSession lifecycle"></p>
+</li>
+</ol>
+<h2 id="Sign-in-with-Apple"><a href="#Sign-in-with-Apple" class="headerlink" title="Sign in with Apple"></a>Sign in with Apple</h2><p>如果你的应用有第三方登录，那你需要加上<code>sign in with apple</code>。这是<code>iOS 13</code>新增的功能，是苹果推出一种在<code>App</code>和网站上快速、便捷登录的方式。关于应用是否要求接入此登录方式，如下</p>
+<blockquote>
+<p>Sign In with Apple will be available for beta testing this summer. It will be required as an option for users in apps that support third-party sign-in when it is commercially available later this year.</p>
+<p>Apps that exclusively use a third-party or social login service (such as Facebook Login, Google Sign-In, Sign in with Twitter, Sign In with LinkedIn, Login with Amazon, or WeChat Login) to set up or authenticate the user’s primary account with the app must also offer Sign in with Apple as an equivalent option.</p>
+</blockquote>
+<p>如果应用使用了第三方或社交账号登录服务(如<code>Facebook</code>、<code>Google</code>、<code>Twitter</code>、<code>LinkedIn</code>、<code>Amazon</code>、<code>WeChat</code>等)来设置或验证用户的主账号，就必须把<code>Sign In With Apple</code>作为同等的选项添加到应用上。如果是下面这些类型的应用则不需要添加：</p>
+<ol>
+<li>仅仅使用公司内部账号来注册和登录的应用；</li>
+<li>要求用户使用现有的教育或企业账号进行登录的教育、企业或商务类型的应用；</li>
+<li>使用政府或业界支持的公民身份识别系统或电子标识对用户进行身份验证的应用；</li>
+<li>特定第三方服务的应用，用户需要直接登录其邮箱、社交媒体或其他第三方帐户才能访问其内容。</li>
+</ol>
+<p><strong>注意⚠️:</strong></p>
+<blockquote>
+<p>Starting today, new apps submitted to the App Store must follow these guidelines. Existing apps and app updates must follow them by April 2020.</p>
+</blockquote>
+<p><code>2019年9月12日</code>起，提交到<code>App Store</code>的新应用必须按照应用审核指南中的标准进行接入；现有应用和应用更新必须也在<code>2020年4月</code>前完成接入。</p>
+<h2 id="首页frame莫名下移20像素问题"><a href="#首页frame莫名下移20像素问题" class="headerlink" title="首页frame莫名下移20像素问题"></a>首页frame莫名下移20像素问题</h2><p><code>ContainerViewController</code>的<code>xib size</code>为<code>Inferred view</code>的<code>y</code>会莫名变成<code>20</code> 把 size 改成<code>FreeForm</code>即可</p>
+<h2 id="MPMoviePlayerController-被废弃"><a href="#MPMoviePlayerController-被废弃" class="headerlink" title="MPMoviePlayerController 被废弃"></a>MPMoviePlayerController 被废弃</h2><pre><code>&apos;MPMoviePlayerController is no longer available. Use AVPlayerViewController in AVKit.&apos; 
+</code></pre><p><code>iOS 9</code>之前可以使用<code>MediaPlayer.framework</code>中的<code>MPMoviePlayerController</code>来播放视频，但是在<code>iOS 9</code>开始被弃用，在<code>iOS 13</code>中继续使用的话会直接抛出异常：</p>
+<pre><code>Terminating app due to uncaught exception &apos;NSInvalidArgumentException&apos;, reason: &apos;MPMoviePlayerController is no longer available. Use AVPlayerViewController in AVKit.&apos;
+</code></pre><p><strong>解决:</strong>使用<code>AVFoundation</code>里的<code>AVPlayer</code>作为视频播放控件。</p>
+<h2 id="UIScrollView-滚动条异常偏移"><a href="#UIScrollView-滚动条异常偏移" class="headerlink" title="UIScrollView 滚动条异常偏移"></a><code>UIScrollView</code> 滚动条异常偏移</h2><p><strong>解决:</strong></p>
+<pre><code>#ifdef __IPHONE_13_0
+   if (@available(iOS 13.0, *)) {
+       self.automaticallyAdjustsScrollIndicatorInsets = NO;
+   }
+#endif
+</code></pre><h2 id="H5的适配"><a href="#H5的适配" class="headerlink" title="H5的适配"></a>H5的适配</h2><p>参考以下链接：<a href="https://blog.csdn.net/u012413955/article/details/92198556" target="_blank" rel="noopener">参考链接</a></p>
+<h2 id="NSAttributedString优化"><a href="#NSAttributedString优化" class="headerlink" title="NSAttributedString优化"></a><code>NSAttributedString</code>优化</h2><p>对于<code>UILabel</code>、<code>UITextField</code>、<code>UITextView</code>，在设置<code>NSAttributedString</code>时也要考虑适配<code>Dark Mode</code>，否则在切换模式时会与背景色融合，造成不好的体验<br><strong>不建议的做法：</strong></p>
+<pre><code>NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:16]};
+NSAttributedString *str = [[NSAttributedString alloc] initWithString:@&quot;富文本文案&quot; attributes:dic];
+</code></pre><p><strong>推荐的做法：</strong></p>
+<pre><code>// 添加一个NSForegroundColorAttributeName属性
+NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor labelColor]};
+NSAttributedString *str = [[NSAttributedString alloc] initWithString:@&quot;富文本文案&quot; attributes:dic];
+</code></pre><h2 id="WKWebView中测量页面内容高度的方式变更"><a href="#WKWebView中测量页面内容高度的方式变更" class="headerlink" title="WKWebView中测量页面内容高度的方式变更"></a>WKWebView中测量页面内容高度的方式变更</h2><p><code>iOS 13</code>以前 <code>document.body.scrollHeight</code>， <code>iOS 13</code>中 <code>document.documentElement.scrollHeight</code>两者相差<code>55</code> 应该是浏览器定义高度变了</p>
+<h2 id="UITabBarButton不同状态下结构不同"><a href="#UITabBarButton不同状态下结构不同" class="headerlink" title="UITabBarButton不同状态下结构不同"></a>UITabBarButton不同状态下结构不同</h2><p>在 iOS 13 中，<code>UITabBarButton</code>的控件结构会随着其选中状态的变化而变化，主要体现为 <code>UITabBarSwappableImageView</code>和<code>UITabBarButtonLabel</code>的位置变化。在选中时和以前一样，是 <code>UITabBarButton</code>的子控件。而在未选中状态下放到了<code>UIVisualEffectView</code>的 <code>_UIVisualEffectContentView</code>里面。具体可以看下图的对比：</p>
+<p><img src="/assets/blogImg/iOS13适配_10.png" alt="UITabBarButton结构" title="UITabBarButton结构"></p>
+<p>我们在自定义<code>UITabBar</code>时，通常会遍历<code>UITabBarButton</code>的子控件获取 <code>UITabBarSwappableImageView</code>，比如自定义红点时添加到这个<code>ImageView</code>的右上角，这在<code>iOS 13</code>中可能就会导致异常。</p>
+<p><strong>问题1：</strong><code>UITabBar</code>红点偏移</p>
+<p><strong>问题2：</strong><code>UITabBar</code>红点不选中显示颜色不对。</p>
+<p><strong>原因：</strong>如果之前有通过<code>UITabBar</code>上图片位置来设置红点位置，在<code>iOS13</code>上会发现显示位置都在最左边去了。遍历<code>UITabBarButton</code>的<code>subViews</code>发现只有在<code>UITabBar</code>选中状态下才能取到<code>UITabBarSwappableImageView</code>。</p>
+<p><strong>问题1解决办法：</strong>修改为通过<code>UITabBarButton</code>的位置来设置红点的<code>frame</code></p>
+<p><strong>问题2解决办法：</strong>把红点添加到<code>UITabBarButton</code> 上，位置再根据<code>UITabBarSwappableImageView</code>调整即可</p>
+<h2 id="CNCopyCurrentNetworkInfo-使用要求更严格"><a href="#CNCopyCurrentNetworkInfo-使用要求更严格" class="headerlink" title="CNCopyCurrentNetworkInfo 使用要求更严格"></a>CNCopyCurrentNetworkInfo 使用要求更严格</h2><p>从 <code>iOS 12</code>开始，<code>CNCopyCurrentNetworkInfo</code> 函数需要开启<code>Access WiFi Information</code>的功能后才会返回正确的值。在<code>iOS 13</code> 中，这个函数的使用要求变得更严格，根据<code>CNCopyCurrentNetworkInfo</code>文档说明，应用还需要符合下列三项条件中的至少一项才能得到正确的值：</p>
+<ol>
+<li>使用<code>Core Location</code>的应用， 并获得定位服务权限。</li>
+<li>使用 <code>NEHotspotConfiguration</code> 来配置 <code>WiFi</code> 网络的应用。</li>
+<li>目前正处于启用状态的 <code>VPN</code> 应用。</li>
+</ol>
+<p>参考：</p>
 <p><a href="https://juejin.im/post/5d8af88ef265da5b6e0a23ac" target="_blank" rel="noopener">iOS 13 适配要点总结</a></p>
 <p><a href="https://www.jianshu.com/p/a0cc0f4e99c7" target="_blank" rel="noopener">iOS 13 适配</a></p>
 
@@ -962,7 +1064,7 @@ if (@available(iOS 13.0, *)) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -984,7 +1086,7 @@ if (@available(iOS 13.0, *)) {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1059,7 +1161,7 @@ if (@available(iOS 13.0, *)) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dark-Model"><span class="nav-number">1.</span> <span class="nav-text">Dark Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色"><span class="nav-number">1.1.</span> <span class="nav-text">颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源文件"><span class="nav-number">1.2.</span> <span class="nav-text">资源文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SceneDelegate"><span class="nav-number">2.</span> <span class="nav-text">SceneDelegate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送Token"><span class="nav-number">3.</span> <span class="nav-text">推送Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sign-in-with-Apple"><span class="nav-number">4.</span> <span class="nav-text">Sign in with Apple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#私有方法KVC可能导致崩溃"><span class="nav-number">5.</span> <span class="nav-text">私有方法KVC可能导致崩溃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UISearchBar-黑线处理导致崩溃"><span class="nav-number">6.</span> <span class="nav-text">UISearchBar 黑线处理导致崩溃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制器的-modalPresentationStyle-默认值变了"><span class="nav-number">7.</span> <span class="nav-text">控制器的 modalPresentationStyle 默认值变了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新增蓝牙的权限申请"><span class="nav-number">8.</span> <span class="nav-text">新增蓝牙的权限申请</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首页frame莫名下移20像素问题"><span class="nav-number">9.</span> <span class="nav-text">首页frame莫名下移20像素问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LaunchImage将被废弃"><span class="nav-number">10.</span> <span class="nav-text">LaunchImage将被废弃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIWebView将被废弃"><span class="nav-number">11.</span> <span class="nav-text">UIWebView将被废弃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MPMoviePlayerController-被废弃"><span class="nav-number">12.</span> <span class="nav-text">MPMoviePlayerController 被废弃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIStatusBarStyle"><span class="nav-number">13.</span> <span class="nav-text">UIStatusBarStyle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIActivityIndicatorView-loading菊花修改"><span class="nav-number">14.</span> <span class="nav-text">UIActivityIndicatorView loading菊花修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIApplication-sharedApplication-keyWindow废弃"><span class="nav-number">15.</span> <span class="nav-text">[UIApplication sharedApplication].keyWindow废弃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UISearchDisplayController彻底弃用，导致崩溃"><span class="nav-number">16.</span> <span class="nav-text">UISearchDisplayController彻底弃用，导致崩溃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIScrollView-滚动条异常偏移"><span class="nav-number">17.</span> <span class="nav-text">UIScrollView 滚动条异常偏移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UISegmentedControl-默认样式改变"><span class="nav-number">18.</span> <span class="nav-text">UISegmentedControl 默认样式改变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UINavigationBar-设置按钮边距导致崩溃"><span class="nav-number">19.</span> <span class="nav-text">UINavigationBar 设置按钮边距导致崩溃</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dark-Model-必须"><span class="nav-number">1.</span> <span class="nav-text">Dark Model(必须)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色"><span class="nav-number">1.1.</span> <span class="nav-text">颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源文件"><span class="nav-number">1.2.</span> <span class="nav-text">资源文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意：如果不适配暗黑模式-必须"><span class="nav-number">1.3.</span> <span class="nav-text">注意：如果不适配暗黑模式(必须)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送DeviceToken-必须"><span class="nav-number">2.</span> <span class="nav-text">推送DeviceToken(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#私有方法KVC可能导致崩溃-必须"><span class="nav-number">3.</span> <span class="nav-text">私有方法KVC可能导致崩溃(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UISearchBar黑线处理导致崩溃-必须"><span class="nav-number">4.</span> <span class="nav-text">UISearchBar黑线处理导致崩溃(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制器的modalPresentationStyle默认值变了，即presentationController方法弹出默认交互改变-必须"><span class="nav-number">5.</span> <span class="nav-text">控制器的modalPresentationStyle默认值变了，即presentationController方法弹出默认交互改变(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIStatusBarStyle-必须"><span class="nav-number">6.</span> <span class="nav-text">UIStatusBarStyle(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIActivityIndicatorView-loading菊花修改-必须"><span class="nav-number">7.</span> <span class="nav-text">UIActivityIndicatorView loading菊花修改(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIApplication-sharedApplication-keyWindow废弃-必须"><span class="nav-number">8.</span> <span class="nav-text">[UIApplication sharedApplication].keyWindow废弃(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UISearchDisplayController彻底弃用，导致崩溃-必须"><span class="nav-number">9.</span> <span class="nav-text">UISearchDisplayController彻底弃用，导致崩溃(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UISegmentedControl-默认样式改变-必须"><span class="nav-number">10.</span> <span class="nav-text">UISegmentedControl 默认样式改变(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UINavigationBar-设置按钮边距导致崩溃-必须"><span class="nav-number">11.</span> <span class="nav-text">UINavigationBar 设置按钮边距导致崩溃(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#textfield-leftview-必须"><span class="nav-number">12.</span> <span class="nav-text">textfield.leftview(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用navigationBar-shouldPopItem-崩溃-必须"><span class="nav-number">13.</span> <span class="nav-text">调用navigationBar:shouldPopItem:崩溃(必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新增蓝牙的权限申请-包含，必须"><span class="nav-number">14.</span> <span class="nav-text">新增蓝牙的权限申请(包含，必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LaunchImage将被废弃-目前不需要，提示必须"><span class="nav-number">15.</span> <span class="nav-text">LaunchImage将被废弃(目前不需要，提示必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIWebView将被废弃-目前不需要，提示必须"><span class="nav-number">16.</span> <span class="nav-text">UIWebView将被废弃(目前不需要，提示必须)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SceneDelegate-Xcode-11-创建的工程在低版本设备上运行黑屏"><span class="nav-number">17.</span> <span class="nav-text">SceneDelegate(Xcode 11 创建的工程在低版本设备上运行黑屏)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sign-in-with-Apple"><span class="nav-number">18.</span> <span class="nav-text">Sign in with Apple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首页frame莫名下移20像素问题"><span class="nav-number">19.</span> <span class="nav-text">首页frame莫名下移20像素问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MPMoviePlayerController-被废弃"><span class="nav-number">20.</span> <span class="nav-text">MPMoviePlayerController 被废弃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIScrollView-滚动条异常偏移"><span class="nav-number">21.</span> <span class="nav-text">UIScrollView 滚动条异常偏移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5的适配"><span class="nav-number">22.</span> <span class="nav-text">H5的适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSAttributedString优化"><span class="nav-number">23.</span> <span class="nav-text">NSAttributedString优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKWebView中测量页面内容高度的方式变更"><span class="nav-number">24.</span> <span class="nav-text">WKWebView中测量页面内容高度的方式变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UITabBarButton不同状态下结构不同"><span class="nav-number">25.</span> <span class="nav-text">UITabBarButton不同状态下结构不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CNCopyCurrentNetworkInfo-使用要求更严格"><span class="nav-number">26.</span> <span class="nav-text">CNCopyCurrentNetworkInfo 使用要求更严格</span></a></li></ol></div>
             
 
           </div>
@@ -1079,7 +1181,7 @@ if (@available(iOS 13.0, *)) {
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1093,7 +1195,7 @@ if (@available(iOS 13.0, *)) {
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">30.2k</span>
+    <span title="总字数">34.7k</span>
   
 </div>
 

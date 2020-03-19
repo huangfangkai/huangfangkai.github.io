@@ -90,7 +90,11 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Mac及软件的一些使用小Tips_1.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Mac及软件的一些使用小Tips_2.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Git小命令.png">
-<meta property="og:updated_time" content="2019-11-05T06:08:27.982Z">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Mac及软件的一些使用小Tips_3.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Mac及软件的一些使用小Tips_4.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Mac及软件的一些使用小Tips_5.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Mac及软件的一些使用小Tips_6.png">
+<meta property="og:updated_time" content="2020-03-10T08:52:34.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac及软件的一些使用小Tips">
 <meta name="twitter:description" content="Mac显示隐藏文件command+shift+. 控制软件安装的来源显示&amp;quot;任何来源&amp;quot;选项在控制台中执行： sudo spctl --master-disable 不显示&amp;quot;任何来源&amp;quot;： sudo spctl --master-enable 微信小助手omw Xcode设置代码折叠Xcode -&amp;gt; Preferences -&amp;gt; Text Editin">
@@ -352,7 +356,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  347
+                  560
                 </span>
               
 
@@ -389,7 +393,7 @@ sudo spctl --master-enable
 </code></pre><p><img src="/assets/blogImg/Mac及软件的一些使用小Tips_2.png" alt="双击打开新页面" title="双击打开新页面"></p>
 <h3 id="模拟器路径"><a href="#模拟器路径" class="headerlink" title="模拟器路径"></a>模拟器路径</h3><pre><code>/Library/Developer/CoreSimulator/Profiles/Runtimes/
 </code></pre><h3 id="Xcode代码对齐"><a href="#Xcode代码对齐" class="headerlink" title="Xcode代码对齐"></a>Xcode代码对齐</h3><pre><code>control+i
-</code></pre><h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><pre><code>cd existing_folder
+</code></pre><h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a><a href="https://gitee.com/progit/" target="_blank" rel="noopener">Git</a></h2><pre><code>cd existing_folder
 git init
 git remote add origin 仓库地址
 git add .
@@ -400,26 +404,14 @@ git push -u origin master
 cd 目录下
 git add 文件名
 </code></pre><p><img src="/assets/blogImg/Git小命令.png" alt="Git小命令" title="Git小命令"></p>
-<h2 id="iOS开发"><a href="#iOS开发" class="headerlink" title="iOS开发"></a>iOS开发</h2><h3 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h3><pre><code>//Swift
-func SPDLog&lt;T&gt;(_ message : T,fileName : String = #file,line : Int = #line, function : String = #function) {
-    #if DEBUG
-    print(fileName.split{$0 == &quot;/&quot;}.map(String.init).last!,line,function,message)
-    #else
-    #endif
-}
-
-//OC
-#ifdef DEBUG
-#define  SPDLog(...) NSLog(@&quot;%@&quot;,[NSString stringWithFormat:__VA_ARGS__])
-#else
-#define SPDLog(...)
-#endif
-</code></pre><h3 id="全球地图SDK"><a href="#全球地图SDK" class="headerlink" title="全球地图SDK"></a>全球地图SDK</h3><p><a href="http://mousebird.github.io/WhirlyGlobe/#carousel-homepage" target="_blank" rel="noopener">全球地图SDK</a></p>
-<h2 id="CocoaPods"><a href="#CocoaPods" class="headerlink" title="CocoaPods"></a>CocoaPods</h2><ol>
+<h2 id="全球地图SDK"><a href="#全球地图SDK" class="headerlink" title="全球地图SDK"></a>全球地图SDK</h2><p><a href="http://mousebird.github.io/WhirlyGlobe/#carousel-homepage" target="_blank" rel="noopener">全球地图SDK</a></p>
+<h2 id="CocoaPods"><a href="#CocoaPods" class="headerlink" title="CocoaPods"></a>CocoaPods</h2><p><strong>注意⚠️：</strong>项目中不要轻易使用 <code>pod update</code>，如果没有 <code>pod instal —repo-update</code>。</p>
+<ol>
 <li><p><code>sudo  gem install cocoapods</code>的时候出现`While executing gem …(Gem::FilePermissionError)</p>
 <pre><code>You don&apos;t have write permissions for the /usr/bin directory.`
-</code></pre><p><strong>解决：</strong>sudo gem install -n /usr/local/bin cocoapods</p>
-</li>
+</code></pre><p><strong>解决：</strong></p>
+<pre><code>sudo gem install -n /usr/local/bin cocoapods
+</code></pre></li>
 <li><p>重新安装<code>CocoaPods</code></p>
 <pre><code>pod cache clean -- all    
 
@@ -437,16 +429,56 @@ openssl version
 
 gem install cocoapods
 </code></pre></li>
-<li><p><code>CocoaPods</code>网络不行时，使用<code>install</code>和<code>update</code>缓慢，可以忽略更新</p>
-<p>  pod install –verbose –no-repo-update<br>  pod update –verbose –no-repo-update</p>
-</li>
 <li><p>进入<code>CocoaPods</code>索引文件</p>
 <pre><code>Shift + Command + G//就是前往
 //输入
 ~/.cocoapods/repos/master
 CocoaPods 索引文件都在这个
 </code></pre></li>
+<li><p>网络不行时，<code>CocoaPods</code>使用<code>install</code>和<code>update</code>缓慢，可以忽略更新。</p>
+<pre><code>pod install --verbose --no-repo-update
+pod update --verbose --no-repo-update
+</code></pre></li>
+<li><p>项目<code>pod</code>损坏，需要移除重新加入，先移除<code>pod deintegrate</code>再<code>pod install</code>。</p>
+<pre><code>sudo gem install cocoapods-deintegrate
+pod deintegrate
+</code></pre></li>
+<li><p>pod install 或者 pod update三方库不是最新</p>
+<p> <code>pod repo update</code>命令更新本地spec缓存<br> <code>pod install --repo-update</code></p>
+</li>
 </ol>
+<h2 id="项目报错"><a href="#项目报错" class="headerlink" title="项目报错"></a>项目报错</h2><p><img src="/assets/blogImg/Mac及软件的一些使用小Tips_3.png" alt="Xcode运行报错" title="报错信息1"></p>
+<p>删除<code>derived data</code>，Pods 文件夹，重新<code>install</code></p>
+<p><img src="/assets/blogImg/Mac及软件的一些使用小Tips_4.png" alt="删derived data" title="删了derived data"></p>
+<p><img src="/assets/blogImg/Mac及软件的一些使用小Tips_5.png" alt="Xcode运行报错" title="报错信息2"></p>
+<p>修改<code>build system</code>（个人感觉这种方式较好，不会每个项目搞一遍）<br>在<code>Xcode菜单栏</code> -&gt; <code>File</code> -&gt; <code>Workspace Setting</code>，将<code>build system</code>修改为<code>legacy build system</code>，然后<code>clean</code>编译。</p>
+<p><img src="/assets/blogImg/Mac及软件的一些使用小Tips_6.png" alt="Xcode运行报错" title="修改build system"></p>
+<h2 id="FLEX配置"><a href="#FLEX配置" class="headerlink" title="FLEX配置"></a>FLEX配置</h2><pre><code>pod &apos;FLEX&apos;, &apos;~&gt; 2.0&apos;, :configurations =&gt; [&apos;Debug&apos;]
+</code></pre><hr>
+<pre><code>#if DEBUG
+#import &quot;FLEXManager.h&quot;
+#endif
+</code></pre><hr>
+<p>在模拟器中可以通过点击键盘的F键调出FLEX。<br>在真机中我设置通过摇一摇调出FLEX:</p>
+<pre><code>#import &quot;UIWindow+TTFLEXSetting.h&quot;
+
+#if DEBUG
+#import &quot;FLEXManager.h&quot;
+#endif
+
+@implementation UIWindow (TTFLEXSetting)
+#if DEBUG
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    [super motionBegan:motion withEvent:event];
+
+    if (motion == UIEventSubtypeMotionShake) {
+        [[FLEXManager sharedManager] showExplorer];
+
+    }
+}
+#endif
+</code></pre><h2 id="运行项目时一直报variables-may-not-be-available"><a href="#运行项目时一直报variables-may-not-be-available" class="headerlink" title="运行项目时一直报variables may not be available"></a>运行项目时一直报<code>variables may not be available</code></h2><p><code>运行模式</code>出错，解决办法改为<code>debug</code>模式<br><code>Product --&gt; Scheme --&gt; Edit Scheme --&gt; Run --&gt; Debug</code></p>
 
       
     </div>
@@ -620,7 +652,7 @@ CocoaPods 索引文件都在这个
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +674,7 @@ CocoaPods 索引文件都在这个
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -717,7 +749,7 @@ CocoaPods 索引文件都在这个
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac"><span class="nav-number">1.</span> <span class="nav-text">Mac</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示隐藏文件"><span class="nav-number">1.1.</span> <span class="nav-text">显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制软件安装的来源"><span class="nav-number">1.2.</span> <span class="nav-text">控制软件安装的来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信小助手"><span class="nav-number">1.3.</span> <span class="nav-text">微信小助手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode设置"><span class="nav-number">2.</span> <span class="nav-text">Xcode设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码折叠"><span class="nav-number">2.1.</span> <span class="nav-text">代码折叠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双击打开新页面"><span class="nav-number">2.2.</span> <span class="nav-text">双击打开新页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟器路径"><span class="nav-number">2.3.</span> <span class="nav-text">模拟器路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode代码对齐"><span class="nav-number">2.4.</span> <span class="nav-text">Xcode代码对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">3.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS开发"><span class="nav-number">4.</span> <span class="nav-text">iOS开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打印"><span class="nav-number">4.1.</span> <span class="nav-text">打印</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全球地图SDK"><span class="nav-number">4.2.</span> <span class="nav-text">全球地图SDK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CocoaPods"><span class="nav-number">5.</span> <span class="nav-text">CocoaPods</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac"><span class="nav-number">1.</span> <span class="nav-text">Mac</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示隐藏文件"><span class="nav-number">1.1.</span> <span class="nav-text">显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制软件安装的来源"><span class="nav-number">1.2.</span> <span class="nav-text">控制软件安装的来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信小助手"><span class="nav-number">1.3.</span> <span class="nav-text">微信小助手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode设置"><span class="nav-number">2.</span> <span class="nav-text">Xcode设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码折叠"><span class="nav-number">2.1.</span> <span class="nav-text">代码折叠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双击打开新页面"><span class="nav-number">2.2.</span> <span class="nav-text">双击打开新页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟器路径"><span class="nav-number">2.3.</span> <span class="nav-text">模拟器路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode代码对齐"><span class="nav-number">2.4.</span> <span class="nav-text">Xcode代码对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">3.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全球地图SDK"><span class="nav-number">4.</span> <span class="nav-text">全球地图SDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CocoaPods"><span class="nav-number">5.</span> <span class="nav-text">CocoaPods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目报错"><span class="nav-number">6.</span> <span class="nav-text">项目报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FLEX配置"><span class="nav-number">7.</span> <span class="nav-text">FLEX配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行项目时一直报variables-may-not-be-available"><span class="nav-number">8.</span> <span class="nav-text">运行项目时一直报variables may not be available</span></a></li></ol></div>
             
 
           </div>
@@ -737,7 +769,7 @@ CocoaPods 索引文件都在这个
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -751,7 +783,7 @@ CocoaPods 索引文件都在这个
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">30.2k</span>
+    <span title="总字数">34.7k</span>
   
 </div>
 
