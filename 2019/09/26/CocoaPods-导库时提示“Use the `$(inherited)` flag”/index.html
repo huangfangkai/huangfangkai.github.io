@@ -89,7 +89,10 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_2.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_3.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_4.png">
-<meta property="og:updated_time" content="2019-10-08T03:16:41.301Z">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_5.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_6.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_7.png">
+<meta property="og:updated_time" content="2020-05-26T07:52:18.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CocoaPods 导库时提示- Use the `$(inherited)` flag, or - Remove the build settings from the target”">
 <meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/CocoaPods导库错误_1.png">
@@ -350,7 +353,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  266
+                  352
                 </span>
               
 
@@ -403,6 +406,16 @@
 </ol>
 <p>无论<strong>方法1</strong>或者<strong>方法2</strong>完成后都必须执行<code>pod update</code></p>
 <p><img src="/assets/blogImg/CocoaPods导库错误_4.png" alt="完成" title="完成"></p>
+<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><pre><code>[!]The 你的工程名字 [Debug] target overrides the ENABLE_BITCODE build setting defined in `Pods/Target Support Files/Pods-HQECNewVersion/Pods-HQECNewVersion.debug.xcconfig&apos;.
+</code></pre><p><img src="/assets/blogImg/CocoaPods导库错误_5.png" alt="ENABLE_BITCODE" title="ENABLE_BITCODE"></p>
+<p>同理：</p>
+<ol>
+<li>打开工程所在文件夹，找到<code>.xcodeproj</code>文件，右键选择<code>显示包内容</code>，找到<code>project.pbxproj</code>文件</li>
+<li>打开<code>project.pbxproj</code>文件，查找<code>ENABLE_BITCODE</code>这些相关的内容都删除</li>
+</ol>
+<p><img src="/assets/blogImg/CocoaPods导库错误_6.png" alt="ENABLE_BITCODE删除" title="ENABLE_BITCODE 删除"></p>
+<p>然后执行<code>pod update</code>。</p>
+<p><img src="/assets/blogImg/CocoaPods导库错误_7.png" alt="pod update" title="pod update"></p>
 
       
     </div>
@@ -547,8 +560,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -653,6 +675,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题2"><span class="nav-number">1.</span> <span class="nav-text">问题2</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -680,7 +718,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">37.1k</span>
+    <span title="总字数">37.2k</span>
   
 </div>
 

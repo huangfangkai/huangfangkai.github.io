@@ -261,9 +261,9 @@ func SPDLog&amp;lt;T&amp;gt;(_ message : T,fileName : String = #file,line : Int 
       <category term="Mac" scheme="http://www.hfkstackoverflow.top/categories/Mac/"/>
     
     
-      <category term="Xcode" scheme="http://www.hfkstackoverflow.top/tags/Xcode/"/>
-    
       <category term="Mac" scheme="http://www.hfkstackoverflow.top/tags/Mac/"/>
+    
+      <category term="Xcode" scheme="http://www.hfkstackoverflow.top/tags/Xcode/"/>
     
   </entry>
   
@@ -516,9 +516,9 @@ func SPDLog&amp;lt;T&amp;gt;(_ message : T,fileName : String = #file,line : Int 
     <link href="http://www.hfkstackoverflow.top/2019/09/26/CocoaPods-%E5%AF%BC%E5%BA%93%E6%97%B6%E6%8F%90%E7%A4%BA%E2%80%9CUse%20the%20%60$(inherited)%60%20flag%E2%80%9D/"/>
     <id>http://www.hfkstackoverflow.top/2019/09/26/CocoaPods-导库时提示“Use the `$(inherited)` flag”/</id>
     <published>2019-09-26T02:35:20.000Z</published>
-    <updated>2019-10-08T03:16:41.301Z</updated>
+    <updated>2020-05-26T07:52:18.550Z</updated>
     
-    <content type="html"><![CDATA[<p> <img src="/assets/blogImg/CocoaPods导库错误_1.png" alt="CocoaPods导库提示" title="CocoaPods导库提示"></p><a id="more"></a><p>这种警告是不能忽视的，如果不解决，它带来的直接后果就是无法通过编译,会出现由于部分库文件找不到而导致的种种问题：</p><ol><li><p>编译失败，抛出<code>Undefined symbols for architecture i386</code>错误</p></li><li><p>调用库中的方法，抛出<code>unrecognized selector sent to instance</code>错误</p></li></ol><p>而产生此警告的原因是项目<code>Target</code>中的一些设置，<code>CocoaPods</code>也做了默认的设置，如果两个设置结果不一致，就会造成问题。</p><p>解决方法：</p><p><strong>方法1(粗暴)</strong></p><ol><li>打开工程所在文件夹，找到<code>.xcodeproj</code>文件，右键选择<code>显示包内容</code>，找到<code>project.pbxproj</code>文件</li><li>打开<code>project.pbxproj</code>文件，查找<code>PODS_ROOT</code>，<code>LIBRARY_SEARCH_PATHS</code>，<code>HEADER_SEARCH_PATHS</code>，<code>LIBRARY_SEARCH_PATHS</code>，<code>OTHER_LDFLAGS</code>把和这些相关的内容都删除</li></ol><p><strong>方法2</strong></p><ol><li>打开项目<code>Target</code> –&gt; <code>building settings</code>中搜索下面的</li><li><p><code>Header Search Paths</code>和<code>Other Linker Flags</code>，在对应的工程中把<code>$(inherited)</code>加进去即可</p><p> <img src="/assets/blogImg/CocoaPods导库错误_2.png" alt="building settings设置" title="building settings设置"></p></li><li><p><strong>Swift项目中</strong> <code>Always Embed Swift Standard Libraries</code>，值类型是<code>bool</code>，点击<code>other</code>，把值换成<code>$(inherited)</code></p><p> <img src="/assets/blogImg/CocoaPods导库错误_3.png" alt="Always Embed Swift Standard Libraries" title="Always Embed Swift Standard Libraries设置"></p></li></ol><p>无论<strong>方法1</strong>或者<strong>方法2</strong>完成后都必须执行<code>pod update</code></p><p><img src="/assets/blogImg/CocoaPods导库错误_4.png" alt="完成" title="完成"></p>]]></content>
+    <content type="html"><![CDATA[<p> <img src="/assets/blogImg/CocoaPods导库错误_1.png" alt="CocoaPods导库提示" title="CocoaPods导库提示"></p><a id="more"></a><p>这种警告是不能忽视的，如果不解决，它带来的直接后果就是无法通过编译,会出现由于部分库文件找不到而导致的种种问题：</p><ol><li><p>编译失败，抛出<code>Undefined symbols for architecture i386</code>错误</p></li><li><p>调用库中的方法，抛出<code>unrecognized selector sent to instance</code>错误</p></li></ol><p>而产生此警告的原因是项目<code>Target</code>中的一些设置，<code>CocoaPods</code>也做了默认的设置，如果两个设置结果不一致，就会造成问题。</p><p>解决方法：</p><p><strong>方法1(粗暴)</strong></p><ol><li>打开工程所在文件夹，找到<code>.xcodeproj</code>文件，右键选择<code>显示包内容</code>，找到<code>project.pbxproj</code>文件</li><li>打开<code>project.pbxproj</code>文件，查找<code>PODS_ROOT</code>，<code>LIBRARY_SEARCH_PATHS</code>，<code>HEADER_SEARCH_PATHS</code>，<code>LIBRARY_SEARCH_PATHS</code>，<code>OTHER_LDFLAGS</code>把和这些相关的内容都删除</li></ol><p><strong>方法2</strong></p><ol><li>打开项目<code>Target</code> –&gt; <code>building settings</code>中搜索下面的</li><li><p><code>Header Search Paths</code>和<code>Other Linker Flags</code>，在对应的工程中把<code>$(inherited)</code>加进去即可</p><p> <img src="/assets/blogImg/CocoaPods导库错误_2.png" alt="building settings设置" title="building settings设置"></p></li><li><p><strong>Swift项目中</strong> <code>Always Embed Swift Standard Libraries</code>，值类型是<code>bool</code>，点击<code>other</code>，把值换成<code>$(inherited)</code></p><p> <img src="/assets/blogImg/CocoaPods导库错误_3.png" alt="Always Embed Swift Standard Libraries" title="Always Embed Swift Standard Libraries设置"></p></li></ol><p>无论<strong>方法1</strong>或者<strong>方法2</strong>完成后都必须执行<code>pod update</code></p><p><img src="/assets/blogImg/CocoaPods导库错误_4.png" alt="完成" title="完成"></p><h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><pre><code>[!]The 你的工程名字 [Debug] target overrides the ENABLE_BITCODE build setting defined in `Pods/Target Support Files/Pods-HQECNewVersion/Pods-HQECNewVersion.debug.xcconfig&apos;.</code></pre><p><img src="/assets/blogImg/CocoaPods导库错误_5.png" alt="ENABLE_BITCODE" title="ENABLE_BITCODE"></p><p>同理：</p><ol><li>打开工程所在文件夹，找到<code>.xcodeproj</code>文件，右键选择<code>显示包内容</code>，找到<code>project.pbxproj</code>文件</li><li>打开<code>project.pbxproj</code>文件，查找<code>ENABLE_BITCODE</code>这些相关的内容都删除</li></ol><p><img src="/assets/blogImg/CocoaPods导库错误_6.png" alt="ENABLE_BITCODE删除" title="ENABLE_BITCODE 删除"></p><p>然后执行<code>pod update</code>。</p><p><img src="/assets/blogImg/CocoaPods导库错误_7.png" alt="pod update" title="pod update"></p>]]></content>
     
     <summary type="html">
     
@@ -551,9 +551,9 @@ func SPDLog&amp;lt;T&amp;gt;(_ message : T,fileName : String = #file,line : Int 
       <category term="Mac" scheme="http://www.hfkstackoverflow.top/categories/Mac/"/>
     
     
-      <category term="Mac" scheme="http://www.hfkstackoverflow.top/tags/Mac/"/>
-    
       <category term="Tool" scheme="http://www.hfkstackoverflow.top/tags/Tool/"/>
+    
+      <category term="Mac" scheme="http://www.hfkstackoverflow.top/tags/Mac/"/>
     
   </entry>
   
