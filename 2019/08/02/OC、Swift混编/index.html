@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_10.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_11.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_12.png">
-<meta property="og:updated_time" content="2019-10-17T08:25:48.834Z">
+<meta property="og:updated_time" content="2020-03-20T05:47:07.628Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC、Swift混编">
 <meta name="twitter:description" content="在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。">
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  812
+                  983
                 </span>
               
 
@@ -427,14 +427,14 @@
 <p>  <img src="/assets/blogImg/OC、Swift混编_7.png" alt="Objective-C Generated interface Header Name" title="Objective-C Generated interface Header Name"></p>
 </li>
 <li><p>新建一个<code>SwiftTest</code>的<code>Swift</code>文件，写一个<code>Swift</code>的函数</p>
-<p><strong>注意：</strong><code>Swift</code>的类需要能够被<code>OC</code>调用，那么它暴露给<code>OC</code>的方法和属性前面必须添加<code>@objc</code>，如下图</p>
+<p><strong>注意⚠️：</strong><code>Swift</code>的类需要能够被<code>OC</code>调用，那么它暴露给<code>OC</code>的方法和属性前面必须添加<code>@objc</code>，如下图</p>
 <p>  <img src="/assets/blogImg/OC、Swift混编_8.png" alt="测试OC调用Swift" title="测试OC调用Swift"></p>
 </li>
 <li><p><code>OC</code>中调用<code>Swift</code>方法，必须在文件中导入<code>ProductName-Swift.h</code>，这个是不会联想的，必须手动输入，如下图</p>
 <p>  <img src="/assets/blogImg/OC、Swift混编_9.png" alt="OC调用Swift方法" title="OC调用Swift方法"></p>
 </li>
 </ol>
-<p><strong>注意：</strong>中途我们可能需要改项目的名称，那样可能会导致报错，如下</p>
+<p><strong>注意⚠️：</strong>中途我们可能需要改项目的名称，那样可能会导致报错，如下</p>
 <pre><code>&apos;ProductName-Swift.h&apos; file not found
 </code></pre><p>这时候我们需要在<code>info.plist</code>加入<code>Bundle display name</code>，然后写入相应需要更改名称即可。</p>
 <h2 id="OC引入Swift的framework"><a href="#OC引入Swift的framework" class="headerlink" title="OC引入Swift的framework"></a><strong>OC引入Swift的framework</strong></h2><ol>
@@ -448,11 +448,24 @@
 <p>  <img src="/assets/blogImg/OC、Swift混编_12.png" alt="调用framework" title="调用framework"></p>
 </li>
 </ol>
+<h2 id="OC项目中使用Swift版的pod"><a href="#OC项目中使用Swift版的pod" class="headerlink" title="OC项目中使用Swift版的pod"></a><strong>OC项目中使用Swift版的pod</strong></h2><p>在<code>Podfile</code>文件中添加 <code>use_frameworks!</code></p>
+<pre><code>- 用cocoapods 导入swift库时 到 swift项目和OC项目都必须要 use_frameworks!
+- 使用 dynamic frameworks，必须要在Podfile文件中添加 use_frameworks!
+</code></pre><hr>
+<pre><code>//Podfile文件
+platform :ios, &apos;9.0&apos;
+source &apos;https://github.com/CocoaPods/Specs.git&apos;
+target &apos;xxx&apos; do
+  # Uncomment the next line if you&apos;re using Swift or would like to use dynamic frameworks
+  use_frameworks!
+end
+</code></pre><p><strong>注意⚠️：</strong><code>OC</code>项目中使用了<code>use_frameworks！</code>后<code>#import &quot;AFNetworking.h&quot;</code> 需要改成<code>#import &quot;AFNetworking/AFNetworking.h&quot;</code>,类似的其他库的引用方式都需要修改;</p>
 <p>##注意</p>
 <ol>
 <li><strong><code>Swift</code>引入<code>OC</code>：</strong>必须建立<code>桥接文件</code>，<code>桥接文件</code>是用于在<code>Swift</code>中访问<code>OC</code>的类，名称格式为<code>ProductName-Bridging-Header.h</code></li>
 <li><strong><code>OC</code>引入<code>Swift</code>：</strong>必须在文件中导入<code>ProductName-Swift.h</code>，另外<code>Swift</code>暴露给<code>OC</code>的方法和属性前面必须添加<code>@objc</code></li>
 <li><strong><code>OC</code>引入<code>Swift</code>的<code>framework</code>：</strong><code>Embedded Binaries</code>下添加进去相应的<code>framework</code>，例如导入<code>#import &lt;AWSDK/AWSDK-Swift.h&gt;</code></li>
+<li><code>OC</code>项目中使用了<code>use_frameworks！</code>后<code>#import &quot;AFNetworking.h&quot;</code> 需要改成<code>#import &quot;AFNetworking/AFNetworking.h&quot;</code>,类似的其他库的引用方式都需要修改;</li>
 </ol>
 
       
@@ -627,7 +640,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -649,7 +662,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -724,7 +737,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#混编说明"><span class="nav-number">1.</span> <span class="nav-text">混编说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swift引入OC"><span class="nav-number">2.</span> <span class="nav-text">Swift引入OC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OC引入Swift"><span class="nav-number">3.</span> <span class="nav-text">OC引入Swift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OC引入Swift的framework"><span class="nav-number">4.</span> <span class="nav-text">OC引入Swift的framework</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#混编说明"><span class="nav-number">1.</span> <span class="nav-text">混编说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swift引入OC"><span class="nav-number">2.</span> <span class="nav-text">Swift引入OC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OC引入Swift"><span class="nav-number">3.</span> <span class="nav-text">OC引入Swift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OC引入Swift的framework"><span class="nav-number">4.</span> <span class="nav-text">OC引入Swift的framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OC项目中使用Swift版的pod"><span class="nav-number">5.</span> <span class="nav-text">OC项目中使用Swift版的pod</span></a></li></ol></div>
             
 
           </div>
@@ -758,7 +771,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">34.7k</span>
+    <span title="总字数">37.2k</span>
   
 </div>
 

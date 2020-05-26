@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/LaunchScreen.storyboard启动图适配_11.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/LaunchScreen.storyboard启动图适配_12.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/LaunchScreen.storyboard启动图适配_13.png">
-<meta property="og:updated_time" content="2020-03-19T08:07:33.543Z">
+<meta property="og:updated_time" content="2020-03-19T10:26:00.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaunchScreen.storyboard启动图适配">
 <meta name="twitter:description" content="前言iOS 8之前我们都是通过LaunchImage来设置启动图，随着苹果设备的更新，尺寸也越来越多，这时候我们需要设置各种设备的启动图，而且每次增加新的尺寸的设备都需要添加相应尺寸的启动图，这个比较麻烦。因此iOS 8苹果引入了LaunchScreen.storyboard，支持了AutoLayout 和 SizeClass，这样能够更加方便的适配各种屏幕。">
@@ -388,7 +388,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>iOS 8</code>之前我们都是通过<code>LaunchImage</code>来设置启动图，随着苹果设备的更新，尺寸也越来越多，这时候我们需要设置各种设备的启动图，而且每次增加新的尺寸的设备都需要添加相应尺寸的启动图，这个比较麻烦。因此<code>iOS 8</code>苹果引入了<code>LaunchScreen.storyboard</code>，支持了<code>AutoLayout</code> 和 <code>SizeClass</code>，这样能够更加方便的适配各种屏幕。<br><a id="more"></a><br>注意⚠️：苹果提出<a href="https://developer.apple.com/videos/play/wwdc2019/224/" target="_blank" rel="noopener">内容</a>从2020年4月份开始，所有支持<code>iOS 13</code>的<code>App</code>必须提供<code>LaunchScreen.storyboard</code>，否则将无法提交到<code>App Store</code>进行审核。</p>
-<p>因为最近提交<code>App</code>到<code>App Store</code>提示2020年4月份必须适配<code>iOS 13</code>，所以就<a href="https://www.jianshu.com/p/1029d924c53a" target="_blank" rel="noopener">适配iOS 13</a>的同时，把<code>LaunchScreen.storyboard</code>也给处理了。</p>
+<p>因为最近提交<code>App</code>到<code>App Store</code>提示2020年4月份必须适配<code>iOS 13</code>，所以就<a href="http://www.hfkstackoverflow.top/2019/10/14/iOS13%E9%80%82%E9%85%8D/">适配iOS 13</a>的同时，把<code>LaunchScreen.storyboard</code>也给处理了。</p>
 <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h3 id="方案1：使用一张通用图片"><a href="#方案1：使用一张通用图片" class="headerlink" title="方案1：使用一张通用图片"></a>方案1：使用一张通用图片</h3><p>这种方案没什么难度，主要是在<code>LaunchScreen.storyboard</code>中添加图片并设置好约束，然后将准备好的图片设置好即可。这种方案在不同设备上可能会出现不同程度的裁剪。</p>
 <h3 id="方案2：使用一套图片-主要介绍"><a href="#方案2：使用一套图片-主要介绍" class="headerlink" title="方案2：使用一套图片(主要介绍)"></a>方案2：使用一套图片(主要介绍)</h3><p>因为公司项目需要，不希望出现裁剪的效果，因此要做成<code>LaunchImage</code>的效果。</p>
 <p><strong>iPhone尺寸如下图：</strong></p>
@@ -604,6 +604,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/05/07/AFNetWorking中去除UIWebView/" rel="prev" title="AFNetWorking中去除UIWebView">
+                AFNetWorking中去除UIWebView <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -688,7 +692,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -710,7 +714,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -819,7 +823,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">34.7k</span>
+    <span title="总字数">37.2k</span>
   
 </div>
 
