@@ -87,21 +87,22 @@
 <meta property="og:site_name" content="HFK">
 <meta property="og:description" content="Universal Links在app开发中我们经常需要从浏览器，Safari中去唤醒app，iOS 9之前我们通过配置scheme从而实现这种跳转，但是这种方式需要提前判断系统中是否安装了能够响应对应scheme的app，这种方式在微信中是被禁用的。 Universal Links是iOS 9推出的一项功能，我们可以通过配置Universal Links使用户能够通过一个链接进入app或者指定页">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
-<meta property="og:updated_time" content="2020-05-26T05:42:59.769Z">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_1.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_2.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_3.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_4.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_5.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_6.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_7.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_8.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_9.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_10.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_11.png">
+<meta property="og:updated_time" content="2020-05-26T05:49:36.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS通用链接(Universal Links)配置">
 <meta name="twitter:description" content="Universal Links在app开发中我们经常需要从浏览器，Safari中去唤醒app，iOS 9之前我们通过配置scheme从而实现这种跳转，但是这种方式需要提前判断系统中是否安装了能够响应对应scheme的app，这种方式在微信中是被禁用的。 Universal Links是iOS 9推出的一项功能，我们可以通过配置Universal Links使用户能够通过一个链接进入app或者指定页">
-<meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接(UniversalLinks">
+<meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_1.png">
 
 
 
@@ -359,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1k
                 </span>
               
 
@@ -407,20 +408,20 @@
 }
 </code></pre><p> <strong>注意⚠️：</strong></p>
 <p>  <strong>appID组成</strong>：TeamId.your app’s bundle identifier。这里我随意填的，<code>2DNT4K53X5</code>表示你<code>app</code>的<code>TeamId</code>，<code>com.apple.wwdc</code>表示<code>app</code>的bundle identifier。其中<code>TeamId</code>你需要登陆相关开发者账号，到<code>Account - Membership</code>中去获取，如下图：</p>
-<pre><code>![TeamId获取](/assets/blogImg/iOS通用链接(UniversalLinks)配置_1.png &quot;TeamId获取&quot;)
-</code></pre><p> <strong>paths组成</strong>：设定你的app支持的路径列表，只有这些指定的路径的链接，才能被app所处理。<code>*</code>的写法代表了可识别域名下所有链接。</p>
+<p> <img src="/assets/blogImg/iOS通用链接配置_1.png" alt="TeamId获取" title="TeamId获取"></p>
+<p> <strong>paths组成</strong>：设定你的app支持的路径列表，只有这些指定的路径的链接，才能被app所处理。<code>*</code>的写法代表了可识别域名下所有链接。</p>
 </li>
 <li><p>将这个文件上传到你的域名对应的根目录或者<code>.well-known</code>目录下(需要后端配合)，这样苹果将会在合适的时候，从该域名请求这个文件。我们可以自己测试，即打开<code>你的域名/apple-app-site-association</code>，看看我们能不能够下载到对应的文件。</p>
 </li>
 <li><p>然后我们需要在<code>app</code>中进行相关配置。之前我们需要在对应<code>App Id</code>的<code>Application Services</code>列表中加入<code>Associated Domains</code>，使它变成<code>Enabled</code>。现在<code>Xcode</code>会帮我们自动配置，我们只需要在项目中加入<code>Associated Domains</code>，然后在<code>Domains</code>中加入相应链接，如下图：</p>
-<p><img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="增加Associated Domains">配置_2.png “增加Associated Domains”)</p>
-<p><img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="Associated Domains链接配置">配置_3.png “Associated Domains链接配置”)</p>
-<p><img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="Application Services显示">配置_4.png “Application Services显示”)</p>
+<p><img src="/assets/blogImg/iOS通用链接配置_2.png" alt="增加Associated Domains" title="增加Associated Domains"></p>
+<p><img src="/assets/blogImg/iOS通用链接配置_3.png" alt="Associated Domains链接配置" title="Associated Domains链接配置"></p>
+<p><img src="/assets/blogImg/iOS通用链接配置_4.png" alt="Application Services显示" title="Application Services显示"></p>
 </li>
 </ol>
 <p><strong>注意⚠️：</strong> <code>Domains</code>中加入的链接，必须以 <code>applinks:</code>开头，然后去除你的域名前的<code>Https</code>以及最后的<code>/</code>,例如你的域名是<code>https://www.apple.wwdc.com/</code>，那么<code>Domains</code>中加入的就是<code>applinks:www.apple.wwdc.com</code>。</p>
 <h2 id="验证配置"><a href="#验证配置" class="headerlink" title="验证配置"></a>验证配置</h2><p>配置一个该域名下可以访问的链接地址，然后复制该链接到<code>Safari</code>中直接访问，然后在出现的网页中下拉，当出现<code>在“XXX”App中打开</code>即可，如下图：</p>
-<p> <img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="验证配置">配置_5.png “验证配置”)</p>
+<p> <img src="/assets/blogImg/iOS通用链接配置_5.png" alt="验证配置" title="验证配置"></p>
 <p><strong>注意⚠️：</strong> 只有当前<code>Webview</code>的<code>url</code>域名，与跳转目标<code>url</code>域名不一致时，<code>Universal Link</code> 才生效。</p>
 <h2 id="进入app后对链接进行处理"><a href="#进入app后对链接进行处理" class="headerlink" title="进入app后对链接进行处理"></a>进入app后对链接进行处理</h2><p>当用户点击对应的链接时，会直接进入<code>app</code>，如果我们需要监听链接并做出不同的处理，我们就需要在<code>AppDelegate</code>中实现对应的方法，否则就是直接进入<code>app</code>。</p>
 <pre><code>- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray&lt;id&lt;UIUserActivityRestoring&gt;&gt; * _Nullable))restorationHandler{
@@ -432,16 +433,16 @@
 }
 </code></pre><p><strong>注意⚠️：</strong> 该方法是在进入<code>app</code>之后才会进行调用</p>
 <h2 id="微信相关配置"><a href="#微信相关配置" class="headerlink" title="微信相关配置"></a>微信相关配置</h2><p>在使用旧版本微信<code>SDK</code>时，分享会出现<code>未验证</code>现象。这时候需要我们更新<code>SDK</code>并进行相应的<code>Universal Links</code>配置。</p>
-<p> <img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="微信分享未验证">配置_6.png “微信分享未验证”)</p>
+<p> <img src="/assets/blogImg/iOS通用链接配置_6.png" alt="微信分享未验证" title="微信分享未验证"></p>
 <h3 id="项目更新对应的微信SDK"><a href="#项目更新对应的微信SDK" class="headerlink" title="项目更新对应的微信SDK"></a>项目更新对应的微信<code>SDK</code></h3><pre><code>pod &apos;WechatOpenSDK&apos;, &apos;~&gt; 1.8.7.1&apos;
 或者
 直接导入相关SDK。
 </code></pre><h3 id="微信后台加入Universal-Links配置"><a href="#微信后台加入Universal-Links配置" class="headerlink" title="微信后台加入Universal Links配置"></a>微信后台加入<code>Universal Links</code>配置</h3><p>在微信后台加入你设置的域名配置，如<code>https://www.apple.wwdc.com/</code></p>
-<p> <img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="微信后台配置">配置_7.png “微信后台配置”)</p>
+<p> <img src="/assets/blogImg/iOS通用链接配置_7.png" alt="微信后台配置" title="微信后台配置"></p>
 <h3 id="app设置"><a href="#app设置" class="headerlink" title="app设置"></a>app设置</h3><ol>
 <li><p><code>Info.plist</code>和<code>Setting的info</code>中<code>LSApplicationQueriesSchemes</code>中加入<code>weixinULAPI</code></p>
-<p><img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="Info.plist配置">配置_8.png “Info.plist配置”)</p>
-<p><img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="info配置">配置_9.png “Info配置”)</p>
+<p><img src="/assets/blogImg/iOS通用链接配置_8.png" alt="Info.plist配置" title="Info.plist配置"></p>
+<p><img src="/assets/blogImg/iOS通用链接配置_9.png" alt="info配置" title="Info配置"></p>
 </li>
 </ol>
 <h3 id="微信提供了检测的方法"><a href="#微信提供了检测的方法" class="headerlink" title="微信提供了检测的方法"></a>微信提供了检测的方法</h3><pre><code> //调用自检函数
@@ -449,10 +450,10 @@
        NSLog(@&quot;%@, %u, %@, %@&quot;, @(step), result.success, result.errorInfo, result.suggestion);
        NSLog(@&quot;123&quot;);
    }];
-</code></pre><p><img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="微信自检结果">配置_10.png “微信自检结果”)</p>
+</code></pre><p><img src="/assets/blogImg/iOS通用链接配置_10.png" alt="微信自检结果" title="微信自检结果"></p>
 <p><strong>注意⚠️：</strong> 通过自检方法我们能够知道<code>Universal Links</code>配置是否成功。另外未验证问题不是实时更新的，你会发现你更新了<code>SDK</code>也不会立刻生效，需要等待从<code>未验证列表</code>中移除为止。</p>
 <p>最明显的就是效果就是只有第一次会通过微信验证，后面就不会再调用微信验证了。</p>
-<p><img src="/assets/blogImg/iOS通用链接(UniversalLinks" alt="效果图">配置_11.png “效果图”)</p>
+<p><img src="/assets/blogImg/iOS通用链接配置_11.png" alt="效果图" title="效果图"></p>
 
       
     </div>
@@ -753,7 +754,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">37.2k</span>
+    <span title="总字数">37.1k</span>
   
 </div>
 
