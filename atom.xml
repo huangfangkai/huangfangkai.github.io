@@ -348,9 +348,9 @@ func SPDLog&amp;lt;T&amp;gt;(_ message : T,fileName : String = #file,line : Int 
       <category term="Mac" scheme="http://www.hfkstackoverflow.top/categories/Mac/"/>
     
     
-      <category term="Xcode" scheme="http://www.hfkstackoverflow.top/tags/Xcode/"/>
-    
       <category term="Mac" scheme="http://www.hfkstackoverflow.top/tags/Mac/"/>
+    
+      <category term="Xcode" scheme="http://www.hfkstackoverflow.top/tags/Xcode/"/>
     
   </entry>
   
@@ -638,9 +638,9 @@ func SPDLog&amp;lt;T&amp;gt;(_ message : T,fileName : String = #file,line : Int 
       <category term="Mac" scheme="http://www.hfkstackoverflow.top/categories/Mac/"/>
     
     
-      <category term="Mac" scheme="http://www.hfkstackoverflow.top/tags/Mac/"/>
-    
       <category term="Tool" scheme="http://www.hfkstackoverflow.top/tags/Tool/"/>
+    
+      <category term="Mac" scheme="http://www.hfkstackoverflow.top/tags/Mac/"/>
     
   </entry>
   
