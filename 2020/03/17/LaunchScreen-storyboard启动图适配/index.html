@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/LaunchScreen.storyboard启动图适配_11.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/LaunchScreen.storyboard启动图适配_12.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/LaunchScreen.storyboard启动图适配_13.png">
-<meta property="og:updated_time" content="2020-03-19T10:26:00.450Z">
+<meta property="og:updated_time" content="2020-06-01T10:45:58.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaunchScreen.storyboard启动图适配">
 <meta name="twitter:description" content="前言iOS 8之前我们都是通过LaunchImage来设置启动图，随着苹果设备的更新，尺寸也越来越多，这时候我们需要设置各种设备的启动图，而且每次增加新的尺寸的设备都需要添加相应尺寸的启动图，这个比较麻烦。因此iOS 8苹果引入了LaunchScreen.storyboard，支持了AutoLayout 和 SizeClass，这样能够更加方便的适配各种屏幕。">
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  817
+                  988
                 </span>
               
 
@@ -517,6 +517,7 @@
 <p><img src="/assets/blogImg/LaunchScreen.storyboard启动图适配_11.png" alt="iPhone Xʀ" title="iPhone Xʀ"></p>
 <p><img src="/assets/blogImg/LaunchScreen.storyboard启动图适配_12.png" alt="iPhone Xs Max" title="iPhone Xs Max"></p>
 <p><img src="/assets/blogImg/LaunchScreen.storyboard启动图适配_13.png" alt="iPhone 11 Pro Max" title="iPhone 11 Pro Max"></p>
+<h3 id="方案3：将素材进行分割加载，当成普通的storyboard文件进行相关处理。"><a href="#方案3：将素材进行分割加载，当成普通的storyboard文件进行相关处理。" class="headerlink" title="方案3：将素材进行分割加载，当成普通的storyboard文件进行相关处理。"></a>方案3：将素材进行分割加载，当成普通的<code>storyboard</code>文件进行相关处理。</h3><p>这里就是将需要的启动图中的元素，包括<code>logo</code>，<code>文字</code>，<code>图片</code>等单独切出来，然后跟普通页面那样加载<code>UI</code>控件等。这就可以解决了不同尺寸屏幕的适配问题以及包资源体积增大的问题。好处就是包体积小了适配各种机型更灵活（但是背景图还是不可避免的要失去部分显示效果），不好的地方就是以后要是换开屏图，那么就要开发者有一定的工作量进行处理。</p>
 
       
     </div>
@@ -692,7 +693,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +704,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -714,7 +715,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -789,7 +790,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">2.</span> <span class="nav-text">方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案1：使用一张通用图片"><span class="nav-number">2.1.</span> <span class="nav-text">方案1：使用一张通用图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案2：使用一套图片-主要介绍"><span class="nav-number">2.2.</span> <span class="nav-text">方案2：使用一套图片(主要介绍)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤"><span class="nav-number">2.2.1.</span> <span class="nav-text">步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">3.</span> <span class="nav-text">效果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">2.</span> <span class="nav-text">方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案1：使用一张通用图片"><span class="nav-number">2.1.</span> <span class="nav-text">方案1：使用一张通用图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案2：使用一套图片-主要介绍"><span class="nav-number">2.2.</span> <span class="nav-text">方案2：使用一套图片(主要介绍)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤"><span class="nav-number">2.2.1.</span> <span class="nav-text">步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">3.</span> <span class="nav-text">效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案3：将素材进行分割加载，当成普通的storyboard文件进行相关处理。"><span class="nav-number">3.1.</span> <span class="nav-text">方案3：将素材进行分割加载，当成普通的storyboard文件进行相关处理。</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -823,7 +824,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">37.2k</span>
+    <span title="总字数">40.1k</span>
   
 </div>
 

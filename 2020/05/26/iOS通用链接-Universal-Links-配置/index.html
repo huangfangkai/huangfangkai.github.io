@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_9.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_10.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS通用链接配置_11.png">
-<meta property="og:updated_time" content="2020-05-26T05:49:36.450Z">
+<meta property="og:updated_time" content="2020-06-02T06:54:49.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS通用链接(Universal Links)配置">
 <meta name="twitter:description" content="Universal Links在app开发中我们经常需要从浏览器，Safari中去唤醒app，iOS 9之前我们通过配置scheme从而实现这种跳转，但是这种方式需要提前判断系统中是否安装了能够响应对应scheme的app，这种方式在微信中是被禁用的。 Universal Links是iOS 9推出的一项功能，我们可以通过配置Universal Links使用户能够通过一个链接进入app或者指定页">
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  1.1k
                 </span>
               
 
@@ -454,6 +454,17 @@
 <p><strong>注意⚠️：</strong> 通过自检方法我们能够知道<code>Universal Links</code>配置是否成功。另外未验证问题不是实时更新的，你会发现你更新了<code>SDK</code>也不会立刻生效，需要等待从<code>未验证列表</code>中移除为止。</p>
 <p>最明显的就是效果就是只有第一次会通过微信验证，后面就不会再调用微信验证了。</p>
 <p><img src="/assets/blogImg/iOS通用链接配置_11.png" alt="效果图" title="效果图"></p>
+<p><strong>注意⚠️：</strong>接入微信之后必须<code>- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray&lt;id&lt;UIUserActivityRestoring&gt;&gt; * _Nullable))restorationHandler</code>方法中加入<code>[WXApi handleOpenUniversalLink:userActivity delegate:self]</code>，否则会导致微信的回调<code>-(void)onReq:(BaseReq*)req</code>不执行。</p>
+<pre><code>- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray&lt;id&lt;UIUserActivityRestoring&gt;&gt; * _Nullable))restorationHandler{
+    NSLog(@&quot;userActivity : %@&quot;,userActivity.webpageURL.description);
+    if ([userActivity.webpageURL.description containsString:kAppID_Weixin]) {          // 微信调用
+        return [WXApi handleOpenUniversalLink:userActivity delegate:self];
+    }else if([userActivity.webpageURL.description rangeOfString:H5_JumpApp_CourseMark].location != NSNotFound){
+    //相应处理
+    }
+    return YES;
+}
+</code></pre><p><a href="https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Access_Guide/iOS.html" target="_blank" rel="noopener">微信文档</a></p>
 
       
     </div>
@@ -539,6 +550,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/05/26/GitHub添加SSH/" rel="prev" title="GitHub添加SSH">
+                GitHub添加SSH <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -623,7 +638,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -634,7 +649,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -645,7 +660,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -754,7 +769,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">37.2k</span>
+    <span title="总字数">40.1k</span>
   
 </div>
 
