@@ -743,9 +743,9 @@ func SPDLog&amp;lt;T&amp;gt;(_ message : T,fileName : String = #file,line : Int 
       <category term="iOS" scheme="http://www.hfkstackoverflow.top/categories/iOS/"/>
     
     
-      <category term="Tool" scheme="http://www.hfkstackoverflow.top/tags/Tool/"/>
-    
       <category term="Objective-C" scheme="http://www.hfkstackoverflow.top/tags/Objective-C/"/>
+    
+      <category term="Tool" scheme="http://www.hfkstackoverflow.top/tags/Tool/"/>
     
       <category term="Reveal" scheme="http://www.hfkstackoverflow.top/tags/Reveal/"/>
     
