@@ -99,7 +99,9 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_10.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_11.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_12.png">
-<meta property="og:updated_time" content="2020-06-08T06:10:10.469Z">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_13.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_14.png">
+<meta property="og:updated_time" content="2020-06-08T08:14:34.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS使用fastlane自动打包发布">
 <meta name="twitter:description" content="Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档 过程安装最新Xcode命令行工具xcode-select --install">
@@ -361,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  1.1k
                 </span>
               
 
@@ -486,7 +488,7 @@ brew cask install fastlane
 6 directories, 46 files
 </code></pre></li>
 </ol>
-<h3 id="安装所需插件"><a href="#安装所需插件" class="headerlink" title="安装所需插件"></a>安装所需插件</h3><p><code>Fastlane</code>的插件是一个或者一组<code>action</code>的打包，单独发布在<code>fastlane</code>之外。</p>
+<h3 id="安装所需插件"><a href="#安装所需插件" class="headerlink" title="安装所需插件"></a>安装所需插件</h3><p><code>Fastlane</code>的插件是一个或者一组<code>action</code>的打包，单独发布在<code>fastlane</code>之外。首次安装插件后会生成一个<code>Pluginfile</code>文件</p>
 <pre><code>#查看所有插件
 fastlane search_plugins
 
@@ -496,17 +498,26 @@ fastlane add_plugin [name]
 fastlane add_plugin versioning
 fastlane add_plugin firim
 fastlane add_plugin pgyer
-</code></pre><h4 id="插件说明"><a href="#插件说明" class="headerlink" title="插件说明"></a>插件说明</h4><p><strong>fastlane add_plugin versioning：</strong>用来修改 <code>build</code> 版本号和 <code>version</code> 版本号，<code>fastlane</code> 内嵌的<code>actionincrement_build_number</code>使用的是苹果提供的<code>agvtool</code>， 在更改<code>Build</code>的时候会改变所有<code>target</code>的版本号。如果你在一个工程里有多个<code>target</code>，每次编译，所有的<code>Build</code>都要加1。 有了<code>fastlane-plugin-versioning</code>不仅可以指定<code>target</code>增加<code>Build</code>，当然也可以直接设定<code>Version</code>， 并且可以指定版本号的版本<code>（major/miner/patch）</code>。</p>
+</code></pre><p>   <img src="/assets/blogImg/使用fastlane自动打包发布_13.png" alt="添加插件" title="添加插件"></p>
+<h4 id="插件说明"><a href="#插件说明" class="headerlink" title="插件说明"></a>插件说明</h4><p><strong>fastlane add_plugin versioning：</strong>用来修改 <code>build</code> 版本号和 <code>version</code> 版本号，<code>fastlane</code> 内嵌的<code>actionincrement_build_number</code>使用的是苹果提供的<code>agvtool</code>， 在更改<code>Build</code>的时候会改变所有<code>target</code>的版本号。如果你在一个工程里有多个<code>target</code>，每次编译，所有的<code>Build</code>都要加1。 有了<code>fastlane-plugin-versioning</code>不仅可以指定<code>target</code>增加<code>Build</code>，当然也可以直接设定<code>Version</code>， 并且可以指定版本号的版本<code>（major/miner/patch）</code>。</p>
 <p><strong>fastlane-plugin-pgyer：</strong>上传到蒲公英分发平台。</p>
 <p><strong>fastlane-plugin-firim：</strong>上传到<code>firim</code>。</p>
 <p><strong>注意⚠️：</strong>如果你需要发布到蒲公英或者<code>firim</code>必须提前安装插件，否则后面会操作失败。</p>
-<h3 id="Fastlane的文件配置"><a href="#Fastlane的文件配置" class="headerlink" title="Fastlane的文件配置"></a>Fastlane的文件配置</h3><p><strong>Appfile:</strong> 存储有关开发者账号相关信息。</p>
-<p><strong>Fastfile:</strong> 核心文件，主要用于 命令行调用和处理具体的流程，<code>lane</code>相对于一个方法或者函数。</p>
-<p><strong>Deliverfile:</strong> <code>deliver</code>工具的配置文件。</p>
-<p><strong>Metadata:</strong>元数据文件夹，截图文件夹。</p>
-<p><strong>Matchfile:</strong> <code>Match</code>操作对应的配置文件。</p>
-<p><strong>Gemfile:</strong>类似于<code>cocopods</code> 的<code>Podfile</code>文件。</p>
-<p><strong>.env:</strong> 配置环境变量（在<code>fastlane init</code>进行初始化后并不会自动生成，如果需要可以自己创建）。</p>
+<h3 id="Fastlane的文件配置"><a href="#Fastlane的文件配置" class="headerlink" title="Fastlane的文件配置"></a>Fastlane的文件配置</h3><p><strong>注意⚠️：</strong> <code>Fastlane</code>是使用<code>Ruby</code>写的，配置文件修改可以使用<code>VS Code</code>,然后下个<code>Ruby</code>插件这样方便修改。</p>
+<p><img src="/assets/blogImg/使用fastlane自动打包发布_14.png" alt="Ruby插件" title="Ruby插件"></p>
+<p>####<code>.env</code>:<br>配置环境变量（在<code>fastlane init</code>进行初始化后并不会自动生成，如果需要可以自己创建）。</p>
+<ol>
+<li><code>Appfile</code>: 存储有关开发者账号相关信息。</li>
+<li><code>Fastfile</code>: 核心文件，主要用于 命令行调用和处理具体的流程，<code>lane</code>相对于一个方法或者函数。 </li>
+<li><p><code>Deliverfile</code>: <code>deliver</code>工具的配置文件。</p>
+</li>
+<li><p><code>Metadata</code>:元数据文件夹，截图文件夹。</p>
+</li>
+<li><p><code>Matchfile</code>:<code>Match</code>操作对应的配置文件。</p>
+</li>
+<li><p><code>Gemfile</code>:类似于<code>cocopods</code> 的<code>Podfile</code>文件。</p>
+</li>
+</ol>
 
       
     </div>
