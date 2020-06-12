@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="前言日常开发中经常遇到等待多个任务执行完成之后再执行其他操作。 处理方案 一 一般我们都能想到使用dispatch_group_async、dispatch_group_notify结合使用 dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0); dispatch_group_t">
+<meta name="description" content="前言日常开发中经常遇到等待多个任务执行完成之后再执行其他操作。">
 <meta name="keywords" content="GCD,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用GCD控制多任务顺序">
 <meta property="og:url" content="http://www.hfkstackoverflow.top/2020/05/29/使用GCD控制多任务顺序/index.html">
 <meta property="og:site_name" content="HFK">
-<meta property="og:description" content="前言日常开发中经常遇到等待多个任务执行完成之后再执行其他操作。 处理方案 一 一般我们都能想到使用dispatch_group_async、dispatch_group_notify结合使用 dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0); dispatch_group_t">
+<meta property="og:description" content="前言日常开发中经常遇到等待多个任务执行完成之后再执行其他操作。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用GCD控制多任务顺序_1.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用GCD控制多任务顺序_2.png">
-<meta property="og:updated_time" content="2020-06-03T09:46:28.866Z">
+<meta property="og:updated_time" content="2020-06-09T02:18:28.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用GCD控制多任务顺序">
-<meta name="twitter:description" content="前言日常开发中经常遇到等待多个任务执行完成之后再执行其他操作。 处理方案 一 一般我们都能想到使用dispatch_group_async、dispatch_group_notify结合使用 dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0); dispatch_group_t">
+<meta name="twitter:description" content="前言日常开发中经常遇到等待多个任务执行完成之后再执行其他操作。">
 <meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用GCD控制多任务顺序_1.png">
 
 
@@ -376,7 +376,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>日常开发中经常遇到等待多个任务执行完成之后再执行其他操作。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>日常开发中经常遇到等待多个任务执行完成之后再执行其他操作。<br><a id="more"></a></p>
 <h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><h3 id="方案-一"><a href="#方案-一" class="headerlink" title="方案 一"></a>方案 一</h3><p> 一般我们都能想到使用<code>dispatch_group_async</code>、<code>dispatch_group_notify</code>结合使用</p>
 <pre><code>dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 dispatch_group_t group = dispatch_group_create();
@@ -789,7 +789,7 @@ dispatch_group_notify(group, dispatch_get_main_queue(), ^{
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">40.1k</span>
+    <span title="总字数">43.5k</span>
   
 </div>
 

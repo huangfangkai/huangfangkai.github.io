@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档 过程安装最新Xcode命令行工具xcode-select --install">
+<meta name="description" content="前言Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档">
 <meta name="keywords" content="iOS,fastlane,自动发布">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS使用fastlane自动打包发布">
 <meta property="og:url" content="http://www.hfkstackoverflow.top/2020/06/05/iOS使用fastlane自动打包发布/index.html">
 <meta property="og:site_name" content="HFK">
-<meta property="og:description" content="Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档 过程安装最新Xcode命令行工具xcode-select --install">
+<meta property="og:description" content="前言Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_1.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_2.png">
@@ -101,10 +101,13 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_12.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_13.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_14.png">
-<meta property="og:updated_time" content="2020-06-08T08:14:34.509Z">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_15.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_16.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_17.png">
+<meta property="og:updated_time" content="2020-06-12T03:01:08.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS使用fastlane自动打包发布">
-<meta name="twitter:description" content="Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档 过程安装最新Xcode命令行工具xcode-select --install">
+<meta name="twitter:description" content="前言Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档">
 <meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_1.png">
 
 
@@ -363,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  4.4k
                 </span>
               
 
@@ -389,16 +392,16 @@
 
       
         <p> <img src="/assets/blogImg/使用fastlane自动打包发布_1.png" alt="fastlane" title="fastlane"></p>
-<p><a href="https://fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane</strong></a>是一套使用<code>Ruby</code>写的自动化工具集，目的是为了简化<code>Android</code>和<code>iOS</code>的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布<code>App</code>。这里主要是为了记录一次自己<code>Mac</code>环境下配置<code>fastlane</code>的过程。下图是<code>Fastlane</code>的主要流程和功能</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane</strong></a>是一套使用<code>Ruby</code>写的自动化工具集，目的是为了简化<code>Android</code>和<code>iOS</code>的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布<code>App</code>。这里主要是为了记录一次自己<code>Mac</code>环境下配置<code>fastlane</code>的过程。下图是<code>Fastlane</code>的主要流程和功能</p>
 <p> <img src="/assets/blogImg/使用fastlane自动打包发布_2.png" alt="fastlane流程" title="fastlane流程"></p>
-<p><a href="https://docs.fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane文档</strong></a></p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="安装最新Xcode命令行工具"><a href="#安装最新Xcode命令行工具" class="headerlink" title="安装最新Xcode命令行工具"></a>安装最新Xcode命令行工具</h3><pre><code>xcode-select --install
+<p><a href="https://docs.fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane文档</strong></a><br><a id="more"></a></p>
+<h2 id="安装最新Xcode命令行工具"><a href="#安装最新Xcode命令行工具" class="headerlink" title="安装最新Xcode命令行工具"></a>安装最新Xcode命令行工具</h2><pre><code>xcode-select --install
 </code></pre><p>如果你没有安装，会弹出对话框，点击安装即可。</p>
 <p> <img src="/assets/blogImg/使用fastlane自动打包发布_3.png" alt="命令行工具提示" title="命令行工具提示"></p>
 <p>如果你已经安装过了，会有如下提示</p>
 <pre><code>xcode-select: error: command line tools are already installed, use &quot;Software Update&quot; to install updates
 </code></pre><p> <img src="/assets/blogImg/使用fastlane自动打包发布_4.png" alt="命令行工具已安装提示" title="命令行工具已安装提示"></p>
-<h3 id="Fastlane安装"><a href="#Fastlane安装" class="headerlink" title="Fastlane安装"></a>Fastlane安装</h3><pre><code>sudo gem install fastlane -NV
+<h2 id="Fastlane安装"><a href="#Fastlane安装" class="headerlink" title="Fastlane安装"></a>Fastlane安装</h2><pre><code>sudo gem install fastlane -NV
 或者
 brew cask install fastlane
 </code></pre><p>推荐使用<code>RubyGems</code>安装。</p>
@@ -408,7 +411,7 @@ brew cask install fastlane
 <p>安装完成后可以执行<code>fastlane -v</code>检查是否安装成功.</p>
 <pre><code>fastlane -v
 </code></pre><p> <img src="/assets/blogImg/使用fastlane自动打包发布_6.png" alt="Fastlane安装检验" title="Fastlane安装检验"></p>
-<h3 id="初始化Fastlane"><a href="#初始化Fastlane" class="headerlink" title="初始化Fastlane"></a>初始化Fastlane</h3><ol>
+<h2 id="初始化Fastlane"><a href="#初始化Fastlane" class="headerlink" title="初始化Fastlane"></a>初始化Fastlane</h2><ol>
 <li><p><code>cd</code>到你的项目根目录下</p>
 <pre><code>fastlane init
 </code></pre><p><strong>注意⚠️：</strong>如果你的工程是用<code>cocoapods</code>的那么可能会提示让你勾选工程的<code>Scheme</code>；步骤就是打开你的<code>xcode</code>–&gt;<code>Manage Schemes</code>–&gt;<code>Scheme</code>–&gt;后面的多选框中进行勾选,然后可以手动删除 <code>fastlane</code>文件夹，重新<code>fastlane init</code>一下。</p>
@@ -488,7 +491,7 @@ brew cask install fastlane
 6 directories, 46 files
 </code></pre></li>
 </ol>
-<h3 id="安装所需插件"><a href="#安装所需插件" class="headerlink" title="安装所需插件"></a>安装所需插件</h3><p><code>Fastlane</code>的插件是一个或者一组<code>action</code>的打包，单独发布在<code>fastlane</code>之外。首次安装插件后会生成一个<code>Pluginfile</code>文件</p>
+<h2 id="安装所需插件"><a href="#安装所需插件" class="headerlink" title="安装所需插件"></a>安装所需插件</h2><p><code>Fastlane</code>的插件是一个或者一组<code>action</code>的打包，单独发布在<code>fastlane</code>之外。首次安装插件后会生成一个<code>Pluginfile</code>文件</p>
 <pre><code>#查看所有插件
 fastlane search_plugins
 
@@ -499,25 +502,623 @@ fastlane add_plugin versioning
 fastlane add_plugin firim
 fastlane add_plugin pgyer
 </code></pre><p>   <img src="/assets/blogImg/使用fastlane自动打包发布_13.png" alt="添加插件" title="添加插件"></p>
-<h4 id="插件说明"><a href="#插件说明" class="headerlink" title="插件说明"></a>插件说明</h4><p><strong>fastlane add_plugin versioning：</strong>用来修改 <code>build</code> 版本号和 <code>version</code> 版本号，<code>fastlane</code> 内嵌的<code>actionincrement_build_number</code>使用的是苹果提供的<code>agvtool</code>， 在更改<code>Build</code>的时候会改变所有<code>target</code>的版本号。如果你在一个工程里有多个<code>target</code>，每次编译，所有的<code>Build</code>都要加1。 有了<code>fastlane-plugin-versioning</code>不仅可以指定<code>target</code>增加<code>Build</code>，当然也可以直接设定<code>Version</code>， 并且可以指定版本号的版本<code>（major/miner/patch）</code>。</p>
+<h3 id="插件说明"><a href="#插件说明" class="headerlink" title="插件说明"></a>插件说明</h3><p><strong>fastlane add_plugin versioning：</strong>用来修改 <code>build</code> 版本号和 <code>version</code> 版本号，<code>fastlane</code> 内嵌的<code>actionincrement_build_number</code>使用的是苹果提供的<code>agvtool</code>， 在更改<code>Build</code>的时候会改变所有<code>target</code>的版本号。如果你在一个工程里有多个<code>target</code>，每次编译，所有的<code>Build</code>都要加1。 有了<code>fastlane-plugin-versioning</code>不仅可以指定<code>target</code>增加<code>Build</code>，当然也可以直接设定<code>Version</code>， 并且可以指定版本号的版本<code>（major/miner/patch）</code>。</p>
 <p><strong>fastlane-plugin-pgyer：</strong>上传到蒲公英分发平台。</p>
 <p><strong>fastlane-plugin-firim：</strong>上传到<code>firim</code>。</p>
 <p><strong>注意⚠️：</strong>如果你需要发布到蒲公英或者<code>firim</code>必须提前安装插件，否则后面会操作失败。</p>
-<h3 id="Fastlane的文件配置"><a href="#Fastlane的文件配置" class="headerlink" title="Fastlane的文件配置"></a>Fastlane的文件配置</h3><p><strong>注意⚠️：</strong> <code>Fastlane</code>是使用<code>Ruby</code>写的，配置文件修改可以使用<code>VS Code</code>,然后下个<code>Ruby</code>插件这样方便修改。</p>
+<h2 id="Fastlane的文件配置"><a href="#Fastlane的文件配置" class="headerlink" title="Fastlane的文件配置"></a>Fastlane的文件配置</h2><p><strong>注意⚠️：</strong> <code>Fastlane</code>是使用<code>Ruby</code>写的，配置文件修改可以使用<code>VS Code</code>,然后下个<code>Ruby</code>插件这样方便修改。</p>
 <p><img src="/assets/blogImg/使用fastlane自动打包发布_14.png" alt="Ruby插件" title="Ruby插件"></p>
-<p>####<code>.env</code>:<br>配置环境变量（在<code>fastlane init</code>进行初始化后并不会自动生成，如果需要可以自己创建）。</p>
-<ol>
-<li><code>Appfile</code>: 存储有关开发者账号相关信息。</li>
-<li><code>Fastfile</code>: 核心文件，主要用于 命令行调用和处理具体的流程，<code>lane</code>相对于一个方法或者函数。 </li>
-<li><p><code>Deliverfile</code>: <code>deliver</code>工具的配置文件。</p>
-</li>
-<li><p><code>Metadata</code>:元数据文件夹，截图文件夹。</p>
-</li>
-<li><p><code>Matchfile</code>:<code>Match</code>操作对应的配置文件。</p>
-</li>
-<li><p><code>Gemfile</code>:类似于<code>cocopods</code> 的<code>Podfile</code>文件。</p>
-</li>
-</ol>
+<h3 id="Gemfile"><a href="#Gemfile" class="headerlink" title="Gemfile"></a>Gemfile</h3><p>类似于<code>cocopods</code> 的<code>Podfile</code>文件。</p>
+<h3 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h3><p>元数据文件夹，截图文件夹，一般<code>fastlane init</code>的时候会自动下载下来的。</p>
+<h3 id="env"><a href="#env" class="headerlink" title=".env"></a>.env</h3><p>配置环境变量(在<code>fastlane init</code>进行初始化后并不会自动生成，如果需要可以自己创建)。用于把账号信息、更新描述、工程相关信息、证书文件等单独放在一个配置文件，方便集中更改。</p>
+<p><code>cd</code>到工程目录<code>fastlane</code>文件夹下：</p>
+<pre><code>touch .env
+</code></pre><p><strong>注意⚠️：</strong> <code>.env</code>是一个隐藏文件，我们可以是<code>command+shift+.</code>显示隐藏文件。另外<code>.env</code>可以使用<code>VS Code</code>编辑，但是需要安装<code>dotEnv</code>插件。</p>
+<pre><code>#APP唯一标识符
+  APP_IDENTIFIER = &quot;&quot;
+
+  #苹果开发者账号
+  APPLE_ID = &quot;&quot;
+
+  #apple developer Team ID
+  TEAM_ID = &quot;&quot;
+
+  #itunes connect Team ID
+  ITC_TEAM_ID = &quot;&quot;
+
+  #工程名称
+  SCHEME_NAME = &quot;&quot;
+
+  #App 元数据及截图存放路径
+  METADATA_PATH = &quot;./metadata&quot;
+  SCREENSHOTS_PATH = &quot;./screenshots&quot;
+
+  #appicon文件夹路径
+  APPICON_PATH = &apos;./fastlane/metadata/app_icon.jpg&apos;
+
+  #ipa输出文件夹路径
+  OUTPUT_DIRECTORY = &quot;/Users/hfk/Desktop/AlliPA/ipa&quot;
+
+  #App 元数据及截图下载时 直接覆盖 不询问
+  DELIER_FORCE_OVERWRITE = false
+
+  #更新描述
+  UPDATE_DESCRIPTION = &quot;fastlane自动打包上传测试&quot;
+
+  #自动提交审核
+  SUBMIT_FOR_REVIEW = false
+
+  #审核通过后立刻发布
+  AUTOMATIC_RELEASE = false
+
+  # 蒲公英 api_key user_key
+  PGYER_API_KEY = &apos;&apos;
+  PGYER_USER_KEY = &apos;&apos;
+  PGYER_INSTALL_TYPE = &apos;2&apos; #1：公开，2：密码安装，3：邀请安装，4：回答问题安装。默认为1公开
+  PGYER_INSTALL_PASSWORD = &apos;123456&apos;
+
+  # Firm token
+  Firm_API_Token = &apos;&apos;
+</code></pre><p><img src="/assets/blogImg/使用fastlane自动打包发布_15.png" alt="获取ADC TEAM_ID" title="获取ADC TEAM_ID"></p>
+<p><strong>使用方法：</strong>例如获取工程名称<code>ENV[&#39;SCHEME_NAME&#39;]</code></p>
+<h3 id="Appfile"><a href="#Appfile" class="headerlink" title="Appfile"></a>Appfile</h3><p>存储有关开发者账号相关信息，<code>app_identifier</code>, <code>apple_id</code>, <code>team_id</code>, <code>itc_team_id</code>等一些<code>fastlane</code>需要用到的信息。一般在fastlane init的时候会初始化出来，如果没有就需要自己添加。</p>
+<pre><code>app_identifier ENV[&apos;APP_IDENTIFIER&apos;] # The bundle identifier of your app
+apple_id ENV[&apos;APPLE_ID&apos;] # Your Apple email address
+
+itc_team_id ENV[&apos;ITC_TEAM_ID&apos;] # App Store Connect Team ID
+team_id ENV[&apos;TEAM_ID&apos;] # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
+</code></pre><h3 id="Deliverfile"><a href="#Deliverfile" class="headerlink" title="Deliverfile"></a>Deliverfile</h3><p>工具的配置文件，<code>metadata</code> 文件夹中的文件比较多且杂，仅一个属性的配置却使用一个单独的<code>.txt</code>文件来存储，官方文档表示可以使用<code>Deliverfile</code>文件来配置且优先级高于<code>matadata</code> 中<code>.txt</code>文件中的配置。</p>
+<pre><code># The Deliverfile allows you to store various App Store Connect metadata
+# For more information, check out the docs
+# https://docs.fastlane.tools/actions/deliver/
+
+
+############################# 基本信息 ####################################
+
+# bundle identifier
+app_identifier ENV[&apos;APP_IDENTIFIER&apos;]
+
+# Apple ID用户名
+username ENV[&apos;APPLE_ID&apos;]
+
+# 版权声明
+# copyright &quot;2020 xxx Inc&quot;
+
+# 支持语言
+supportedLanguages = {
+  &quot;cmn-Hans&quot; =&gt; &quot;zh-Hans&quot;
+}
+
+# app 名称
+# name({
+# &apos;zh-Hans&apos; =&gt; &quot;APPName&quot;
+# })
+
+# 副标题
+# subtitle(
+#   &apos;zh-Hans&apos; =&gt; &quot;副标题&quot;
+# )
+
+# App价格
+#price_tier 0
+
+# 应用程序图标的路径 1024*1024
+app_icon &apos;./fastlane/metadata/app_icon.jpg&apos;
+
+# 屏幕截图的文件夹的路径
+screenshots_path ENV[&apos;SCREENSHOTS_PATH&apos;]
+
+# 元数据的路径
+metadata_path ENV[&apos;METADATA_PATH&apos;]
+
+
+###################################  类别配置 ###################################
+
+# 参考网站https://docs.fastlane.tools/actions/upload_to_app_store/#reference
+# 设置 App 的类别.这里可以设置一个主要类别,一个次要类别.
+
+# 主要类别 
+primary_category &quot;MZGenre.Lifestyle&quot;
+# 主要类别第一个子类别 无
+# primary_first_sub_category
+# 主要类别第二个子类别 无
+# primary_second_sub_category
+
+# 要设置的次要类别
+secondary_category &quot;MZGenre.Utilities&quot;
+# 设置的次要第一个子类别 无
+# secondary_first_sub_category  
+# 设置的次要第二个子类别 无
+# secondary_second_sub_category
+
+
+################################## 关键字\描述等信息 ###################################
+
+# 搜索关键字
+# keywords(
+#  &quot;zh-Hans&quot; =&gt; &quot;FastLane&quot;
+# )
+
+# 技术支持网址
+# support_url({
+#  &apos;zh-Hans&apos; =&gt; &quot;http://www.baidu.com&quot;
+# })
+
+# 营销网址
+#marketing_url({ 
+#  &apos;zh-Hans&apos; =&gt; &quot;http://www.baidu.com&quot;
+#})
+
+# 隐私政策网址
+#privacy_url({
+#  &apos;zh-Hans&apos; =&gt; &quot;http://www.baidu.com&quot;
+#})
+
+# 本地化宣传文本信息介绍
+#promotional_text( 
+#  &quot;zh-Hans&quot; =&gt; &quot;本地化宣传文本信息介绍&quot;,
+#)
+
+# app描述信息
+#description({ 
+#  &apos;zh-Hans&apos; =&gt; &quot;APP的描述信息,用于APP功能的描述和介绍不能少于10个字符&quot;
+#})
+
+# 版本描述
+#release_notes({
+#  &apos;zh-Hans&apos; =&gt; &quot;这是第一个版本哦&quot;
+#})
+
+
+################################## 分级 ########################################
+
+#年龄分级配置
+#app_rating_config_path &quot;./fastlane/metadata/itunes_rating_config.json&quot; 
+
+
+################################# 提交审核信息等 #########################################
+
+# 提交审核信息:加密, idfa 等
+submission_information({    
+    export_compliance_encryption_updated: false,
+    export_compliance_uses_encryption: false,
+    content_rights_contains_third_party_content: false,
+    add_id_info_uses_idfa: false,
+    add_id_info_serves_ads: true,
+    add_id_info_limits_tracking: true
+})
+
+# # 应用审核小组的联系信息 app 审核信息
+# app_review_information(
+#   first_name: &quot;name&quot;,
+#   last_name: &quot;name&quot;,
+#   phone_number: &quot;手机号&quot;,
+#   email_address: &quot;email&quot;,
+#   demo_user: &quot;测试账号用户名&quot;,
+#   demo_password: &quot;测试账号密码&quot;,
+#   notes: &quot;noting&quot;
+# )
+
+# run_precheck_before_submit true
+
+# 在上传新截图之前，先清除所有之前上传的截图
+overwrite_screenshots true
+
+# 下载 metadata 及 screenshots 时直接覆盖，不询问
+force true
+
+# 不上传截图
+skip_screenshots true
+
+# 是否自动提交审核,true表示立马提交审核
+submit_for_review ENV[&apos;SUBMIT_FOR_REVIEW&apos;]
+
+# 审核通过后是否立刻发布,false表示需要手动发布
+automatic_release ENV[&apos;AUTOMATIC_RELEASE&apos;]
+</code></pre><h3 id="Fastfile"><a href="#Fastfile" class="headerlink" title="Fastfile"></a>Fastfile</h3><p>核心文件，主要用于命令行调用和处理具体的流程，<code>lane</code>相对于一个方法或者函数。</p>
+<pre><code># This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+# 定义全局参数 大写开头为常数,小写、_开头为变量,$开头为全局变量(直接用#访问)
+# scheme名
+SCHEME_NAME = ENV[&apos;SCHEME_NAME&apos;]
+
+# workspace名
+WORKSPACE_NAME = &quot;#{SCHEME_NAME}.xcworkspace&quot;
+
+# plist文件路径
+INFO_PLIST_PATH = &quot;#{SCHEME_NAME}/Info.plist&quot;
+
+# 版本号
+$VERSION_NUMBER = &quot;&quot;
+
+# 构建版本号
+$BUILD_NUMBER = &quot;&quot;
+
+# ipa导出路径
+$OUTPUT_DIRECTORY = ENV[&apos;OUTPUT_DIRECTORY&apos;]
+
+# ipa安装包路径
+$IPA_PATH = &quot;&quot;
+
+# 是否准备完成
+$PREPARE_COMPLETED = false
+
+platform :ios do
+  before_all do
+    # 所有lane执行之前
+    # 使用环境变量提供这个密码给fastlane，解决双重认证生成的特殊密码
+    ENV[&quot;FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD&quot;] = &quot;xxx&quot;
+    # ENV[&quot;SLACK_URL&quot;] = &quot;https://hooks.slack.com/services/...&quot;
+    # 拉取远程最新代码
+    # git_pull
+    # 执行 pod instasll
+    # cocoapods
+    # carthage
+  end
+
+  desc &apos;打包前的准备工作&apos;
+  lane :prepare do |options|
+    if !$PREPARE_COMPLETED
+      puts &quot;\033[32m====================即将开始打包====================\033[0m\n&quot;
+      puts &apos;您好，即将为你自动打包&apos;
+    end
+
+    export_method = options[:export_method]
+    select_method = &apos;-1&apos;
+    # =&gt; 如果没有选择打包方式，提示选择打包方式
+    if export_method.nil? || export_method.empty?
+      puts &quot;请选择打包方式 \033[33m1:打包上传AppStore(默认) 2:打包Development上传蒲公英Firm  3:打包AdHoc上传蒲公英Firm  4:打包Inhouse上传蒲公英Firm  0:结束打包  回车表示使用默认打包\033[0m&quot;
+      select_method = STDIN.gets.chomp
+      if select_method!=&apos;1&apos; &amp;&amp; select_method!=&apos;2&apos; &amp;&amp; select_method!=&apos;3&apos; &amp;&amp; select_method!=&apos;4&apos; &amp;&amp; !select_method.empty?
+        # supported [:select, :message, :verbose, :error, :password, :input, :success, :important, :command, :user_error!, :command_output, :deprecated, :header, :content_error, :interactive?, :confirm, :crash!, :not_implemented, :shell_error!, :build_failure!, :test_failure!, :abort_with_message!]
+          UI.user_error!(&quot;您已取消打包 🚀&quot;)
+      end
+    end
+
+    if !$PREPARE_COMPLETED
+      currentVersion = get_info_plist_value(path: &quot;#{INFO_PLIST_PATH}&quot;, key: &quot;CFBundleShortVersionString&quot;)
+      currentBuild = get_info_plist_value(path: &quot;#{INFO_PLIST_PATH}&quot;, key: &quot;CFBundleVersion&quot;)
+      puts &quot;当前工程的版本号是:\033[33m#{currentVersion}\033[0m 构建版本号是:\033[33m#{currentBuild}\033[0m&quot;
+      version = options[:version]
+      build = options[:build]
+      output_directory = options[:output_directory]
+
+      # =&gt; 如果没有选择版本号，提示是否需要输入版本号
+      if version.nil? || version.empty?
+        puts &quot;请输入版本号，回车表示使用当前版本号\033[33m#{currentVersion}\033[0m&quot;
+        version = STDIN.gets.chomp
+        if version == &apos;&apos; # 回车
+          $VERSION_NUMBER = currentVersion
+        else
+          $VERSION_NUMBER = version
+        end
+      else
+        $VERSION_NUMBER = version
+      end
+      # =&gt; 如果没有选择构建版本号，提示是否需要输入构建版本号
+      if build.nil? || build.empty?
+        puts &quot;请输入构建版本号，回车表示使用默认自动生成构建版本号&quot;
+        build = STDIN.gets.chomp
+        if build == &apos;&apos; # 回车
+          # $BUILD_NUMBER = AUTO_BUILD_NUMBER
+        else
+          $BUILD_NUMBER = build
+        end
+      else
+        $BUILD_NUMBER = build
+      end
+      # =&gt; 如果没有选择ipa输出目录，提示是否需要输入打包路径
+      if output_directory.nil? || output_directory.empty?
+        puts &quot;请指定ipa包输出路径，回车表示使用默认输出路径:\033[33m#$OUTPUT_DIRECTORY\033[0m&quot;
+        output_directory = STDIN.gets.chomp
+        if output_directory == &apos;&apos; # 回车
+        else
+          $OUTPUT_DIRECTORY = output_directory
+        end
+      else
+        $OUTPUT_DIRECTORY = output_directory
+      end
+    end
+
+    $PREPARE_COMPLETED = true
+
+    if select_method != &apos;-1&apos; # 已选择
+      case select_method
+      when &apos;1&apos;
+        # 发布到appstore
+        release_appstore(options)
+      when &apos;2&apos;
+        # 打包Development或Adhoc发布到蒲公英Firm
+        release_development(options)
+      when &apos;3&apos;
+        # 打包Adhoc发布到蒲公英Firm
+        release_adhoc(options)
+      when &apos;4&apos;
+        # 打包inhouse发布到蒲公英
+        release_enterprise(options)
+      end
+      next
+    end
+
+    # =&gt; 详细信息
+    summary(options)
+
+  end
+
+  desc &quot;信息确认&quot;
+  lane :summary do |options|
+    puts &quot;\033[32m====================信息确认====================\033[0m\n&quot;
+    puts &quot;您设置的包输出路径为:&quot;
+    # supported [:select, :message, :verbose, :error, :password, :input, :success, :important, :command, :user_error!, :command_output, :deprecated, :header, :content_error, :interactive?, :confirm, :crash!, :not_implemented, :shell_error!, :build_failure!, :test_failure!, :abort_with_message!]
+    UI.important &quot;#$OUTPUT_DIRECTORY&quot;
+    puts &quot;您选择的打包方式为:&quot;
+    UI.important &quot;#{options[:export_method]}&quot;
+    puts &quot;指定的发布版本号为:&quot;
+    UI.important &quot;#$VERSION_NUMBER&quot;
+    confirm = UI.confirm &quot;确认信息是否正确,输入y继续打包&quot;
+    if !confirm
+      UI.user_error!(&quot;您已取消打包 🚀&quot;)
+    end
+    puts &quot;\033[32m====================信息确认====================\033[0m\n&quot;
+    puts &quot;3s后开始自动打包...&quot;
+    sleep(3)
+  end
+
+  desc &quot;更新版本号&quot;
+  lane :update_version do
+    puts(&quot;*************| 更新version #$VERSION_NUMBER |*************&quot;)
+    increment_version_number_in_plist(
+      target: SCHEME_NAME,
+      version_number: $VERSION_NUMBER
+    )
+    puts(&quot;*************| 更新build #$BUILD_NUMBER |*************&quot;)
+    increment_build_number_in_plist(
+       target: SCHEME_NAME,
+       build_number: $BUILD_NUMBER
+    )
+  end
+
+  desc &quot;打包发布&quot;
+  lane :release do |options|
+    prepare(options)
+  end
+
+  desc &quot;发布到appstore&quot;
+  lane :release_appstore do |options|
+    options[:export_method] = &quot;app-store&quot;
+    prepare(options)
+    build(options)
+    deliver_appstore
+    end
+
+  desc &quot;发布development&quot;
+  lane :release_development do |options|
+    options[:export_method] = &quot;development&quot;
+    prepare(options)
+    build(options)
+    deliver_pgyer
+    deliver_firm
+  end
+
+  desc &quot;发布ad-hoc&quot;
+  lane :release_adhoc do |options|
+    options[:export_method] = &quot;ad-hoc&quot;
+    prepare(options)
+    build(options)
+    deliver_pgyer
+    deliver_firm
+  end
+
+  desc &quot;发布企业Inhouse&quot;
+  lane :release_enterprise do |options|
+    options[:export_method] = &quot;enterprise&quot;
+    prepare(options)
+    build(options)
+    deliver_pgyer
+    deliver_firm
+  end
+
+  desc &quot;上传到蒲公英&quot;
+  lane :deliver_pgyer do |options|
+    pgyer(
+       api_key: ENV[&apos;PGYER_API_KEY&apos;], # 从蒲公英项目详情中获取的apikey
+       user_key: ENV[&apos;PGYER_USER_KEY&apos;], # 从蒲公英项目详情中获取的 userkey
+       #apk: $APK_PATH, #apk包路径
+       ipa: $IPA_PATH, #ipa包路径
+       install_type: ENV[&apos;PGYER_INSTALL_TYPE&apos;], #1：公开，2：密码安装，3：邀请安装，4：回答问题安装。默认为1公开
+       password: ENV[&apos;PGYER_INSTALL_PASSWORD&apos;], #设置安装密码
+       update_description: ENV[&apos;UPDATE_DESCRIPTION&apos;] #更新描述
+    )
+  end
+
+  desc &quot;上传到Firm&quot;
+  lane :deliver_firm do |options|
+    firim(
+       firim_api_token: ENV[&apos;Firm_API_Token&apos;], # 从Firm项目详情中获取的apitoken
+       ipa: $IPA_PATH, #ipa包路径
+       icon: ENV[&apos;APPICON_PATH&apos;] #icon
+    )
+  end
+
+  desc &quot;上传到appstore&quot;
+  lane :deliver_appstore do |options|
+    deliver( 
+       username: ENV[&apos;APPLE_ID&apos;], # 开发者账号
+       team_id: ENV[&apos;ITC_TEAM_ID&apos;], # ITC Team ID
+       dev_portal_team_id: ENV[&apos;TEAM_ID&apos;], # ADC Team ID
+       app_identifier: ENV[&apos;APP_IDENTIFIER&apos;], # bundle ID
+       ipa: $IPA_PATH, # ipa包路径
+       app_version: $VERSION_NUMBER, # 更新版本号
+       release_notes: {
+         &apos;zh-Hans&apos; =&gt; &quot;这是第一个版本哦&quot;
+       },
+       force: true, # 设置true，会跳过预览页面，直接上架
+       skip_screenshots: true, # 不上传截图
+       skip_metadata: true, # 不上传元数据
+    )
+  end
+
+  desc &quot;打包&quot;
+  lane :build do |options|
+    # gym用来编译ipa
+    # 编译时间
+    build_time = Time.now.strftime(&quot;%Y-%m-%d %H-%M-%S&quot;)
+    # 自动生成的build版本号
+    auto_build_number = Time.now.strftime(&quot;%Y%m%d%H%M%S&quot;)
+    if $BUILD_NUMBER.empty?
+      $BUILD_NUMBER = auto_build_number
+    end
+
+    # 更新版本号
+    update_version
+
+    # 获取打包方式
+    export_method = options[:export_method]
+    # 配置项
+    configuration = &apos;Release&apos;
+    # pp文件
+    provisioningProfiles = ENV[&apos;PP_APPSTORE&apos;]
+    # 输出目录
+    outputDir = &apos;&apos;
+    # 输出文件名
+    outputName = &quot;#{SCHEME_NAME}_#$VERSION_NUMBER_#$BUILD_NUMBER_#{export_method}.ipa&quot;
+    case export_method
+    when &apos;development&apos;
+      configuration = &apos;Debug&apos;
+      outputDir = &quot;#$OUTPUT_DIRECTORY/Development/#{SCHEME_NAME}-#{build_time}&quot;
+    when &apos;app-store&apos;
+      outputDir = &quot;#$OUTPUT_DIRECTORY/Appstore/#{SCHEME_NAME}-#{build_time}&quot;
+    when &apos;ad-hoc&apos;
+       provisioningProfiles = ENV[&apos;PP_ADHOC&apos;]
+       outputDir = &quot;#$OUTPUT_DIRECTORY/ADHOC/#{SCHEME_NAME}-#{build_time}&quot;
+    when &apos;enterprise&apos;
+       provisioningProfiles = ENV[&apos;PP_ENTERPRISE&apos;]
+       outputDir = &quot;#$OUTPUT_DIRECTORY/ADHOC/#{SCHEME_NAME}-#{build_time}&quot;
+    end
+
+    $IPA_PATH = gym(
+       clean: &apos;true&apos;, # 在打包前是否先执行clean。
+       scheme: &quot;#{SCHEME_NAME}&quot;, # 指定项目的scheme名称
+       workspace: &quot;#{WORKSPACE_NAME}&quot;, # 指定.xcworkspace文件的路径。
+       configuration: &quot;#{configuration}&quot;, # 指定打包时的配置项，默认为Release
+       output_name: &quot;#{outputName}&quot;, # 指定生成的.ipa文件的名称，应包含文件扩展名。
+       output_directory: &quot;#{outputDir}&quot;, # 指定.ipa文件的输出目录
+       include_symbols: &apos;true&apos;, # 是否导出符号表
+       # include_bitcode: &apos;false&apos;,  # 是否使用bitcode打包
+       export_xcargs: &quot;-allowProvisioningUpdates&quot;, #访问钥匙串
+       silent: true,  # 是否隐藏打包时不需要的信息。
+       buildlog_path: &quot;#{outputDir}&quot;, # 指定编译日志文件的输出目录
+       export_options: {
+        method: &quot;#{export_method}&quot;, # 指定导出.ipa时使用的方法，可用选项：app-store,ad-hoc,enterprise,development
+        thinning: &quot;&lt;none&gt;&quot;,  # 是否瘦身
+       }
+    )
+  end
+
+  after_all do |lane|
+    # 在macOS 通知栏发送通知
+    notification(subtitle: &quot;Successfully&quot;, message: &quot;Successfully deployed new App Update&quot;)
+    #slack(
+    #   message: &quot;Successfully deployed new App Update.&quot;
+    #)
+  end
+
+  error do |lane, exception|
+     #slack(
+     #  message: exception.message,
+     #  success: false
+     #)
+  end
+
+end
+</code></pre><h2 id="Fastlane发布"><a href="#Fastlane发布" class="headerlink" title="Fastlane发布"></a>Fastlane发布</h2><p><code>cd</code>到工程目录下，调用<code>fastlane release</code>，之后根据提示选择需要的过程即可完成发布。</p>
+<p><strong>注意⚠️：</strong> 如果出现如下错误，就去工程中<code>Edit Scheme --&gt; 勾中Shared</code></p>
+<pre><code>Couldn&apos;t find specified scheme &apos;YourScheme&apos;. Please make sure that the scheme is shared, see ...
+</code></pre><p> <img src="/assets/blogImg/使用fastlane自动打包发布_16.png" alt="Edit Scheme" title="Edit Scheme"></p>
+<h2 id="两步验证问题"><a href="#两步验证问题" class="headerlink" title="两步验证问题"></a>两步验证问题</h2><p>现在大部分<code>Apple Id</code>都开启了两步验证，当我们提交<code>TestFilght</code>或者<code>AppStore</code>的时候会提示我们输入6位<code>code</code>,这样就违背全自动发布的初衷了。</p>
+<pre><code>Two Factor Authentication for account &apos;xxxxx@xx.com&apos; is enabled
+If you&apos;re running this in a non-interactive session (e.g. server or CI)
+check out https://github.com/fastlane/fastlane/tree/master/spaceship#2-step-verification
+Please enter the 6 digit code:
+</code></pre><p><strong>解决办法：</strong></p>
+<pre><code>步骤：
+1.访问 https://appleid.apple.com/account/manage 
+2.生成一个 APP-SPECIFIC PASSWORDS，保留生成的特殊密码，记作 A
+3.使用环境变量提供这个密码给fastlane：  FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD
+4.执行 fastlane spaceauth -u user@email.com，生成 session cookie，记作 B。
+5.通过环境变量 FASTLANE_SESSION 提供 session cookies。
+
+配置：
+方式1：
+前往文件 ~/.bash_profile 中，新增并配置配置 FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD 和 FASTLANE_SESSION
+例：(A和B就是上面生成的)
+export FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD = A
+export FASTLANE_SESSION = B
+/*----------------------------------------------------*/
+方式2：
+ENV[&quot;FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD&quot;] = &quot;xxxxxx&quot;
+这个和环境变量配置是一个意思，但是涉及密码写在配置文件里面
+</code></pre><p> <strong>注意⚠️：</strong> <code>.bash_profile</code>文件是隐藏文件，可以使用<code>command+shift+.</code>控制显示</p>
+<p>  <img src="/assets/blogImg/使用fastlane自动打包发布_17.png" alt="配置bash_profile" title="配置bash_profile"></p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">执行顺序</th>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">before_all</td>
+<td style="text-align:center">在执行<code>lane</code>之前操作，只执行一次，比如使用<code>cocopods</code>更新 pod 库</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">before_each</td>
+<td style="text-align:center">每次执行<code>lane</code>之前都会执行一次</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">lane</td>
+<td style="text-align:center">用户自定义的任务流程，例如打包，上传等</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">after_each</td>
+<td style="text-align:center">每次执行<code>lane</code>之后都会执行一次</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">after_all</td>
+<td style="text-align:center">在执行所有<code>lane</code>成功结束之后执行一次，例发送邮件，通知</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">error</td>
+<td style="text-align:center">在执行上述情况任意环境报错都会中止并执行一次</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -786,7 +1387,7 @@ fastlane add_plugin pgyer
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">1.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装最新Xcode命令行工具"><span class="nav-number">1.1.</span> <span class="nav-text">安装最新Xcode命令行工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fastlane安装"><span class="nav-number">1.2.</span> <span class="nav-text">Fastlane安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化Fastlane"><span class="nav-number">1.3.</span> <span class="nav-text">初始化Fastlane</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装所需插件"><span class="nav-number">1.4.</span> <span class="nav-text">安装所需插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插件说明"><span class="nav-number">1.4.1.</span> <span class="nav-text">插件说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fastlane的文件配置"><span class="nav-number">1.5.</span> <span class="nav-text">Fastlane的文件配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装最新Xcode命令行工具"><span class="nav-number">2.</span> <span class="nav-text">安装最新Xcode命令行工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane安装"><span class="nav-number">3.</span> <span class="nav-text">Fastlane安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化Fastlane"><span class="nav-number">4.</span> <span class="nav-text">初始化Fastlane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装所需插件"><span class="nav-number">5.</span> <span class="nav-text">安装所需插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插件说明"><span class="nav-number">5.1.</span> <span class="nav-text">插件说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane的文件配置"><span class="nav-number">6.</span> <span class="nav-text">Fastlane的文件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gemfile"><span class="nav-number">6.1.</span> <span class="nav-text">Gemfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metadata"><span class="nav-number">6.2.</span> <span class="nav-text">Metadata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#env"><span class="nav-number">6.3.</span> <span class="nav-text">.env</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appfile"><span class="nav-number">6.4.</span> <span class="nav-text">Appfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deliverfile"><span class="nav-number">6.5.</span> <span class="nav-text">Deliverfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fastfile"><span class="nav-number">6.6.</span> <span class="nav-text">Fastfile</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane发布"><span class="nav-number">7.</span> <span class="nav-text">Fastlane发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两步验证问题"><span class="nav-number">8.</span> <span class="nav-text">两步验证问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">9.</span> <span class="nav-text">生命周期</span></a></li></ol></div>
             
 
           </div>
@@ -820,7 +1421,7 @@ fastlane add_plugin pgyer
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">40.1k</span>
+    <span title="总字数">43.5k</span>
   
 </div>
 
