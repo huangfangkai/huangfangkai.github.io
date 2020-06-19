@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="前言Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档">
+<meta name="description" content="前言Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能">
 <meta name="keywords" content="iOS,fastlane,自动发布">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS使用fastlane自动打包发布">
 <meta property="og:url" content="http://www.hfkstackoverflow.top/2020/06/05/iOS使用fastlane自动打包发布/index.html">
 <meta property="og:site_name" content="HFK">
-<meta property="og:description" content="前言Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档">
+<meta property="og:description" content="前言Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_1.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_2.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_3.png">
-<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_4.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_5.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_6.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_7.png">
@@ -104,10 +103,10 @@
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_15.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_16.png">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_17.png">
-<meta property="og:updated_time" content="2020-06-12T03:01:08.468Z">
+<meta property="og:updated_time" content="2020-06-12T07:52:25.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS使用fastlane自动打包发布">
-<meta name="twitter:description" content="前言Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能   Fastlane文档">
+<meta name="twitter:description" content="前言Fastlane是一套使用Ruby写的自动化工具集，目的是为了简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。这里主要是为了记录一次自己Mac环境下配置fastlane的过程。下图是Fastlane的主要流程和功能">
 <meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/使用fastlane自动打包发布_1.png">
 
 
@@ -366,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.4k
+                  4.6k
                 </span>
               
 
@@ -392,16 +391,14 @@
 
       
         <p> <img src="/assets/blogImg/使用fastlane自动打包发布_1.png" alt="fastlane" title="fastlane"></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane</strong></a>是一套使用<code>Ruby</code>写的自动化工具集，目的是为了简化<code>Android</code>和<code>iOS</code>的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布<code>App</code>。这里主要是为了记录一次自己<code>Mac</code>环境下配置<code>fastlane</code>的过程。下图是<code>Fastlane</code>的主要流程和功能</p>
-<p> <img src="/assets/blogImg/使用fastlane自动打包发布_2.png" alt="fastlane流程" title="fastlane流程"></p>
-<p><a href="https://docs.fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane文档</strong></a><br><a id="more"></a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane</strong></a>是一套使用<code>Ruby</code>写的自动化工具集，目的是为了简化<code>Android</code>和<code>iOS</code>的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布<code>App</code>。这里主要是为了记录一次自己<code>Mac</code>环境下配置<code>fastlane</code>的过程。下图是<code>Fastlane</code>的主要流程和功能<br><a id="more"></a><br> <img src="/assets/blogImg/使用fastlane自动打包发布_2.png" alt="fastlane流程" title="fastlane流程"></p>
+<p><a href="https://docs.fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane文档</strong></a></p>
 <h2 id="安装最新Xcode命令行工具"><a href="#安装最新Xcode命令行工具" class="headerlink" title="安装最新Xcode命令行工具"></a>安装最新Xcode命令行工具</h2><pre><code>xcode-select --install
 </code></pre><p>如果你没有安装，会弹出对话框，点击安装即可。</p>
 <p> <img src="/assets/blogImg/使用fastlane自动打包发布_3.png" alt="命令行工具提示" title="命令行工具提示"></p>
 <p>如果你已经安装过了，会有如下提示</p>
 <pre><code>xcode-select: error: command line tools are already installed, use &quot;Software Update&quot; to install updates
-</code></pre><p> <img src="/assets/blogImg/使用fastlane自动打包发布_4.png" alt="命令行工具已安装提示" title="命令行工具已安装提示"></p>
-<h2 id="Fastlane安装"><a href="#Fastlane安装" class="headerlink" title="Fastlane安装"></a>Fastlane安装</h2><pre><code>sudo gem install fastlane -NV
+</code></pre><h2 id="Fastlane安装"><a href="#Fastlane安装" class="headerlink" title="Fastlane安装"></a>Fastlane安装</h2><pre><code>sudo gem install fastlane -NV
 或者
 brew cask install fastlane
 </code></pre><p>推荐使用<code>RubyGems</code>安装。</p>
@@ -1083,39 +1080,93 @@ ENV[&quot;FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD&quot;] = &quot;xxxxxx&quo
 <tr>
 <th style="text-align:center">执行顺序</th>
 <th style="text-align:center">方法名</th>
-<th style="text-align:center">说明</th>
+<th style="text-align:left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
 <td style="text-align:center">before_all</td>
-<td style="text-align:center">在执行<code>lane</code>之前操作，只执行一次，比如使用<code>cocopods</code>更新 pod 库</td>
+<td style="text-align:left">在执行<code>lane</code>之前操作，只执行一次，比如使用<code>cocopods</code>更新 pod 库</td>
 </tr>
 <tr>
 <td style="text-align:center">2</td>
 <td style="text-align:center">before_each</td>
-<td style="text-align:center">每次执行<code>lane</code>之前都会执行一次</td>
+<td style="text-align:left">每次执行<code>lane</code>之前都会执行一次</td>
 </tr>
 <tr>
 <td style="text-align:center">3</td>
 <td style="text-align:center">lane</td>
-<td style="text-align:center">用户自定义的任务流程，例如打包，上传等</td>
+<td style="text-align:left">用户自定义的任务流程，例如打包，上传等</td>
 </tr>
 <tr>
 <td style="text-align:center">4</td>
 <td style="text-align:center">after_each</td>
-<td style="text-align:center">每次执行<code>lane</code>之后都会执行一次</td>
+<td style="text-align:left">每次执行<code>lane</code>之后都会执行一次</td>
 </tr>
 <tr>
 <td style="text-align:center">5</td>
 <td style="text-align:center">after_all</td>
-<td style="text-align:center">在执行所有<code>lane</code>成功结束之后执行一次，例发送邮件，通知</td>
+<td style="text-align:left">在执行所有<code>lane</code>成功结束之后执行一次，例发送邮件，通知</td>
 </tr>
 <tr>
 <td style="text-align:center">6</td>
 <td style="text-align:center">error</td>
-<td style="text-align:center">在执行上述情况任意环境报错都会中止并执行一次</td>
+<td style="text-align:left">在执行上述情况任意环境报错都会中止并执行一次</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fastlane常用工具"><a href="#fastlane常用工具" class="headerlink" title="fastlane常用工具"></a>fastlane常用工具</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">工具</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/scan/" target="_blank" rel="noopener">scan</a></td>
+<td style="text-align:left">自动运行测试工具，并且可以生成漂亮的<code>HTML</code>报告</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/cert/" target="_blank" rel="noopener">cert</a></td>
+<td style="text-align:left">自动创建和管理<code>iOS</code>签名证书<code>Certificates</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/sigh/" target="_blank" rel="noopener">sign</a></td>
+<td style="text-align:left">创建、更新、下载、修复<code>Provisioning Profiles</code>的工具</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/pem/" target="_blank" rel="noopener">pem</a></td>
+<td style="text-align:left">自动生成、更新推送配置文件</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/match/" target="_blank" rel="noopener">match</a></td>
+<td style="text-align:left">一个新的自动创建和管理<code>iOS</code>签名证书和<code>Provisioning Profiles</code>工具(一般团队使用)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/snapshot/" target="_blank" rel="noopener">snapshot</a></td>
+<td style="text-align:left">用<code>UI test</code>功能实现自动化截图</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/frameit/" target="_blank" rel="noopener">frameit</a></td>
+<td style="text-align:left">给截屏套上一层外边框</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/gym/" target="_blank" rel="noopener">gym</a></td>
+<td style="text-align:left">编译打包生成<code>ipa</code>文件,又名<code>build_ios_app</code>或<code>build_app</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/produce/" target="_blank" rel="noopener">produce</a></td>
+<td style="text-align:left">如果你的产品还没在<code>iTC</code>或者<code>ADC</code>建立，<code>produce</code>可以自动帮你完成这些工作</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/deliver/" target="_blank" rel="noopener">deliver</a></td>
+<td style="text-align:left">自动上传截图，<code>APP</code>的元数据，二进制<code>ipa</code>文件到<code>iTC</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://docs.fastlane.tools/actions/notification/" target="_blank" rel="noopener">notification</a></td>
+<td style="text-align:left">在<code>Mac</code>上面显示通知</td>
 </tr>
 </tbody>
 </table>
@@ -1206,6 +1257,10 @@ ENV[&quot;FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD&quot;] = &quot;xxxxxx&quo
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/06/19/解决Github图片不显示/" rel="prev" title="解决Github图片不显示">
+                解决Github图片不显示 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -1290,7 +1345,7 @@ ENV[&quot;FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD&quot;] = &quot;xxxxxx&quo
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1301,7 +1356,7 @@ ENV[&quot;FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD&quot;] = &quot;xxxxxx&quo
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1312,7 +1367,7 @@ ENV[&quot;FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD&quot;] = &quot;xxxxxx&quo
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1387,7 +1442,7 @@ ENV[&quot;FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD&quot;] = &quot;xxxxxx&quo
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装最新Xcode命令行工具"><span class="nav-number">2.</span> <span class="nav-text">安装最新Xcode命令行工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane安装"><span class="nav-number">3.</span> <span class="nav-text">Fastlane安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化Fastlane"><span class="nav-number">4.</span> <span class="nav-text">初始化Fastlane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装所需插件"><span class="nav-number">5.</span> <span class="nav-text">安装所需插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插件说明"><span class="nav-number">5.1.</span> <span class="nav-text">插件说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane的文件配置"><span class="nav-number">6.</span> <span class="nav-text">Fastlane的文件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gemfile"><span class="nav-number">6.1.</span> <span class="nav-text">Gemfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metadata"><span class="nav-number">6.2.</span> <span class="nav-text">Metadata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#env"><span class="nav-number">6.3.</span> <span class="nav-text">.env</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appfile"><span class="nav-number">6.4.</span> <span class="nav-text">Appfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deliverfile"><span class="nav-number">6.5.</span> <span class="nav-text">Deliverfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fastfile"><span class="nav-number">6.6.</span> <span class="nav-text">Fastfile</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane发布"><span class="nav-number">7.</span> <span class="nav-text">Fastlane发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两步验证问题"><span class="nav-number">8.</span> <span class="nav-text">两步验证问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">9.</span> <span class="nav-text">生命周期</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装最新Xcode命令行工具"><span class="nav-number">2.</span> <span class="nav-text">安装最新Xcode命令行工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane安装"><span class="nav-number">3.</span> <span class="nav-text">Fastlane安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化Fastlane"><span class="nav-number">4.</span> <span class="nav-text">初始化Fastlane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装所需插件"><span class="nav-number">5.</span> <span class="nav-text">安装所需插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插件说明"><span class="nav-number">5.1.</span> <span class="nav-text">插件说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane的文件配置"><span class="nav-number">6.</span> <span class="nav-text">Fastlane的文件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gemfile"><span class="nav-number">6.1.</span> <span class="nav-text">Gemfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metadata"><span class="nav-number">6.2.</span> <span class="nav-text">Metadata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#env"><span class="nav-number">6.3.</span> <span class="nav-text">.env</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appfile"><span class="nav-number">6.4.</span> <span class="nav-text">Appfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deliverfile"><span class="nav-number">6.5.</span> <span class="nav-text">Deliverfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fastfile"><span class="nav-number">6.6.</span> <span class="nav-text">Fastfile</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane发布"><span class="nav-number">7.</span> <span class="nav-text">Fastlane发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两步验证问题"><span class="nav-number">8.</span> <span class="nav-text">两步验证问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">9.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fastlane常用工具"><span class="nav-number">10.</span> <span class="nav-text">fastlane常用工具</span></a></li></ol></div>
             
 
           </div>
@@ -1421,7 +1476,7 @@ ENV[&quot;FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD&quot;] = &quot;xxxxxx&quo
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">43.5k</span>
+    <span title="总字数">44.3k</span>
   
 </div>
 

@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="HFK">
 <meta property="og:description" content="打印方法//Swift func SPDLog&amp;lt;T&amp;gt;(_ message : T,fileName : String = #file,line : Int = #line, function : String = #function) {     #if DEBUG     print(fileName.split{$0 == &amp;quot;/&amp;quot;}.map(String.ini">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-28T08:13:15.422Z">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS小记_1.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS小记_2.png">
+<meta property="og:updated_time" content="2020-06-18T10:42:00.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS小记">
 <meta name="twitter:description" content="打印方法//Swift func SPDLog&amp;lt;T&amp;gt;(_ message : T,fileName : String = #file,line : Int = #line, function : String = #function) {     #if DEBUG     print(fileName.split{$0 == &amp;quot;/&amp;quot;}.map(String.ini">
+<meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS小记_1.png">
 
 
 
@@ -348,7 +351,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k
+                  2k
                 </span>
               
 
@@ -658,7 +661,47 @@ self.view_Status.layer.mask = maskLayer;
 [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 </code></pre></li>
 </ol>
-<h2 id="视频地址"><a href="#视频地址" class="headerlink" title="视频地址"></a>视频地址</h2><pre><code>@&quot;http://www.w3school.com.cn/example/html5/mov_bbb.mp4&quot;,
+<h2 id="金额显示千分位"><a href="#金额显示千分位" class="headerlink" title="金额显示千分位"></a>金额显示千分位</h2><pre><code>//千分位显示
++(NSString *)transformNsNumber:(NSString *)money
+{
+//显示二位小数
+//    money = [NSString isEqualToNull:money] ? money:@&quot;0&quot;;
+//    NSDecimalNumberHandler* roundingBehavior = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:2 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:YES];
+//    NSDecimalNumber *ouncesDecimal;
+//    NSDecimalNumber *roundedOunces;
+//    ouncesDecimal = [[NSDecimalNumber alloc] initWithString:money];
+//    roundedOunces = [ouncesDecimal decimalNumberByRoundingAccordingToBehavior:roundingBehavior];
+//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc]init];
+//    [numberFormatter setDecimalSeparator:@&quot;.&quot;];
+//    [numberFormatter setGroupingSeparator:@&quot;,&quot;];
+//    [numberFormatter setPositiveFormat:@&quot;###,##0.00;&quot;];
+//    NSString *formattedNumberString = [numberFormatter stringFromNumber:roundedOunces];
+//    return formattedNumberString;
+    NSString *numString = [NSString stringWithFormat:@&quot;%@&quot;,money];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
+    NSNumber *number = [formatter numberFromString:numString];
+    formatter.numberStyle=kCFNumberFormatterDecimalStyle;
+    NSString *string = [formatter stringFromNumber:number];
+    return string;
+}
+</code></pre><h2 id="侧滑后导航栏显示问题"><a href="#侧滑后导航栏显示问题" class="headerlink" title="侧滑后导航栏显示问题"></a>侧滑后导航栏显示问题</h2><p>在导航控制器中有个<code>界面A</code>导航条需要隐藏而A的下一级<code>界面B</code>则需要显示<code>导航条</code>。我刚开始的解决方案是在<code>A</code>的<code>viewWillAppear</code>方法中设置<code>self.navigationController.navigationBar.hidden = YES</code>;而在<code>B</code>的<code>viewWillAppear</code>方法中设置<code>self.navigationController.navigationBar.hidden = NO</code>。但是当导航栏侧滑切到一半返回后，导航栏显示错误。因为前一个页面要显示完整页面。</p>
+<p> <img src="/assets/blogImg/iOS小记_1.png" alt="导航栏显示错误" title="导航栏显示错误"></p>
+<p> <img src="/assets/blogImg/iOS小记_2.png" alt="导航栏显示错误" title="导航栏显示错误"></p>
+<p><strong>解决方案：</strong></p>
+<p>在A的<code>viewWillAppear</code>方法中不要使用<code>self.navigationController.navigationBar.hidden = YES</code>;这个方法而应该使用<code>[self.navigationControllersetNavigationBarHidden:YESanimated:YES]</code>这个方法，相应的在B的<code>viewWillAppear</code>方法中也不要使<code>self.navigationController.navigationBar.hidden = NO</code>这个方法而应该使用<code>[self.navigationControllersetNavigationBarHidden:NOanimated:YES]</code>这个方法。</p>
+<p><strong>注意⚠️：</strong><code>animated</code>这个参数一定要设置为<code>YES</code>，因为使用<code>[self.navigationController setNavigationBarHidden:YES animated:YES]</code>之所以能达到上图这种我们想要的效果就是因为有这个动画。</p>
+<pre><code>-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    self.navigationController.navigationBar.hidden = YES;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+//    self.navigationController.navigationBar.hidden = NO;
+}
+</code></pre><h2 id="视频地址"><a href="#视频地址" class="headerlink" title="视频地址"></a>视频地址</h2><pre><code>@&quot;http://www.w3school.com.cn/example/html5/mov_bbb.mp4&quot;,
 @&quot;http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4&quot;,
 @&quot;https://media.w3.org/2010/05/sintel/trailer.mp4&quot;,
 @&quot;http://mvvideo2.meitudata.com/576bc2fc91ef22121.mp4&quot;,
@@ -840,7 +883,7 @@ self.view_Status.layer.mask = maskLayer;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -851,7 +894,7 @@ self.view_Status.layer.mask = maskLayer;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -862,7 +905,7 @@ self.view_Status.layer.mask = maskLayer;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -937,7 +980,7 @@ self.view_Status.layer.mask = maskLayer;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#打印方法"><span class="nav-number">1.</span> <span class="nav-text">打印方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取当前最顶层视图"><span class="nav-number">2.</span> <span class="nav-text">获取当前最顶层视图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">2.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">2.2.</span> <span class="nav-text">方法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取tableviewcell的framesize一直是-320-44-当完全完成后才变成正常。"><span class="nav-number">3.</span> <span class="nav-text">获取tableviewcell的framesize一直是(320 44),当完全完成后才变成正常。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长按手势执行两次"><span class="nav-number">4.</span> <span class="nav-text">长按手势执行两次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移除某个控制器"><span class="nav-number">5.</span> <span class="nav-text">移除某个控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用侧滑手势返回"><span class="nav-number">6.</span> <span class="nav-text">禁用侧滑手势返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tableView滑动到需要的cell"><span class="nav-number">7.</span> <span class="nav-text">tableView滑动到需要的cell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIImage与NSData转换"><span class="nav-number">8.</span> <span class="nav-text">UIImage与NSData转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图前移或者后移"><span class="nav-number">9.</span> <span class="nav-text">视图前移或者后移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延迟执行"><span class="nav-number">10.</span> <span class="nav-text">延迟执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DEBUG和非DEBUG"><span class="nav-number">11.</span> <span class="nav-text">DEBUG和非DEBUG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改状态栏颜色-UIStatusBarStyle"><span class="nav-number">12.</span> <span class="nav-text">修改状态栏颜色(UIStatusBarStyle)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回到固定Controller"><span class="nav-number">13.</span> <span class="nav-text">返回到固定Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIScrollView、UITableView、UICollectionView-下拉与顶部空白颜色填充问题"><span class="nav-number">14.</span> <span class="nav-text">UIScrollView、UITableView、UICollectionView 下拉与顶部空白颜色填充问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送在杀掉应用的情况下，如何实现页面跳转"><span class="nav-number">15.</span> <span class="nav-text">推送在杀掉应用的情况下，如何实现页面跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS获取系统音量大小"><span class="nav-number">16.</span> <span class="nav-text">iOS获取系统音量大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIButton倒计时按钮（闪烁问题也轻松解决）"><span class="nav-number">17.</span> <span class="nav-text">UIButton倒计时按钮（闪烁问题也轻松解决）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置视图部分圆角"><span class="nav-number">18.</span> <span class="nav-text">设置视图部分圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将cell的分割线隐藏掉"><span class="nav-number">19.</span> <span class="nav-text">将cell的分割线隐藏掉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS-去掉顶部-或底部-出现一块空白区域"><span class="nav-number">20.</span> <span class="nav-text">iOS 去掉顶部(或底部)出现一块空白区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tableView默认背景色"><span class="nav-number">21.</span> <span class="nav-text">tableView默认背景色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三方登陆"><span class="nav-number">22.</span> <span class="nav-text">第三方登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码块的保存路径；"><span class="nav-number">23.</span> <span class="nav-text">代码块的保存路径；</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态栏文字颜色"><span class="nav-number">24.</span> <span class="nav-text">状态栏文字颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频地址"><span class="nav-number">25.</span> <span class="nav-text">视频地址</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#打印方法"><span class="nav-number">1.</span> <span class="nav-text">打印方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取当前最顶层视图"><span class="nav-number">2.</span> <span class="nav-text">获取当前最顶层视图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">2.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">2.2.</span> <span class="nav-text">方法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取tableviewcell的framesize一直是-320-44-当完全完成后才变成正常。"><span class="nav-number">3.</span> <span class="nav-text">获取tableviewcell的framesize一直是(320 44),当完全完成后才变成正常。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长按手势执行两次"><span class="nav-number">4.</span> <span class="nav-text">长按手势执行两次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移除某个控制器"><span class="nav-number">5.</span> <span class="nav-text">移除某个控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用侧滑手势返回"><span class="nav-number">6.</span> <span class="nav-text">禁用侧滑手势返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tableView滑动到需要的cell"><span class="nav-number">7.</span> <span class="nav-text">tableView滑动到需要的cell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIImage与NSData转换"><span class="nav-number">8.</span> <span class="nav-text">UIImage与NSData转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图前移或者后移"><span class="nav-number">9.</span> <span class="nav-text">视图前移或者后移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延迟执行"><span class="nav-number">10.</span> <span class="nav-text">延迟执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DEBUG和非DEBUG"><span class="nav-number">11.</span> <span class="nav-text">DEBUG和非DEBUG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改状态栏颜色-UIStatusBarStyle"><span class="nav-number">12.</span> <span class="nav-text">修改状态栏颜色(UIStatusBarStyle)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回到固定Controller"><span class="nav-number">13.</span> <span class="nav-text">返回到固定Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIScrollView、UITableView、UICollectionView-下拉与顶部空白颜色填充问题"><span class="nav-number">14.</span> <span class="nav-text">UIScrollView、UITableView、UICollectionView 下拉与顶部空白颜色填充问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送在杀掉应用的情况下，如何实现页面跳转"><span class="nav-number">15.</span> <span class="nav-text">推送在杀掉应用的情况下，如何实现页面跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS获取系统音量大小"><span class="nav-number">16.</span> <span class="nav-text">iOS获取系统音量大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIButton倒计时按钮（闪烁问题也轻松解决）"><span class="nav-number">17.</span> <span class="nav-text">UIButton倒计时按钮（闪烁问题也轻松解决）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置视图部分圆角"><span class="nav-number">18.</span> <span class="nav-text">设置视图部分圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将cell的分割线隐藏掉"><span class="nav-number">19.</span> <span class="nav-text">将cell的分割线隐藏掉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS-去掉顶部-或底部-出现一块空白区域"><span class="nav-number">20.</span> <span class="nav-text">iOS 去掉顶部(或底部)出现一块空白区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tableView默认背景色"><span class="nav-number">21.</span> <span class="nav-text">tableView默认背景色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三方登陆"><span class="nav-number">22.</span> <span class="nav-text">第三方登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码块的保存路径；"><span class="nav-number">23.</span> <span class="nav-text">代码块的保存路径；</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态栏文字颜色"><span class="nav-number">24.</span> <span class="nav-text">状态栏文字颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#金额显示千分位"><span class="nav-number">25.</span> <span class="nav-text">金额显示千分位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侧滑后导航栏显示问题"><span class="nav-number">26.</span> <span class="nav-text">侧滑后导航栏显示问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频地址"><span class="nav-number">27.</span> <span class="nav-text">视频地址</span></a></li></ol></div>
             
 
           </div>
@@ -971,7 +1014,7 @@ self.view_Status.layer.mask = maskLayer;
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">43.5k</span>
+    <span title="总字数">44.3k</span>
   
 </div>
 
