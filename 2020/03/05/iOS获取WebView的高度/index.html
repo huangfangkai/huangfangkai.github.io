@@ -88,7 +88,7 @@
 <meta property="og:description" content="前言需要显示一个资讯详情页面，涉及到webView和自定义控件的结合，页面上半部分是webView,下面是一个tableView，webView必须显示完整的网页信息，这时候就需要计算出webView的高度。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/iOS获取WebView的高度_1.gif">
-<meta property="og:updated_time" content="2020-03-06T11:21:15.559Z">
+<meta property="og:updated_time" content="2020-07-30T02:13:09.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS获取WebView的高度">
 <meta name="twitter:description" content="前言需要显示一个资讯详情页面，涉及到webView和自定义控件的结合，页面上半部分是webView,下面是一个tableView，webView必须显示完整的网页信息，这时候就需要计算出webView的高度。">
@@ -350,7 +350,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  839
                 </span>
               
 
@@ -379,17 +379,6 @@
 <p><img src="/assets/blogImg/iOS获取WebView的高度_1.gif" alt="资讯详情" title="资讯详情"></p>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>网上介绍的方法很多，大概分为两种。</p>
 <p><strong>方法1：</strong>在<code>webView</code>的代理中去获取<code>webView</code>的高度</p>
-<pre><code>//UIWebView
--(void)webViewDidFinishLoad:(UIWebView *)webView{
-    if (self.hud) {
-        [self.hud hideAnimated:YES];
-    }
-    CGFloat height = [[webView stringByEvaluatingJavaScriptFromString:@&quot;document.body.scrollHeight&quot;] floatValue];
-    [self.HtmlwebView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(height);
-    }];
-}
-</code></pre><hr>
 <pre><code>//WKWebView
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     if (self.hud) {
@@ -397,16 +386,13 @@
     }
     [webView evaluateJavaScript:@&quot;document.body.scrollHeight&quot;
               completionHandler:^(id result, NSError *_Nullable error) {
-                  [self.webView mas_updateConstraints:^(MASConstraintMaker *make) {
-                      make.height.equalTo([result floatValue]);
-                  }];
-                  self.contentHeight = [result floatValue];
-              }];
+        [self.webView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo([result floatValue]);
+        }];
+        self.tableView.tableHeaderView = self.headerView;
+    }];
 }
 </code></pre><p><strong>方法2：</strong>通过<code>KVO</code>监听<code>webView</code>的高度，然后更新高度。</p>
-<pre><code>//UIWebView
-   [self.HtmlwebView.scrollView addObserver:self forKeyPath:@&quot;contentSize&quot; options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
-</code></pre><hr>
 <pre><code>//WKWebView
    [self.webView.scrollView addObserver:self forKeyPath:@&quot;contentSize&quot; options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
 </code></pre><hr>
@@ -419,54 +405,7 @@
 </code></pre><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>用上面<code>方法1</code>和<code>方法2</code>方法监听高度，然后更新高度偶尔会发现高度不准。因为<code>webView</code>中包含图片等资源它们加载过程中需要一定时间，只有当它们完全加载完成以后，获取的高度才是真正的高度。</p>
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p><strong>方法1：</strong>通过<code>代理</code>和<code>KVO</code>监听<code>webView</code>高度变化</p>
 <ol>
-<li><p>首先定义一个变量来记录<code>webView</code>的高度，因为我这里webView是tableView的头视图，所以需要一个变量来记录是否加载完成。</p>
-<pre><code>@property (nonatomic, assign) CGFloat contentHeight;
-@property (nonatomic, assign) BOOL bool_webViewFinish;//webview是否已经加载完成
-</code></pre></li>
 <li><p>监听<code>webView</code>的高度变化。</p>
-<pre><code>//UIWebView
-//创建时KVO监听
-   [self.HtmlwebView.scrollView addObserver:self forKeyPath:@&quot;contentSize&quot; options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
- [self.HtmlwebView makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(timeLab.mas_bottom).offset(10);
-    make.left.right.equalTo(titleLab);
-    make.height.equalTo(100);
-}];
-
- //代理中更新contentHeight变量变化
--(void)webViewDidFinishLoad:(UIWebView *)webView{
-    CGFloat height = [[webView stringByEvaluatingJavaScriptFromString:@&quot;document.body.scrollHeight&quot;] floatValue];
-    [self.HtmlwebView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(height);
-    }];
-    self.contentHeight = height;
-}
-
-//KVO监听webView高度变化从而刷新UI
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    if ([keyPath isEqualToString:@&quot;contentSize&quot;]) {
-        CGFloat height = self.HtmlwebView.scrollView.contentSize.height;
-        if (self.contentHeight == height) {
-            if (!self.bool_webViewFinish) {
-                [self.HtmlwebView mas_updateConstraints:^(MASConstraintMaker *make) {
-                    make.height.equalTo(height);
-                }];
-                [self.tableView reloadData];
-            }
-            self.bool_webViewFinish = YES;
-            return ;
-        }else{
-            self.bool_webViewFinish = NO;
-        }
-        self.contentHeight = height;
-    }
-}    
-
-//移除KVO监听    
--(void)dealloc{
-     [self.HtmlwebView.scrollView removeObserver:self forKeyPath:@&quot;contentSize&quot;];
-}        
-</code></pre><hr>
 <pre><code>//WKWebView
    [self.webView.scrollView addObserver:self forKeyPath:@&quot;contentSize&quot; options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
   [self.webView makeConstraints:^(MASConstraintMaker *make) {
@@ -482,40 +421,31 @@
     }
     [webView evaluateJavaScript:@&quot;document.body.scrollHeight&quot;
               completionHandler:^(id result, NSError *_Nullable error) {
-                  [self.webView mas_updateConstraints:^(MASConstraintMaker *make) {
-                      make.height.equalTo([result floatValue]);
-                  }];
-                  self.contentHeight = [result floatValue];
-              }];
+        [self.webView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo([result floatValue]);
+        }];
+        self.tableView.tableHeaderView = self.headerView;
+    }];
 }
 
 //KVO监听webView高度变化从而刷新UI
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([keyPath isEqualToString:@&quot;contentSize&quot;]) {
         CGFloat height = self.webView.scrollView.contentSize.height;
-        if (self.contentHeight == height) {
-            if (!self.bool_webViewFinish) {
-                [self.webView mas_updateConstraints:^(MASConstraintMaker *make) {
-                    make.height.equalTo(height);
-                }];
-                [self.tableView reloadData];
-            }
-            self.bool_webViewFinish = YES;
-            return ;
-        }else{
-            self.bool_webViewFinish = NO;
-        }
-        self.contentHeight = height;
+        NSLog(@&quot;-----------height= %.1f&quot;,height);
+        [self.webView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(height);
+        }];
+        self.tableView.tableHeaderView = self.headerView;
     }
-}
-
-//移除KVO监听    
--(void)dealloc{
-   [self.webView.scrollView removeObserver:self forKeyPath:@&quot;contentSize&quot;];
 }
 </code></pre></li>
 </ol>
-<p>通过上述方法基本可以实现功能。</p>
+<pre><code>//移除KVO监听    
+-(void)dealloc{
+   [self.webView.scrollView removeObserver:self forKeyPath:@&quot;contentSize&quot;];
+}
+</code></pre><p>通过上述方法基本可以实现功能。</p>
 <p><strong>方法2：</strong>通过和<code>H5</code>进行<code>JS</code>交互从而实现监听<br><code>H5</code>那边一定要在文字跟图片都加载完成再去获取高度，因为图片是异步加载的，否则获取到的高度不准。在H5完成加载内容后通过<code>JS</code>告诉<code>App</code>然后<code>App</code>实现刷新</p>
 <pre><code>  //（1）进行配置控制器---跟H5交互用
 WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
@@ -734,7 +664,7 @@ configuration.userContentController = [WKUserContentController new];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -745,7 +675,7 @@ configuration.userContentController = [WKUserContentController new];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -756,7 +686,7 @@ configuration.userContentController = [WKUserContentController new];
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -865,7 +795,7 @@ configuration.userContentController = [WKUserContentController new];
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">44.3k</span>
+    <span title="总字数">48.8k</span>
   
 </div>
 
