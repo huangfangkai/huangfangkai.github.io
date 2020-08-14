@@ -374,39 +374,7 @@ git push -u origin master
 强制单独添加一个文件
 cd 目录下
 git add 文件名
-</code></pre><h3 id="Git-提示error-src-refspec-master-does-not-match-any"><a href="#Git-提示error-src-refspec-master-does-not-match-any" class="headerlink" title="Git 提示error:src refspec master does not match any"></a>Git 提示error:src refspec master does not match any</h3><pre><code>git init 
-git touch READMEgit 
-git add README 
-git commit -m &apos;first commit&apos;
-git remote add origin https://github.com/xxx.github.io.git
-git push origin master
-</code></pre><h3 id="rejected-master-gt-master-fetch-first"><a href="#rejected-master-gt-master-fetch-first" class="headerlink" title="! [rejected]        master -&gt; master (fetch first)"></a>! [rejected]        master -&gt; master (fetch first)</h3><pre><code>git push -f origin master
-</code></pre><p><img src="/assets/blogImg/Git小命令.png" alt="Git小命令" title="Git小命令"></p>
-<h3 id="git统计代码行数"><a href="#git统计代码行数" class="headerlink" title="git统计代码行数"></a><a href="https://blog.csdn.net/carterslam/article/details/81162463" target="_blank" rel="noopener">git统计代码行数</a></h3><pre><code>git log --author=&quot;$(git config --get user.name)&quot; --pretty=tformat: --numstat | gawk &apos;{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf &quot;added lines: %s removed lines : %s total lines: %s\n&quot;,add,subs,loc }&apos; -
-</code></pre><h3 id="今天提交git仓库的时候，遇到了如截图所示的问题，提示Your-branch-is-up-to-date-with-39-origin-master-39"><a href="#今天提交git仓库的时候，遇到了如截图所示的问题，提示Your-branch-is-up-to-date-with-39-origin-master-39" class="headerlink" title="今天提交git仓库的时候，遇到了如截图所示的问题，提示Your branch is up-to-date with &#39;origin/master&#39;."></a>今天提交git仓库的时候，遇到了如截图所示的问题，提示<code>Your branch is up-to-date with &#39;origin/master&#39;.</code></h3><ol>
-<li><p>这时候我们就需要新建一个分支</p>
-<pre><code>git branch newbranch  
-</code></pre></li>
-<li><p>然后检查分支是否创建成功，会提示（前面的*代表的是当前你所在的工作分支）</p>
-<pre><code>git branch
-</code></pre></li>
-<li><p>然后切换到你的新分支</p>
-<pre><code>git checkout newbranch
-</code></pre></li>
-<li><p>然后将你的改动提交到新分支上</p>
-<pre><code>git add . 
-git commit -m &quot;18.03.01&quot;
-</code></pre></li>
-<li><p>然后<code>git status</code>检查是否成功，然后切换到主分支</p>
-<pre><code>git checkout master 
-</code></pre></li>
-<li><p>然后将新分支提交的改动合并到主分支上</p>
-<pre><code>git merge newbranch
-</code></pre></li>
-<li><p>最后还可以删除这个分支</p>
-<pre><code>git branch -D newbranch
-</code></pre></li>
-</ol>
+</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/07/23/Git使用/#more" rel="contents">
@@ -818,7 +786,7 @@ git commit -m &quot;18.03.01&quot;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2020/06/05/iOS使用fastlane自动打包发布/">
+    <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2020/06/05/Realm(RLMObject)的解析与copy/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HFK">
@@ -837,7 +805,7 @@ git commit -m &quot;18.03.01&quot;
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/06/05/iOS使用fastlane自动打包发布/" itemprop="url">iOS使用fastlane自动打包发布</a></h2>
+                <a class="post-title-link" href="/2020/06/05/Realm(RLMObject)的解析与copy/" itemprop="url">Realm(RLMObject)的解析与copy</a></h2>
         
 
         <div class="post-meta">
@@ -849,7 +817,7 @@ git commit -m &quot;18.03.01&quot;
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T15:53:46+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T15:53:48+08:00">
                 2020-06-05
               </time>
             
@@ -903,7 +871,7 @@ git commit -m &quot;18.03.01&quot;
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.6k
+                  654
                 </span>
               
 
@@ -929,11 +897,11 @@ git commit -m &quot;18.03.01&quot;
 
       
         
-          <p> <img src="/assets/blogImg/使用fastlane自动打包发布_1.png" alt="fastlane" title="fastlane"></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane</strong></a>是一套使用<code>Ruby</code>写的自动化工具集，目的是为了简化<code>Android</code>和<code>iOS</code>的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布<code>App</code>。这里主要是为了记录一次自己<code>Mac</code>环境下配置<code>fastlane</code>的过程。下图是<code>Fastlane</code>的主要流程和功能<br>
+          <p><a href="https://docs.realm.io/sync/" target="_blank" rel="noopener">Realm</a>是由美国<code>YCombinator</code>孵化的创业团队历时几年打造，第一个专门针对移动平台设计的数据库。<code>Objective‑C</code>版本的<code>Realm</code>能够让您以一种安全、耐用以及迅捷的方式来高效地编写应用的数据模型层。</p>
+<p>最近使用过程中遇到问题，就是<code>RLMObject</code>的解析与<code>Copy</code>，正常处理无法完成。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/06/05/iOS使用fastlane自动打包发布/#more" rel="contents">
+            <a class="btn" href="/2020/06/05/Realm(RLMObject)的解析与copy/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1173,6 +1141,181 @@ git commit -m &quot;18.03.01&quot;
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2020/06/05/iOS使用fastlane自动打包发布/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HFK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HFK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/05/iOS使用fastlane自动打包发布/" itemprop="url">iOS使用fastlane自动打包发布</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T15:53:46+08:00">
+                2020-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.6k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p> <img src="/assets/blogImg/使用fastlane自动打包发布_1.png" alt="fastlane" title="fastlane"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://fastlane.tools/" target="_blank" rel="noopener"><strong>Fastlane</strong></a>是一套使用<code>Ruby</code>写的自动化工具集，目的是为了简化<code>Android</code>和<code>iOS</code>的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布<code>App</code>。这里主要是为了记录一次自己<code>Mac</code>环境下配置<code>fastlane</code>的过程。下图是<code>Fastlane</code>的主要流程和功能<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/06/05/iOS使用fastlane自动打包发布/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+      <div>
+        
+      </div>
+      
+    
+
+    
+
+    
+      <div>
+        
+      </div>
+      
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+        
+    
+        
+            
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2020/06/05/iOSmasory/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1294,184 +1437,6 @@ git commit -m &quot;18.03.01&quot;
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/06/05/iOSmasory/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-      <div>
-        
-      </div>
-      
-    
-
-    
-
-    
-      <div>
-        
-      </div>
-      
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-        
-    
-        
-            
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2020/06/05/Realm(RLMObject)的解析与copy/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HFK">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HFK">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/05/Realm(RLMObject)的解析与copy/" itemprop="url">Realm(RLMObject)的解析与copy</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T15:53:46+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  654
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Realm是由美国YCombinator孵化的创业团队历时几年打造，第一个专门针对移动平台设计的数据库。Objective‑C版本的Realm能够让您以一种安全、耐用以及迅捷的方式来高效地编写应用的数据模型层。
-最近使用过程中遇到问题，就是RLMObject的解析与Copy，正常处理无法完成。
-问题
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/05/Realm(RLMObject)的解析与copy/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

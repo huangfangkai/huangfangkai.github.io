@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="Realm是由美国YCombinator孵化的创业团队历时几年打造，第一个专门针对移动平台设计的数据库。Objective‑C版本的Realm能够让您以一种安全、耐用以及迅捷的方式来高效地编写应用的数据模型层。 最近使用过程中遇到问题，就是RLMObject的解析与Copy，正常处理无法完成。 问题其实两个问题最终归为一个问题就是使用Realm项目中继承RLMObject的对象，在获取类名发现我们">
+<meta name="description" content="Realm是由美国YCombinator孵化的创业团队历时几年打造，第一个专门针对移动平台设计的数据库。Objective‑C版本的Realm能够让您以一种安全、耐用以及迅捷的方式来高效地编写应用的数据模型层。 最近使用过程中遇到问题，就是RLMObject的解析与Copy，正常处理无法完成。">
 <meta name="keywords" content="iOS,Realm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Realm(RLMObject)的解析与copy">
 <meta property="og:url" content="http://www.hfkstackoverflow.top/2020/06/05/Realm(RLMObject)的解析与copy/index.html">
 <meta property="og:site_name" content="HFK">
-<meta property="og:description" content="Realm是由美国YCombinator孵化的创业团队历时几年打造，第一个专门针对移动平台设计的数据库。Objective‑C版本的Realm能够让您以一种安全、耐用以及迅捷的方式来高效地编写应用的数据模型层。 最近使用过程中遇到问题，就是RLMObject的解析与Copy，正常处理无法完成。 问题其实两个问题最终归为一个问题就是使用Realm项目中继承RLMObject的对象，在获取类名发现我们">
+<meta property="og:description" content="Realm是由美国YCombinator孵化的创业团队历时几年打造，第一个专门针对移动平台设计的数据库。Objective‑C版本的Realm能够让您以一种安全、耐用以及迅捷的方式来高效地编写应用的数据模型层。 最近使用过程中遇到问题，就是RLMObject的解析与Copy，正常处理无法完成。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Realm(RLMObject">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Realm(RLMObject">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Realm(RLMObject">
 <meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Realm(RLMObject">
-<meta property="og:updated_time" content="2020-08-14T06:22:53.694Z">
+<meta property="og:updated_time" content="2020-08-14T06:28:42.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Realm(RLMObject)的解析与copy">
-<meta name="twitter:description" content="Realm是由美国YCombinator孵化的创业团队历时几年打造，第一个专门针对移动平台设计的数据库。Objective‑C版本的Realm能够让您以一种安全、耐用以及迅捷的方式来高效地编写应用的数据模型层。 最近使用过程中遇到问题，就是RLMObject的解析与Copy，正常处理无法完成。 问题其实两个问题最终归为一个问题就是使用Realm项目中继承RLMObject的对象，在获取类名发现我们">
+<meta name="twitter:description" content="Realm是由美国YCombinator孵化的创业团队历时几年打造，第一个专门针对移动平台设计的数据库。Objective‑C版本的Realm能够让您以一种安全、耐用以及迅捷的方式来高效地编写应用的数据模型层。 最近使用过程中遇到问题，就是RLMObject的解析与Copy，正常处理无法完成。">
 <meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Realm(RLMObject">
 
 
@@ -289,7 +289,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T15:53:46+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T15:53:48+08:00">
                 2020-06-05
               </time>
             
@@ -379,7 +379,7 @@
 
       
         <p><a href="https://docs.realm.io/sync/" target="_blank" rel="noopener">Realm</a>是由美国<code>YCombinator</code>孵化的创业团队历时几年打造，第一个专门针对移动平台设计的数据库。<code>Objective‑C</code>版本的<code>Realm</code>能够让您以一种安全、耐用以及迅捷的方式来高效地编写应用的数据模型层。</p>
-<p>最近使用过程中遇到问题，就是<code>RLMObject</code>的解析与<code>Copy</code>，正常处理无法完成。</p>
+<p>最近使用过程中遇到问题，就是<code>RLMObject</code>的解析与<code>Copy</code>，正常处理无法完成。<br><a id="more"></a></p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>其实两个问题最终归为一个问题就是使用<code>Realm</code>项目中继承<code>RLMObject</code>的对象，在获取类名发现我们无法获取到对应的类名。</p>
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><pre><code>#import &lt;Foundation/Foundation.h&gt;
 #import &quot;MJExtension.h&quot;
@@ -586,8 +586,8 @@ NSLog(@&quot;%@&quot;,[[model class] className]);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/29/使用GCD控制多任务顺序/" rel="next" title="使用GCD控制多任务顺序">
-                <i class="fa fa-chevron-left"></i> 使用GCD控制多任务顺序
+              <a href="/2020/06/05/问题汇总/" rel="next" title="问题汇总">
+                <i class="fa fa-chevron-left"></i> 问题汇总
               </a>
             
           </div>
@@ -596,8 +596,8 @@ NSLog(@&quot;%@&quot;,[[model class] className]);
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/06/05/iOSmasory/" rel="prev" title="iOS使用fastlane自动打包发布">
-                iOS使用fastlane自动打包发布 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/06/19/解决Github图片不显示/" rel="prev" title="解决Github图片不显示">
+                解决Github图片不显示 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
