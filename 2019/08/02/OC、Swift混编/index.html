@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/hfk.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/hfk.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/hfk.jpeg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Objective-C,Swift,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。">
+<meta name="keywords" content="Objective-C,Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC、Swift混编">
+<meta property="og:url" content="http://www.hfkstackoverflow.top/2019/08/02/OC、Swift混编/index.html">
+<meta property="og:site_name" content="HFK">
+<meta property="og:description" content="在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_1.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_2.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_3.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_4.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_5.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_6.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_7.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_8.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_9.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_10.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_11.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_12.png">
+<meta property="og:updated_time" content="2020-03-20T05:47:07.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OC、Swift混编">
+<meta name="twitter:description" content="在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。">
+<meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/OC、Swift混编_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hfkstackoverflow.top/2019/08/02/OC、Swift混编/">
+
+
+
+
+
+  <title>OC、Swift混编 | HFK</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/huangfangkai" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HFK</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">欢迎到来~</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2019/08/02/OC、Swift混编/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HFK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HFK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">OC、Swift混编</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T14:36:40+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/02/OC、Swift混编/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/02/OC、Swift混编/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  983
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在OC项目中,有可能会遇到需要引入Swift写的第三方库。在Swift项目中,也有可能会遇到需要引入OC写的第三方库，下面整理了具体过程。</p>
+<a id="more"></a>
+<h2 id="混编说明"><a href="#混编说明" class="headerlink" title="混编说明"></a><strong>混编说明</strong></h2><table>
+<thead>
+<tr>
+<th style="text-align:left">引入方式</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>Swift</code>访问<code>OC</code></td>
+<td style="text-align:left"><code>Swift</code>中引入<code>OC</code>的类、<code>Frameworks</code>、<code>CocoaPods</code>引入三方库等，都不需要每次需要使用时<code>import</code>，只需要统一在桥接文件<code>ProductName-Bridging-Header.h</code>中导入需要暴露给<code>Swift</code>使用的，即可在<code>Swift</code>中使用<code>OC</code>了</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>OC</code>访问<code>Swift</code></td>
+<td style="text-align:left"><code>OC</code>中引入<code>Swift</code>,需要做一些配置，然后在在<code>OC</code>中需要的地方导入<code>ProductName-Swift.h</code>文件，即可在<code>OC</code>中访问<code>Swift</code>中暴露给<code>OC</code>的属性和方法。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注</strong>：<code>ProductName</code>是当前工程名</p>
+<h2 id="Swift引入OC"><a href="#Swift引入OC" class="headerlink" title="Swift引入OC"></a><strong>Swift引入OC</strong></h2><ol>
+<li><p>新建一个<code>Swift</code>工程<code>SwiftAddOC</code>，新建一个<code>OC</code>的类，<code>Xcode</code>会提醒你是否创建一个<code>桥接文件</code>，选择<code>Create Bridging Header</code>，<code>Xcode</code>会自动帮我们给<code>Target</code>建立对应的<code>桥接文件</code>，选择<code>Don&#39;t Create</code>，则需要我们自己创建<code>桥接文件</code>，然后在<code>Xcode</code>的配置中配置<code>桥接文件</code>路径。</p>
+<p> <strong>注</strong>：<code>桥接文件</code>是用于在<code>Swift</code>中访问<code>OC</code>的类，名称格式为<code>ProductName-Bridging-Header.h</code></p>
+<p> <img src="/assets/blogImg/OC、Swift混编_1.png" alt="选择是否建立桥接文件" title="选择是否建立桥接文件"><br> <img src="/assets/blogImg/OC、Swift混编_2.png" alt="自创桥接文件配置路径" title="自创桥接文件配置路径"></p>
+</li>
+<li><p>无论是自己创建的<code>OC类</code>或者<code>CocoaPods</code>导入的，只需要在<code>桥接文件</code>中导入<code>Swift</code>需要访问的<code>OC类</code>和三方的头文件，这样所以<code>Swift</code>文件都能访问相应的<code>OC</code>类了</p>
+<p>  <img src="/assets/blogImg/OC、Swift混编_3.png" alt="桥接文件导入OC" title="桥接文件暴露给Swift的文件"><br><img src="/assets/blogImg/OC、Swift混编_4.png" alt="Swift调用OC" title="Swift调用OC"></p>
+</li>
+</ol>
+<h2 id="OC引入Swift"><a href="#OC引入Swift" class="headerlink" title="OC引入Swift"></a><strong>OC引入Swift</strong></h2><ol>
+<li><p>新建一个<code>OC</code>工程<code>OCAddSwift</code>，新建一个<code>Swift</code>的类，<code>Xcode</code>会提醒你是否创建一个<code>桥接文件</code>，选择<code>Create Bridging Header</code>，<code>Xcode</code>会自动帮我们给<code>Target</code>建立对应的<code>桥接文件</code>,<code>桥接文件</code>对于<code>OC</code>引入<code>Swift</code>没有什么作用。</p>
+<p><img src="/assets/blogImg/OC、Swift混编_5.png" alt="选择是否建立桥接文件" title="选择是否建立桥接文件"></p>
+</li>
+<li><p>在<code>Targets</code>下<code>Build Settings</code>设置<code>Defines Modules</code>为<code>YES</code></p>
+<p>  <img src="/assets/blogImg/OC、Swift混编_6.png" alt="设置Defines Modules" title="设置Defines Modules"></p>
+</li>
+<li><p>由于<code>Xcode</code>会根据的<code>Target</code>的创建<code>Swift</code>转换<code>OC</code>下生的成接口头文件’，英文:<code>Objective-C Generated interface Header Name</code></p>
+<p>  <img src="/assets/blogImg/OC、Swift混编_7.png" alt="Objective-C Generated interface Header Name" title="Objective-C Generated interface Header Name"></p>
+</li>
+<li><p>新建一个<code>SwiftTest</code>的<code>Swift</code>文件，写一个<code>Swift</code>的函数</p>
+<p><strong>注意⚠️：</strong><code>Swift</code>的类需要能够被<code>OC</code>调用，那么它暴露给<code>OC</code>的方法和属性前面必须添加<code>@objc</code>，如下图</p>
+<p>  <img src="/assets/blogImg/OC、Swift混编_8.png" alt="测试OC调用Swift" title="测试OC调用Swift"></p>
+</li>
+<li><p><code>OC</code>中调用<code>Swift</code>方法，必须在文件中导入<code>ProductName-Swift.h</code>，这个是不会联想的，必须手动输入，如下图</p>
+<p>  <img src="/assets/blogImg/OC、Swift混编_9.png" alt="OC调用Swift方法" title="OC调用Swift方法"></p>
+</li>
+</ol>
+<p><strong>注意⚠️：</strong>中途我们可能需要改项目的名称，那样可能会导致报错，如下</p>
+<pre><code>&apos;ProductName-Swift.h&apos; file not found
+</code></pre><p>这时候我们需要在<code>info.plist</code>加入<code>Bundle display name</code>，然后写入相应需要更改名称即可。</p>
+<h2 id="OC引入Swift的framework"><a href="#OC引入Swift的framework" class="headerlink" title="OC引入Swift的framework"></a><strong>OC引入Swift的framework</strong></h2><ol>
+<li><p>同上设置一遍，然后将相应的framework导入到工程中</p>
+<p>  <img src="/assets/blogImg/OC、Swift混编_10.png" alt="导入framework" title="导入framework"></p>
+</li>
+<li><p>在<code>Project</code>-&gt;<code>General</code>-&gt;<code>Embedded Binaries</code>下添加进去相应的<code>framework</code>，<code>Linked Frameworks and Libraries</code>中删除多余的</p>
+<p>  <img src="/assets/blogImg/OC、Swift混编_11.png" alt="导入Embedded Binaries" title="导入Embedded Binaries"></p>
+</li>
+<li><p>导入<code>#import &lt;AWSDK/AWSDK-Swift.h&gt;</code>而不是<code>#import &lt;AWSDK/AWSDK.h&gt;``#import &lt;AWSDK/AWSDK-Swift.h&gt;</code>是<code>OC</code>项目导入<code>Swift Framework</code>时自动产生的文件,给我们展示可以用哪些接口，这时候技能调用<code>Swift Framework</code>中的方法了</p>
+<p>  <img src="/assets/blogImg/OC、Swift混编_12.png" alt="调用framework" title="调用framework"></p>
+</li>
+</ol>
+<h2 id="OC项目中使用Swift版的pod"><a href="#OC项目中使用Swift版的pod" class="headerlink" title="OC项目中使用Swift版的pod"></a><strong>OC项目中使用Swift版的pod</strong></h2><p>在<code>Podfile</code>文件中添加 <code>use_frameworks!</code></p>
+<pre><code>- 用cocoapods 导入swift库时 到 swift项目和OC项目都必须要 use_frameworks!
+- 使用 dynamic frameworks，必须要在Podfile文件中添加 use_frameworks!
+</code></pre><hr>
+<pre><code>//Podfile文件
+platform :ios, &apos;9.0&apos;
+source &apos;https://github.com/CocoaPods/Specs.git&apos;
+target &apos;xxx&apos; do
+  # Uncomment the next line if you&apos;re using Swift or would like to use dynamic frameworks
+  use_frameworks!
+end
+</code></pre><p><strong>注意⚠️：</strong><code>OC</code>项目中使用了<code>use_frameworks！</code>后<code>#import &quot;AFNetworking.h&quot;</code> 需要改成<code>#import &quot;AFNetworking/AFNetworking.h&quot;</code>,类似的其他库的引用方式都需要修改;</p>
+<p>##注意</p>
+<ol>
+<li><strong><code>Swift</code>引入<code>OC</code>：</strong>必须建立<code>桥接文件</code>，<code>桥接文件</code>是用于在<code>Swift</code>中访问<code>OC</code>的类，名称格式为<code>ProductName-Bridging-Header.h</code></li>
+<li><strong><code>OC</code>引入<code>Swift</code>：</strong>必须在文件中导入<code>ProductName-Swift.h</code>，另外<code>Swift</code>暴露给<code>OC</code>的方法和属性前面必须添加<code>@objc</code></li>
+<li><strong><code>OC</code>引入<code>Swift</code>的<code>framework</code>：</strong><code>Embedded Binaries</code>下添加进去相应的<code>framework</code>，例如导入<code>#import &lt;AWSDK/AWSDK-Swift.h&gt;</code></li>
+<li><code>OC</code>项目中使用了<code>use_frameworks！</code>后<code>#import &quot;AFNetworking.h&quot;</code> 需要改成<code>#import &quot;AFNetworking/AFNetworking.h&quot;</code>,类似的其他库的引用方式都需要修改;</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+      <div>
+        
+         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- <p><span>本文标题:</span><a href="/2019/08/02/OC、Swift混编/">OC、Swift混编</a></p> -->
+  <p><span>文章作者:</span><a href="/" title="访问 HFK 的个人博客">HFK</a></p>
+  <!-- <p><span>发布时间:</span>2019年08月02日</p> -->
+  <p><span>本文链接:</span><a href="/2019/08/02/OC、Swift混编/" title="OC、Swift混编">http://www.hfkstackoverflow.top/2019/08/02/OC、Swift混编/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.hfkstackoverflow.top/2019/08/02/OC、Swift混编/" aria-label="复制成功！"></i></span>
+  </p>
+ <!-- <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p> --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+        
+      </div>
+      
+    
+
+    
+
+    
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+      </div>
+      
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag"><i class="fa fa-tag"></i> Objective-C</a>
+          
+            <a href="/tags/Swift/" rel="tag"><i class="fa fa-tag"></i> Swift</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/23/Swift学习笔记/" rel="next" title="Swift学习笔记">
+                <i class="fa fa-chevron-left"></i> Swift学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/19/Mac安装软件报已损坏/" rel="prev" title="Mac安装软件(“***”已损坏，打不开，您应该将它移到废纸篓)">
+                Mac安装软件(“***”已损坏，打不开，您应该将它移到废纸篓) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.jpeg" alt="HFK">
+            
+              <p class="site-author-name" itemprop="name">HFK</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/huangfangkai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/e5c418741dce" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog" title="阮一峰博客" target="_blank">阮一峰博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.devtang.com" title="唐巧博客" target="_blank">唐巧博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lib.csdn.net/article/ios/44217" title="iOS一些干货" target="_blank">iOS一些干货</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tinypng.com" title="图片压缩" target="_blank">图片压缩</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#混编说明"><span class="nav-number">1.</span> <span class="nav-text">混编说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swift引入OC"><span class="nav-number">2.</span> <span class="nav-text">Swift引入OC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OC引入Swift"><span class="nav-number">3.</span> <span class="nav-text">OC引入Swift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OC引入Swift的framework"><span class="nav-number">4.</span> <span class="nav-text">OC引入Swift的framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OC项目中使用Swift版的pod"><span class="nav-number">5.</span> <span class="nav-text">OC项目中使用Swift版的pod</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HFK</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">总字数&#58;</span>
+    
+    <span title="总字数">51.1k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+</body>
+</html>

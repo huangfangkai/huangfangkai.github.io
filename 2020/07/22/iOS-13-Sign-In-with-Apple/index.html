@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/hfk.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/hfk.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/hfk.jpeg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS13,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="iOS 13新增功能Sign In with Apple，Sign In with Apple是跨平台的，可以支持iOS、macOS、watchOS、tvOS、JS。最近上架AppStore因为没有Sign In with Apple被拒了，本文主要内容为Sign In with Apple在iOS上的使用。">
+<meta name="keywords" content="iOS13">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 13 Sign In with Apple">
+<meta property="og:url" content="http://www.hfkstackoverflow.top/2020/07/22/iOS-13-Sign-In-with-Apple/index.html">
+<meta property="og:site_name" content="HFK">
+<meta property="og:description" content="iOS 13新增功能Sign In with Apple，Sign In with Apple是跨平台的，可以支持iOS、macOS、watchOS、tvOS、JS。最近上架AppStore因为没有Sign In with Apple被拒了，本文主要内容为Sign In with Apple在iOS上的使用。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/SignInwithApple_1.jpg">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/SignInwithApple_2.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/SignInwithApple_3.png">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/SignInwithApple_4.png">
+<meta property="og:updated_time" content="2020-07-23T06:32:51.874Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 13 Sign In with Apple">
+<meta name="twitter:description" content="iOS 13新增功能Sign In with Apple，Sign In with Apple是跨平台的，可以支持iOS、macOS、watchOS、tvOS、JS。最近上架AppStore因为没有Sign In with Apple被拒了，本文主要内容为Sign In with Apple在iOS上的使用。">
+<meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/SignInwithApple_1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hfkstackoverflow.top/2020/07/22/iOS-13-Sign-In-with-Apple/">
+
+
+
+
+
+  <title>iOS 13 Sign In with Apple | HFK</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/huangfangkai" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HFK</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">欢迎到来~</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2020/07/22/iOS-13-Sign-In-with-Apple/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HFK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HFK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iOS 13 Sign In with Apple</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-22T16:26:28+08:00">
+                2020-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/22/iOS-13-Sign-In-with-Apple/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/07/22/iOS-13-Sign-In-with-Apple/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><code>iOS 13</code>新增功能<code>Sign In with Apple</code>，<code>Sign In with Apple</code>是跨平台的，可以支持<code>iOS</code>、<code>macOS</code>、<code>watchOS</code>、<code>tvOS</code>、<code>JS</code>。最近上架<code>AppStore</code>因为没有<code>Sign In with Apple</code>被拒了，本文主要内容为<code>Sign In with Apple</code>在<code>iOS</code>上的使用。<br><a id="more"></a></p>
+<p><img src="/assets/blogImg/SignInwithApple_1.jpg" alt="被拒原因" title="被拒原因"></p>
+<h2 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h2><ol>
+<li><p>在<a href="https://developer.apple.com" target="_blank" rel="noopener">苹果开发者网站</a>，在对应的<code>AppleId</code>下面开通<code>Sign In With Apple</code>的权限。如下图</p>
+<p>  <img src="/assets/blogImg/SignInwithApple_2.png" alt="设置SignInWithApple" title="设置SignInWithApple"></p>
+</li>
+<li><p>现在我只需要在<code>Signing &amp; Capabilities</code>中添加<code>Sign In With Apple</code>，<code>Xcode</code>会自动帮你配置生成相关文件。其实上面第一步可以省略，这里可以自动生成。</p>
+<p><img src="/assets/blogImg/SignInwithApple_3.png" alt="Xcode中设置" title="Xcode中设置"></p>
+<p><img src="/assets/blogImg/SignInwithApple_4.png" alt="配置结果" title="配置结果"></p>
+</li>
+</ol>
+<h2 id="代码集成"><a href="#代码集成" class="headerlink" title="代码集成"></a>代码集成</h2><h3 id="Sign-In-With-Apple流程"><a href="#Sign-In-With-Apple流程" class="headerlink" title="Sign In With Apple流程"></a><code>Sign In With Apple</code>流程</h3><ol>
+<li>导入系统头文件<code>#import &lt;AuthenticationServices/AuthenticationServices.h&gt;</code>，创建相关<code>Sign In with Apple</code>登录按钮，添加按钮点击响应事件</li>
+<li>获取授权码</li>
+<li>验证</li>
+<li>执行自己的相关逻辑</li>
+</ol>
+<p><strong>注意⚠️：</strong>创建按钮可以自定义或者使用系统提供的按钮。</p>
+<h3 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h3><ol>
+<li><p>导入头文件</p>
+<pre><code>#import &lt;AuthenticationServices/AuthenticationServices.h&gt;
+</code></pre></li>
+<li><p>创建对应UI</p>
+<pre><code>-(void)setUI{
+    // 使用系统提供的按钮，要注意不支持系统版本的处理
+    if (@available(iOS 13.0, *)) {
+        // Sign In With Apple Button
+        ASAuthorizationAppleIDButton *btn_apple = [ASAuthorizationAppleIDButton buttonWithType:ASAuthorizationAppleIDButtonTypeDefault style:ASAuthorizationAppleIDButtonStyleWhite];
+        btn_apple.frame = CGRectMake(50, 100,  self.view.bounds.size.width - 100, 100);
+        [btn_apple addTarget:self action:@selector(signWithApple:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn_apple];
+    }
+    // 或者自己用UIButton实现按钮样式
+    UIButton *btn_custom = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn_custom.frame = CGRectMake(50, 250, self.view.bounds.size.width - 100, 44);
+    [btn_custom setTitle:@&quot;Sign in with Apple&quot; forState:UIControlStateNormal];
+    [btn_custom setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+
+    [btn_custom addTarget:self action:@selector(signWithApple:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn_custom];
+
+}
+-(void)signWithApple:(UIButton *)sender{
+    [[SignWithAppleManger sharedManager]SignInWithAppleWithBlock:^(id  _Nonnull data, BOOL success, BOOL showError) {
+        NSLog(@&quot;123&quot;);
+    }];
+}
+</code></pre><p><strong>注意⚠️：</strong>封装<code>Sign In with Apple</code>登录工具类，使用这个类时要把类对象设置为全局变量，或者直接把这个工具类做成单例，如果使用局部变量，和IAP支付工具类一样，会导致苹果回调不会执行。已经使用<code>Sign In with Apple</code>登录过<code>App</code>的用户如果设备中存在<code>iCloud Keychain</code>凭证或者<code>AppleID</code>凭证，提示用户直接使用<code>TouchID</code>或<code>FaceID</code>登录即可。</p>
+<pre><code>-(void)ExistingSignInWithAppleWithBlock:(SignBackInfoBlock)block{
+
+    self.block = block;
+
+    [self observeAppleSignInState];
+
+    if (@available(iOS 13.0, *)) {
+        // 基于用户的Apple ID授权用户，生成用户授权请求的一种机制
+        ASAuthorizationAppleIDProvider *appleIdProvider = [[ASAuthorizationAppleIDProvider alloc] init];
+        // 授权请求AppleID
+        ASAuthorizationAppleIDRequest *appleIdRequest = [appleIdProvider createRequest];
+        // 为了执行钥匙串凭证分享生成请求的一种机制
+        ASAuthorizationPasswordProvider *passwordProvider = [[ASAuthorizationPasswordProvider alloc] init];
+        ASAuthorizationPasswordRequest *passwordRequest = [passwordProvider createRequest];
+        NSMutableArray &lt;ASAuthorizationRequest *&gt;* requestArr = [NSMutableArray arrayWithCapacity:2];
+        if (appleIdRequest) {
+            [requestArr addObject:appleIdRequest];
+        }
+        if (passwordRequest) {
+            [requestArr addObject:passwordRequest];
+        }
+        // ASAuthorizationRequest：对于不同种类授权请求的基类
+        NSArray &lt;ASAuthorizationRequest *&gt;* requests = [requestArr copy];
+        // 由ASAuthorizationAppleIDProvider创建的授权请求 管理授权请求的控制器
+        ASAuthorizationController *authorizationController = [[ASAuthorizationController alloc] initWithAuthorizationRequests:requests];
+        // 设置授权控制器通知授权请求的成功与失败的代理
+        authorizationController.delegate = self;
+        // 设置提供 展示上下文的代理，在这个上下文中 系统可以展示授权界面给用户
+        authorizationController.presentationContextProvider = self;
+        // 在控制器初始化期间启动授权流
+        [authorizationController performRequests];
+    }else{
+        // 处理不支持系统版本
+        if (self.block) {
+            self.block(@&quot;该系统版本不可用Apple登录&quot;, NO, NO);
+        }
+    }
+}
+</code></pre></li>
+<li><p>获取授权码<br>获取授权码需要在代码中实现两个代理回调<code>ASAuthorizationControllerDelegate</code>、<code>ASAuthorizationControllerPresentationContextProviding</code>分别用于处理授权登录成功和失败。</p>
+<pre><code>#pragma mark - delegate
+//@optional 授权成功地回调
+- (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization API_AVAILABLE(ios(13.0)){
+    //    NSLog(@&quot;授权完成:::%@&quot;, authorization.credential);
+    //    NSLog(@&quot;%s&quot;, __FUNCTION__);
+    //    NSLog(@&quot;%@&quot;, controller);
+    //    NSLog(@&quot;%@&quot;, authorization);
+    if ([authorization.credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
+        // 用户登录使用ASAuthorizationAppleIDCredential
+        ASAuthorizationAppleIDCredential *appleIDCredential = (ASAuthorizationAppleIDCredential *)authorization.credential;
+        NSString *user = appleIDCredential.user;
+        // 使用钥匙串的方式保存用户的唯一信息
+        [SAMKeychain setPassword:user forService:[NSBundle mainBundle].bundleIdentifier account:ShareCurrentIdentifier];
+        // 使用过授权的，可能获取不到以下三个参数
+        NSString *familyName = appleIDCredential.fullName.familyName;
+        NSString *givenName = appleIDCredential.fullName.givenName;
+        NSString *email = appleIDCredential.email;
+        NSData *identityToken = appleIDCredential.identityToken;
+        NSData *authorizationCode = appleIDCredential.authorizationCode;
+        // 服务器验证需要使用的参数
+        NSString *identityTokenStr = [[NSString alloc] initWithData:identityToken encoding:NSUTF8StringEncoding];
+        NSString *authorizationCodeStr = [[NSString alloc] initWithData:authorizationCode encoding:NSUTF8StringEncoding];
+        if (self.block) {
+            self.block(user, YES, NO);
+        }
+    }else if ([authorization.credential isKindOfClass:[ASPasswordCredential class]]){
+        // 这个获取的是iCloud记录的账号密码，需要输入框支持iOS 12 记录账号密码的新特性，如果不支持，可以忽略
+        // Sign in using an existing iCloud Keychain credential.
+        // 用户登录使用现有的密码凭证
+        ASPasswordCredential *passwordCredential = (ASPasswordCredential *)authorization.credential;
+        // 密码凭证对象的用户标识 用户的唯一标识
+        NSString *user = passwordCredential.user;
+        // 密码凭证对象的密码
+        NSString *password = passwordCredential.password;
+    }else{
+        if (self.block) {
+            self.block(@&quot;授权信息均不符&quot;, NO, NO);
+        }
+    }
+}
+
+//MARK:授权失败的回调
+- (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error API_AVAILABLE(ios(13.0)){
+    // Handle error.
+    NSString *errorMsg = nil;
+    switch (error.code) {
+        case ASAuthorizationErrorCanceled:
+            errorMsg = @&quot;用户取消了授权请求&quot;;
+            break;
+        case ASAuthorizationErrorFailed:
+            errorMsg = @&quot;授权请求失败&quot;;
+            break;
+        case ASAuthorizationErrorInvalidResponse:
+            errorMsg = @&quot;授权请求响应无效&quot;;
+            break;
+        case ASAuthorizationErrorNotHandled:
+            errorMsg = @&quot;未能处理授权请求&quot;;
+            break;
+        case ASAuthorizationErrorUnknown:
+            errorMsg = @&quot;授权请求失败未知原因&quot;;
+            break;
+        default:
+            break;
+    }
+    if (self.block) {
+        self.block(errorMsg, NO, YES);
+    }
+}
+//MARK ASAuthorizationControllerPresentationContextProviding
+//告诉代理应该在哪个window 展示内容给用户
+- (ASPresentationAnchor)presentationAnchorForAuthorizationController:(ASAuthorizationController *)controller API_AVAILABLE(ios(13.0)){
+    // 返回window
+    return [UIApplication sharedApplication].windows.lastObject;
+}
+</code></pre><p><strong>注意⚠️：</strong>完成上述后一般会返回需要的数据，如下</p>
+<ol>
+<li><code>UserID</code>:<code>Unique</code>, <code>stable</code>, <code>team-scoped user ID</code>，苹果用户唯一标识符，该值在同一个开发者账号下的所有App下是一样的，开发者可以用该唯一标识符与自己后台系统的账号体系绑定起来。</li>
+<li><code>Verification data</code>:<code>Identity token</code>, <code>code</code>，验证数据，用于传给开发者后台服务器，然后开发者服务器再向苹果的身份验证服务端验证，本次授权登录请求数据的有效性和真实性</li>
+<li><code>Account information</code>:<code>Name</code>, <code>verified email</code>，苹果用户信息，包括全名、邮箱等，注意：如果玩家登录时拒绝提供真实的邮箱账号，苹果会生成虚拟的邮箱账号，而且记录过的苹果账号再次登录这些参数拿不到。</li>
+</ol>
+</li>
+<li>验证，关于验证的这一步，需要传递授权码给自己的服务端，自己的服务端调用苹果<code>API</code>去校验授权码<code>Generate and validate tokens</code>。</li>
+</ol>
+<p><strong>注意⚠️：</strong>验证一般是app端获取到信息，然后把<code>authorizationCode</code>传给后台，<a href="https://appleid.apple.com/auth/token" target="_blank" rel="noopener">验证地址</a>，苹果返回<code>id_token</code>，与客户端获取的identityToken值一样，格式如下</p>
+<pre><code>{
+    &quot;access_token&quot;: &quot;一个token&quot;,
+    &quot;token_type&quot;: &quot;Bearer&quot;,
+    &quot;expires_in&quot;: 3600,
+    &quot;refresh_token&quot;: &quot;一个token&quot;,
+    &quot;id_token&quot;: &quot;结果是JWT，字符串形式，identityToken&quot;
+}
+</code></pre><p>授权<code>code</code>是有时效性的，且使用一次即失效<br>服务器拿到相应结果后，其中<code>id_token</code>是<code>JWT</code>数据，解码<code>id_token</code>，得到如下内容</p>
+<pre><code>{
+    &quot;iss&quot;:&quot;https://appleid.apple.com&quot;,
+    &quot;aud&quot;:&quot;这个是你的app的bundle identifier&quot;,
+    &quot;exp&quot;:1567482337,
+    &quot;iat&quot;:1567481737,
+    &quot;sub&quot;:&quot;这个字段和客户端获取的user字段是完全一样的&quot;,
+    &quot;c_hash&quot;:&quot;8KDzfalU5kygg5zxXiX7dA&quot;,
+    &quot;auth_time&quot;:1567481737
+}
+</code></pre><p>其中<code>aud</code>与你<code>app</code>的<code>bundleID</code>一致，<code>sub</code>就是授权用户的唯一标识，与手机端获得的<code>user</code>一致，服务器端通过对比<code>sub</code>字段信息是否与手机端上传的<code>user</code>信息一致来确定是否成功登录<br>该<code>token</code>的有效期是<code>10</code>分钟。</p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a><a href="https://github.com/huangfangkai/SignInWithApple" target="_blank" rel="noopener">Demo</a></h2>
+      
+    </div>
+    
+    
+    
+
+      <div>
+        
+         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- <p><span>本文标题:</span><a href="/2020/07/22/iOS-13-Sign-In-with-Apple/">iOS 13 Sign In with Apple</a></p> -->
+  <p><span>文章作者:</span><a href="/" title="访问 HFK 的个人博客">HFK</a></p>
+  <!-- <p><span>发布时间:</span>2020年07月22日</p> -->
+  <p><span>本文链接:</span><a href="/2020/07/22/iOS-13-Sign-In-with-Apple/" title="iOS 13 Sign In with Apple">http://www.hfkstackoverflow.top/2020/07/22/iOS-13-Sign-In-with-Apple/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.hfkstackoverflow.top/2020/07/22/iOS-13-Sign-In-with-Apple/" aria-label="复制成功！"></i></span>
+  </p>
+ <!-- <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p> --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+        
+      </div>
+      
+    
+
+    
+
+    
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+      </div>
+      
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS13/" rel="tag"><i class="fa fa-tag"></i> iOS13</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/19/解决Github图片不显示/" rel="next" title="解决Github图片不显示">
+                <i class="fa fa-chevron-left"></i> 解决Github图片不显示
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/23/Git使用/" rel="prev" title="Git使用">
+                Git使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.jpeg" alt="HFK">
+            
+              <p class="site-author-name" itemprop="name">HFK</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/huangfangkai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/e5c418741dce" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog" title="阮一峰博客" target="_blank">阮一峰博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.devtang.com" title="唐巧博客" target="_blank">唐巧博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lib.csdn.net/article/ios/44217" title="iOS一些干货" target="_blank">iOS一些干货</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tinypng.com" title="图片压缩" target="_blank">图片压缩</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目配置"><span class="nav-number">1.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码集成"><span class="nav-number">2.</span> <span class="nav-text">代码集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sign-In-With-Apple流程"><span class="nav-number">2.1.</span> <span class="nav-text">Sign In With Apple流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实际操作"><span class="nav-number">2.2.</span> <span class="nav-text">实际操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo"><span class="nav-number">3.</span> <span class="nav-text">Demo</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HFK</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">总字数&#58;</span>
+    
+    <span title="总字数">51.1k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+</body>
+</html>

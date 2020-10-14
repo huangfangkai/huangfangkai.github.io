@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/hfk.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/hfk.jpeg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/hfk.jpeg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Sonarqube,Sonar-scanner,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言在一个团队开发中，每个人的代码质量良莠不齐，因此我们需要把握好代码质量的关。这个往往决定这个团队的开发维护效率。如果使用不同风格的，不严谨的代码，在后续业务扩大，成员增多时会直接导致维护的高成本。每个团队都拥有自己的一套代码检查方式。对于小团队往往会选择一些开源的工具，本文主要介绍Mac环境下Sonarqube的安装以及Objective-C团队开发中，代码质量的把关，往往决定了一个团队的开发">
+<meta name="keywords" content="Sonarqube,Sonar-scanner">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac环境下配置Sonarqube与Sonar-scanner">
+<meta property="og:url" content="http://www.hfkstackoverflow.top/2019/10/31/Mac环境下配置Sonarqube与Sonar-scanner/index.html">
+<meta property="og:site_name" content="HFK">
+<meta property="og:description" content="前言在一个团队开发中，每个人的代码质量良莠不齐，因此我们需要把握好代码质量的关。这个往往决定这个团队的开发维护效率。如果使用不同风格的，不严谨的代码，在后续业务扩大，成员增多时会直接导致维护的高成本。每个团队都拥有自己的一套代码检查方式。对于小团队往往会选择一些开源的工具，本文主要介绍Mac环境下Sonarqube的安装以及Objective-C团队开发中，代码质量的把关，往往决定了一个团队的开发">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Sonarqube代码扫描_1.png">
+<meta property="og:updated_time" content="2020-06-09T02:17:37.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac环境下配置Sonarqube与Sonar-scanner">
+<meta name="twitter:description" content="前言在一个团队开发中，每个人的代码质量良莠不齐，因此我们需要把握好代码质量的关。这个往往决定这个团队的开发维护效率。如果使用不同风格的，不严谨的代码，在后续业务扩大，成员增多时会直接导致维护的高成本。每个团队都拥有自己的一套代码检查方式。对于小团队往往会选择一些开源的工具，本文主要介绍Mac环境下Sonarqube的安装以及Objective-C团队开发中，代码质量的把关，往往决定了一个团队的开发">
+<meta name="twitter:image" content="http://www.hfkstackoverflow.top/assets/blogImg/Sonarqube代码扫描_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hfkstackoverflow.top/2019/10/31/Mac环境下配置Sonarqube与Sonar-scanner/">
+
+
+
+
+
+  <title>Mac环境下配置Sonarqube与Sonar-scanner | HFK</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/huangfangkai" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HFK</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">欢迎到来~</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hfkstackoverflow.top/2019/10/31/Mac环境下配置Sonarqube与Sonar-scanner/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HFK">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HFK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Mac环境下配置Sonarqube与Sonar-scanner</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-31T23:49:02+08:00">
+                2019-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/31/Mac环境下配置Sonarqube与Sonar-scanner/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/10/31/Mac环境下配置Sonarqube与Sonar-scanner/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在一个团队开发中，每个人的代码质量良莠不齐，因此我们需要把握好代码质量的关。这个往往决定这个团队的开发维护效率。如果使用不同风格的，不严谨的代码，在后续业务扩大，成员增多时会直接导致维护的高成本。每个团队都拥有自己的一套代码检查方式。对于小团队往往会选择一些开源的工具，本文主要介绍<code>Mac</code>环境下<a href="https://www.sonarqube.org/" target="_blank" rel="noopener">Sonarqube</a>的安装以及<code>Objective-C</code><br>团队开发中，代码质量的把关，往往决定了一个团队的开发维护效率。成员的增长，业务的扩大，不同风格、不严谨的代码，直接导致后续维护的高成本。本篇介绍<code>Mac</code>上<code>Sonarqube</code>的安装以及添加<code>Objective-C</code>、<code>Swift</code>支持。</p>
+<a id="more"></a>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p><code>Sonarqube</code>从<code>7.9</code>版本开始不支持<code>MySql</code>，所以在<code>Sonarqube-7.9</code>版本中使用<code>Postgresql</code>数据库，后面也会区分两种方式进行配置。</p>
+<p><strong>下载</strong></p>
+<ol>
+<li><a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html" target="_blank" rel="noopener">JDK 11+</a></li>
+<li><a href="https://www.sonarqube.org/downloads/" target="_blank" rel="noopener">Sonar7.9 </a>,使用社区版本</li>
+<li><a href="https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/" target="_blank" rel="noopener">Sonar-scanner</a></li>
+<li><a href="https://dev.mysql.com/downloads/mysql/5.7.html#downloads" target="_blank" rel="noopener">MySql</a>：支持 <code>5.6</code> &lt;= <code>version</code> &lt; <code>8.0</code></li>
+<li><a href="https://www.postgresql.org/download/" target="_blank" rel="noopener">PostgreSQL</a>，支持<code>9.3-&gt;9.6</code>、<code>10.0</code>版本</li>
+</ol>
+<p><a href="链接:https://pan.baidu.com/s/1h1iz26aUow_GBcs-FpgE1Q">相关资源密码:x9g3</a></p>
+<h2 id="配置JDK"><a href="#配置JDK" class="headerlink" title="配置JDK"></a>配置JDK</h2><p>下载所需<code>JDK</code>并且安装；</p>
+<p><strong>方式一：</strong></p>
+<ol>
+<li>Vim编辑<code>.bash_profile</code></li>
+<li><p>编辑JDK环境变量：</p>
+<pre><code>JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
+PATH=$JAVA_HOME/bin:$PATH:.
+CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
+export JAVA_HOME
+export PATH
+export CLASSPATH
+</code></pre></li>
+<li>退出<code>esc</code>编辑模式，保存<code>wq</code>并退出，接着输入<code>source .bash_profile</code>使修改生效。</li>
+</ol>
+<p><strong>方式二：</strong></p>
+<pre><code>直接到`.bash_profile`文件下编辑`.bash_profile`文件，编辑内容为方式一下的内容。
+</code></pre><p><strong>注意⚠️：</strong></p>
+<p>完成在终端输入<code>java -version</code>查看相应结果。</p>
+<pre><code>//会输出类似信息表示安装成功
+java version &quot;11.0.2&quot; 2019-01-15 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.2+9-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.2+9-LTS, mixed mode)
+</code></pre><h2 id="安装MySql"><a href="#安装MySql" class="headerlink" title="安装MySql"></a>安装MySql</h2><ol>
+<li><p>下载的<code>MySql</code>安装完毕后，在<code>系统偏好设置</code>中启动<code>MySql</code>。</p>
+<p> <strong>注意⚠️：</strong><code>MySql</code>的初始密码安装完会显示在系统的通知栏，注意记录下方便后面修改密码;</p>
+</li>
+<li><p>在环境变量中添加，然后通过<code>source .bash_profile</code>使其生效。</p>
+<pre><code>PATH=$PATH:/usr/local/mysql/bin
+</code></pre></li>
+<li><p>通过终端输入，然后输入密码进入<code>MySql</code>。</p>
+<pre><code>mysql -u root -p
+</code></pre></li>
+<li><p>输入以下命令修改<code>root</code>密码,最后重启MySql；</p>
+<pre><code>ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;MyNewPass&apos;;
+</code></pre></li>
+</ol>
+<h2 id="安装PostgreSQL"><a href="#安装PostgreSQL" class="headerlink" title="安装PostgreSQL"></a>安装PostgreSQL</h2><p>下载好的安装包安装完成，用户名为<code>postgres</code>，在安装过程中记住输入的密码; 在<code>Mac</code>的<code>Launcher</code>中启动<code>PgAdmin</code>登录新建一个数据库，名字记住，后面在<code>sonarqube</code>中会用到;</p>
+<h2 id="安装-Sonarqube"><a href="#安装-Sonarqube" class="headerlink" title="安装 Sonarqube"></a>安装 Sonarqube</h2><p>下载好的压缩包解压出来的文件夹放到你想放到的位置，然后打开终端，进入到此文件夹下的<code>bin/macosx-universal-64</code>目录下,输入命令:</p>
+<pre><code>sonar.sh start
+</code></pre><p>然后打开浏览器进入<a href="localhost:9000" target="_blank" rel="noopener">localhost:9000</a>就可以看到<code>Sonarqube</code>主页。</p>
+<h2 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h2><h3 id="这里为-Sonarqube-配置-MySql-或者-postgreSQL。"><a href="#这里为-Sonarqube-配置-MySql-或者-postgreSQL。" class="headerlink" title="这里为 Sonarqube 配置 MySql 或者 postgreSQL。"></a>这里为 Sonarqube 配置 MySql 或者 postgreSQL。</h3><ol>
+<li><p>到刚刚安装<code>Sonarqube</code>的<code>Sonar</code>文件夹目录下，找到<code>conf/sonar.properties</code>文件，编辑文件加入对应数据库的配置。</p>
+<p> <strong>MySql</strong></p>
+</li>
+</ol>
+<pre><code>    sonar.jdbc.url=jdbc:mysql://localhost:3306/sonarqube?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance
+    sonar.jdbc.username=root
+    sonar.jdbc.password=修改为自己的密码
+    sonar.sorceEncoding=UTF-8
+    sonar.login=admin
+    sonar.password=admin
+
+**PostgreSQL**
+
+    sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube?currentSchema=public
+    sonar.jdbc.username=postgres
+    sonar.jdbc.password=你的密码
+    sonar.sorceEncoding=UTF-8
+    sonar.login=admin
+    sonar.password=admin
+</code></pre><ol>
+<li><p>完成<code>Sonar</code>配置后，重启<code>Sonar</code>。到<code>Sonar</code>文件夹<code>bin/macosx-universal-64</code>目录下运行下方命令，完成后打开<a href="localhost:9000" target="_blank" rel="noopener">localhost:9000</a>查看。</p>
+<pre><code>sonar.sh restart
+</code></pre></li>
+</ol>
+<hr>
+<pre><code># 主要命令一览， 建议添加alias到~/.bash_profile
+./sonar.sh console #Debug信息
+./sonar.sh start #启动服务
+./sonar.sh stop #停止服务
+./sonar.sh restart #重启服务
+</code></pre><h2 id="安装-Sonar-scanner"><a href="#安装-Sonar-scanner" class="headerlink" title="安装 Sonar-scanner"></a>安装 Sonar-scanner</h2><p>下载的文件解压或者直接移动到你的目标文件夹，配置环境变量(放置在原有Path变量前面)：</p>
+<pre><code>SONAR_RUNNER_HOME=你的sonar-scanne文件价夹路径
+PATH=$PATH:$SONAR_RUNNER_HOME/bin
+</code></pre><p>然后通过<code>source .bash_profile</code>使其生效。然后通过命令<code>sonar-scanner -v</code>查看版本信息。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在待扫描项目的根目录新建一个<code>sonar-project.properties</code>(注意⚠️命名不要错)文件，并输入以下信息：</p>
+<pre><code># 项目标识，多个项目一定要改此值来区分
+sonar.projectKey=my:project
+# this is the name displayed in the SonarQube UI
+sonar.projectName=xibaoxiaoandroid
+sonar.projectVersion=1.0
+# Path is relative to the sonar-project.properties file. Replace &quot;\&quot; by &quot;/&quot; on Windows.
+# Since SonarQube 4.2, this property is optional if sonar.modules is set. 
+# If not set, SonarQube starts looking for source code from the directory containing 
+# the sonar-project.properties file.
+sonar.sources=带扫描项目路径
+# Encoding of the source code. Default is default system encoding
+#sonar.sourceEncoding=UTF-8
+#如果扫描Java项目，此项是必须配置的
+sonar.java.binaries=target/classes
+</code></pre><p>保存完以后再待扫描根目录下执行命令，扫描完成后，在<a href="localhost:9000" target="_blank" rel="noopener">localhost:9000</a>中查看到扫描结果。</p>
+<pre><code>sonar-scanner
+</code></pre><h2 id="检查-Objective-C、Swift-环境下运行"><a href="#检查-Objective-C、Swift-环境下运行" class="headerlink" title="检查 Objective-C、Swift 环境下运行"></a>检查 Objective-C、Swift 环境下运行</h2><p><strong>配置需要文件：</strong><a href="https://github.com/Backelite/sonar-swift" target="_blank" rel="noopener">sonar-swift</a></p>
+<h3 id="OCLint-安装与使用"><a href="#OCLint-安装与使用" class="headerlink" title="OCLint 安装与使用"></a><a href="http://oclint.org/" target="_blank" rel="noopener">OCLint</a> 安装与使用</h3><p><code>sonarqube</code>对<code>Objective-C</code>、<code>Swift</code>的代码检测，需要依赖<code>OCLint</code>对<code>Xcode</code>工程的编译<code>log</code>的分析结果。简单说下过程，对<code>Xcode</code>工程进行<code>xcodebuild</code>，输出编译<code>log</code>，<code>OCLint</code>对编译<code>log</code>进行分析，输出<code>xml</code>，<code>sonarqube</code>根据<code>xml</code>来显示可视化结果。</p>
+<pre><code>OCLint is a static code analysis tool for improving quality and reducing defects by inspecting C, C++ and Objective-C code and looking for potential problems.
+</code></pre><p><code>OCLint</code>安装方式见<a href="http://oclint.org/" target="_blank" rel="noopener">OCLint官网</a>。</p>
+<ol>
+<li><code>Homebrew</code>简单，但可能外网连不上</li>
+<li>推荐直接<code>download</code>包，解压执行文件路径加入<code>$PATH</code></li>
+</ol>
+<p>具体安装所需文件可以参照<a href="https://github.com/Backelite/sonar-swift" target="_blank" rel="noopener">sonar-swift</a>的要求。</p>
+<p>  <img src="/assets/blogImg/Sonarqube代码扫描_1.png" alt="运行扫描结果" title="运行扫描结果"></p>
+
+      
+    </div>
+    
+    
+    
+
+      <div>
+        
+         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- <p><span>本文标题:</span><a href="/2019/10/31/Mac环境下配置Sonarqube与Sonar-scanner/">Mac环境下配置Sonarqube与Sonar-scanner</a></p> -->
+  <p><span>文章作者:</span><a href="/" title="访问 HFK 的个人博客">HFK</a></p>
+  <!-- <p><span>发布时间:</span>2019年10月31日</p> -->
+  <p><span>本文链接:</span><a href="/2019/10/31/Mac环境下配置Sonarqube与Sonar-scanner/" title="Mac环境下配置Sonarqube与Sonar-scanner">http://www.hfkstackoverflow.top/2019/10/31/Mac环境下配置Sonarqube与Sonar-scanner/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.hfkstackoverflow.top/2019/10/31/Mac环境下配置Sonarqube与Sonar-scanner/" aria-label="复制成功！"></i></span>
+  </p>
+ <!-- <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p> --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+        
+      </div>
+      
+    
+
+    
+
+    
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+      </div>
+      
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sonarqube/" rel="tag"><i class="fa fa-tag"></i> Sonarqube</a>
+          
+            <a href="/tags/Sonar-scanner/" rel="tag"><i class="fa fa-tag"></i> Sonar-scanner</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/30/Xcode导入真机调试包/" rel="next" title="Xcode导入真机调试包">
+                <i class="fa fa-chevron-left"></i> Xcode导入真机调试包
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/03/Mac及软件的一些使用小Tips/" rel="prev" title="Mac及软件的一些使用小Tips">
+                Mac及软件的一些使用小Tips <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.jpeg" alt="HFK">
+            
+              <p class="site-author-name" itemprop="name">HFK</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/huangfangkai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/e5c418741dce" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog" title="阮一峰博客" target="_blank">阮一峰博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.devtang.com" title="唐巧博客" target="_blank">唐巧博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lib.csdn.net/article/ios/44217" title="iOS一些干货" target="_blank">iOS一些干货</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tinypng.com" title="图片压缩" target="_blank">图片压缩</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置JDK"><span class="nav-number">3.</span> <span class="nav-text">配置JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装MySql"><span class="nav-number">4.</span> <span class="nav-text">安装MySql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装PostgreSQL"><span class="nav-number">5.</span> <span class="nav-text">安装PostgreSQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Sonarqube"><span class="nav-number">6.</span> <span class="nav-text">安装 Sonarqube</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置数据库"><span class="nav-number">7.</span> <span class="nav-text">配置数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#这里为-Sonarqube-配置-MySql-或者-postgreSQL。"><span class="nav-number">7.1.</span> <span class="nav-text">这里为 Sonarqube 配置 MySql 或者 postgreSQL。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Sonar-scanner"><span class="nav-number">8.</span> <span class="nav-text">安装 Sonar-scanner</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">9.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查-Objective-C、Swift-环境下运行"><span class="nav-number">10.</span> <span class="nav-text">检查 Objective-C、Swift 环境下运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OCLint-安装与使用"><span class="nav-number">10.1.</span> <span class="nav-text">OCLint 安装与使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HFK</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">总字数&#58;</span>
+    
+    <span title="总字数">51.1k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
+
+</body>
+</html>
